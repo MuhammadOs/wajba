@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:wajba/constants/constants.dart';
 import 'package:wajba/features/OnBoarding/data/onboarding_data.dart';
 import 'package:wajba/features/OnBoarding/presentations/view/widgets/page_view_body.dart';
-import 'onboarding_discription.dart';
+import 'custom_next_button.dart';
 import 'onboarding_dots.dart';
-import 'onboarding_titles.dart';
+import 'onboarding_login_button.dart';
+import 'onboarding_register_skip_button.dart';
 
 class OnBoardingBody extends StatefulWidget {
   const OnBoardingBody({Key? key}) : super(key: key);
@@ -57,69 +57,10 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                TextButton(
-                  child: Text(
-                    isLastPage ? 'Register ?' : 'Skip',
-                    style: const TextStyle(
-                        fontSize: 16,
-                        color: wajbah_gray,
-                        fontWeight: FontWeight.w700),
-                  ),
-                  onPressed: () {
-                    if (isLastPage) {
-                      //navigate to register view
-                    } else {
-                      controller.jumpToPage(content.length - 1);
-                    }
-                  },
-                ),
+                OnboardingRegisterSkipButton(isLastPage: isLastPage, controller: controller),
                 isLastPage
-                    ? Container(
-                        decoration: BoxDecoration(
-                            color: wajbah_primary,
-                            borderRadius: BorderRadius.circular(15)),
-                        width: MediaQuery.of(context).size.width * .3,
-                        height: MediaQuery.of(context).size.height * 0.06,
-                        child: TextButton(
-                          child: const Padding(
-                            padding: EdgeInsets.only(left: 13),
-                            child: Row(
-                              children: [
-                                Text(
-                                  'Login',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 15),
-                                ),
-                                SizedBox(
-                                  width: 7,
-                                ),
-                                Icon(
-                                  Icons.arrow_forward_ios,
-                                  color: Colors.white,
-                                )
-                              ],
-                            ),
-                          ),
-                          onPressed: () {},
-                        ),
-                      )
-                    : Container(
-                        decoration: BoxDecoration(
-                            color: wajbah_buttons,
-                            borderRadius: BorderRadius.circular(10)),
-                        width: 40,
-                        height: 40,
-                        child: IconButton(
-                          icon: const Icon(Icons.arrow_forward_ios),
-                          onPressed: () {
-                            controller.nextPage(
-                                duration: const Duration(milliseconds: 300),
-                                curve: Curves.easeInOut);
-                          },
-                        ),
-                      ),
+                    ? const OnboardingLoginButton()
+                    : CustomNextButton(controller: controller)
               ],
             ),
           ],

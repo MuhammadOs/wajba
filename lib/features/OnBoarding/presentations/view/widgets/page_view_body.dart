@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/sizeConfig.dart';
 import '../../../data/onboarding_data.dart';
 import 'onboarding_discription.dart';
 import 'onboarding_titles.dart';
@@ -19,22 +20,34 @@ class PageViewBody extends StatefulWidget {
 class _PageViewBodyState extends State<PageViewBody> {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    double width = SizeConfig.screenW!;
+    double height = SizeConfig.screenH!;
+    debugPrint("$width");
+    debugPrint("$height");
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Image.asset(
           content[widget.index].image,
-          width: 300,
-          height: 300,
+          width: width,
+          height: height / 3,
         ),
-        const SizedBox(height: 20), // Adjust the spacing here
-        OnboardingTitles(
-          index: widget.index,
-        ),
-        OnboardingDiscription(
-          index: widget.index,
-        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            OnboardingTitles(
+              index: widget.index,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            OnboardingDiscription(
+              index: widget.index,
+            ),
+          ],
+        )
       ],
     );
   }

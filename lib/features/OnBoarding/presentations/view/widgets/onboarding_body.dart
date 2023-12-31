@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/constants/constants.dart';
 import 'package:wajba/features/OnBoarding/data/onboarding_data.dart';
 import 'package:wajba/features/OnBoarding/presentations/view/widgets/page_view_body.dart';
+import '../../../../../core/sizeConfig.dart';
 import 'custom_next_button.dart';
 import 'onboarding_dots.dart';
 import 'onboarding_login_button.dart';
@@ -26,16 +26,19 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    double width = SizeConfig.screenW!;
+    double height = SizeConfig.screenH!;
+
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width * 0.06),
+        padding: EdgeInsets.symmetric(horizontal: width * 0.06),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.5,
+              height: height * 0.6,
               child: PageView.builder(
                 onPageChanged: (index) {
                   setState(() {
@@ -53,15 +56,22 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
               ),
             ),
             OnboardingDots(controller: controller),
-            const SizedBox(height: 40,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                OnboardingRegisterSkipButton(isLastPage: isLastPage, controller: controller),
-                isLastPage
-                    ? const OnboardingLoginButton()
-                    : CustomNextButton(controller: controller)
-              ],
+            const SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 46.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  OnboardingRegisterSkipButton(
+                      isLastPage: isLastPage, controller: controller),
+                  isLastPage
+                      ? const OnboardingLoginButton()
+                      : CustomNextButton(controller: controller),
+                ],
+              ),
             ),
           ],
         ),

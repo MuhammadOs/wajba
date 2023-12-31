@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/features/Authentication/presentations/views/login_view.dart';
-import 'package:wajba/features/Authentication/presentations/views/signup_view.dart';
+import 'package:wajba/features/Authentication/presentations/views/login_view/login_view.dart';
+import 'package:wajba/features/Authentication/presentations/views/signup_view/signup_view.dart';
 import 'package:wajba/features/OnBoarding/presentations/view/onboarding.dart';
 
 void main() {
@@ -19,7 +19,7 @@ class WajbahUser extends StatelessWidget {
       routes: {
         "Onboarding": (context) => const OnBoardingScreen(),
         "login": (context) => const LoginView(),
-        "signup": (context) => const SignUpView()
+        "register": (context) => const SignUpView()
       },
     );
   }

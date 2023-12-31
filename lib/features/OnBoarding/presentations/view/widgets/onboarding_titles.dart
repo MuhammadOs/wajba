@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:wajba/core/sizeConfig.dart';
 
 import '../../../../../constants/constants.dart';
 import '../../../../../core/styles.dart';
 import '../../../data/onboarding_data.dart';
+
 class OnboardingTitles extends StatefulWidget {
   const OnboardingTitles({
-    super.key, required this.index,
+    super.key,
+    required this.index,
   });
+
   final int index;
 
   @override
@@ -16,21 +20,22 @@ class OnboardingTitles extends StatefulWidget {
 class _OnboardingTitlesState extends State<OnboardingTitles> {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    double width = SizeConfig.screenW!;
+    double height = SizeConfig.screenH!;
+
     return Text.rich(
       TextSpan(
         children: [
           TextSpan(
               text: content[widget.index].firstText,
-              style: Styles.titleLarge.copyWith(
-                  color: wajbah_primary
-              )
-          ),
+              style: Styles.titleMedium.copyWith(
+                color: wajbah_primary,
+              )),
           TextSpan(
-              text: '\n${content[widget.index].secondText}',
-              style: Styles.titleLarge.copyWith(
-                  color: wajbah_black
-              )
-          ),
+            text: '\n${content[widget.index].secondText}',
+            style: Styles.titleMedium.copyWith(color: wajbah_black),
+          )
         ],
       ),
     );

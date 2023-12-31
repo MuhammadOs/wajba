@@ -37,7 +37,9 @@ class OnboardingLoginButton extends StatelessWidget {
             ],
           ),
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, 'login');
+        },
       ),
     );
   }

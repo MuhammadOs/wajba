@@ -25,6 +25,7 @@ class OnboardingRegisterSkipButton extends StatelessWidget {
       onPressed: () {
         if (isLastPage) {
           //navigate to register view
+          Navigator.pushNamed(context, 'register');
         } else {
           controller.jumpToPage(content.length - 1);
         }

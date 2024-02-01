@@ -21,8 +21,6 @@ class _OnboardingTitlesState extends State<OnboardingTitles> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    double width = SizeConfig.screenW!;
-    double height = SizeConfig.screenH!;
 
     return Text.rich(
       TextSpan(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wajba/constants/constants.dart';
+import 'package:wajba/features/Authentication/presentations/views/signup_view/signup_view.dart';
 
 import '../../../../../core/sizeConfig.dart';
 import '../../../../../core/styles.dart';
@@ -57,31 +58,53 @@ class _LoginViewState extends State<LoginView> {
                   const SizedBox(
                     height: 40.0,
                   ),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 10, bottom: 10),
+                    child: Text(
+                      'Email',
+                      style: Styles.hint,
+                    ),
+                  ),
                   TextFormField(
                     controller: usernameController,
                     style: Styles.titleSmall,
                     decoration: InputDecoration(
-                        labelText: 'Email',
-                        labelStyle: Styles.titleSmall.copyWith(
-                          color: wajbah_black,
+                      labelStyle: Styles.titleSmall.copyWith(
+                        color: wajbah_black,
+                      ),
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 15, horizontal: 10),
+                      filled: true,
+                      fillColor: wajbah_buttons,
+                      border: const OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        borderSide: BorderSide(
+                          color: wajbah_gray,
+                          width: 1.0,
                         ),
-                        filled: true,
-                        fillColor: wajbah_buttons,
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(15)),
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
-                          ),
+                      ),
+                      focusedBorder: const OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(25)),
+                        borderSide: BorderSide(
+                          color: wajbah_gray,
+                          width: 1.0,
                         ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(25)),
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
-                          ),
+                      ),
+                      disabledBorder: const OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        borderSide: BorderSide(
+                          color: wajbah_gray,
+                          width: 1.0,
                         ),
-                        /*prefixIcon: Icon(
+                      ),
+                      enabledBorder: const OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        borderSide: BorderSide(
+                          color: wajbah_buttons,
+                          width: 1.0,
+                        ),
+                      ),
+                      /*prefixIcon: Icon(
                           Icons.account_circle_outlined,
                           color: wajbah_black,
                         )*/
@@ -100,13 +123,18 @@ class _LoginViewState extends State<LoginView> {
                   const SizedBox(
                     height: 25.0,
                   ),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 10, bottom: 10),
+                    child: Text(
+                      'Password',
+                      style: Styles.hint,
+                    ),
+                  ),
                   TextFormField(
                     controller: passwordController,
                     decoration: InputDecoration(
-                      labelText: 'Password',
-                      labelStyle: Styles.titleSmall.copyWith(
-                        color: wajbah_black
-                      ),
+                      labelStyle:
+                          Styles.titleSmall.copyWith(color: wajbah_black),
                       border: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                         borderSide: BorderSide(
@@ -116,10 +144,19 @@ class _LoginViewState extends State<LoginView> {
                       ),
                       filled: true,
                       fillColor: wajbah_buttons,
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 15, horizontal: 10),
                       focusedBorder: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(25)),
                         borderSide: BorderSide(
-                          color: Colors.transparent,
+                          color: wajbah_gray,
+                          width: 1.0,
+                        ),
+                      ),
+                      enabledBorder: const OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(14)),
+                        borderSide: BorderSide(
+                          color: wajbah_buttons,
                           width: 1.0,
                         ),
                       ),
@@ -165,6 +202,21 @@ class _LoginViewState extends State<LoginView> {
                       return null;
                     },
                   ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(top: 10, right: 5),
+                        child: TextButton(
+                          child: const Text(
+                            'Forget password?',
+                            style: Styles.hint,
+                          ),
+                          onPressed: () {},
+                        ),
+                      ),
+                    ],
+                  ),
                   const SizedBox(
                     height: 30.0,
                   ),
@@ -185,12 +237,16 @@ class _LoginViewState extends State<LoginView> {
                       Container(
                         width: 100,
                         height: 60,
-                        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 20),
                         decoration: BoxDecoration(
-                          color: wajbah_buttons,
-                          borderRadius: BorderRadius.circular(16)
+                            color: wajbah_buttons,
+                            borderRadius: BorderRadius.circular(16)),
+                        child: Image.asset(
+                          'assets/images/google_logo.png',
+                          width: 35,
+                          height: 35,
                         ),
-                        child: Image.asset('assets/images/google_logo.png', width: 35,height: 35,),
                       ),
                     ],
                   ),
@@ -254,9 +310,8 @@ class _LoginViewState extends State<LoginView> {
                     children: [
                       Text(
                         'Don\'t have an account ? ',
-                        style: Styles.titleSmall.copyWith(
-                          color: wajbah_gray
-                        ),
+                        style: Styles.titleSmall
+                            .copyWith(color: wajbah_gray, fontSize: 14),
                       ),
                       TextButton(
                         onPressed: () {
@@ -265,9 +320,9 @@ class _LoginViewState extends State<LoginView> {
                         style: TextButton.styleFrom(
                           backgroundColor: Colors.transparent,
                         ),
-                        child: Text('Register', style: Styles.titleSmall.copyWith(
-                          color: wajbah_primary
-                        )),
+                        child: Text('Register',
+                            style: Styles.titleSmall
+                                .copyWith(color: wajbah_primary, fontSize: 14)),
                       ),
                     ],
                   ),

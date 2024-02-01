@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:wajba/features/Authentication/presentations/views/login_view/login_view.dart';
+import 'package:wajba/features/Authentication/presentations/views/permissions_view/views/allow_location.dart';
+import 'package:wajba/features/Authentication/presentations/views/permissions_view/views/allow_notification.dart';
+import 'package:wajba/features/Authentication/presentations/views/permissions_view/views/app_share.dart';
+import 'package:wajba/features/Authentication/presentations/views/permissions_view/views/password_changed.dart';
 import 'package:wajba/features/Authentication/presentations/views/signup_view/signup_view.dart';
 import 'package:wajba/features/OnBoarding/presentations/view/onboarding.dart';
 
@@ -19,7 +23,11 @@ class WajbahUser extends StatelessWidget {
       routes: {
         "Onboarding": (context) => const OnBoardingScreen(),
         "login": (context) => const LoginView(),
-        "register": (context) => const SignUpView()
+        "register": (context) => const SignUpView(),
+        "Allow notification": (context) => const AllowNotification(),
+        "Allow location": (context) => const AllowLocation(),
+        "Password changed": (context) => const PasswordChanged(),
+        "App share": (context) => const ShareApp(),
       },
     );
   }

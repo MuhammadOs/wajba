@@ -20,7 +20,7 @@ class ShareApp extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          PersmissionsBody(
+          PermissionsBody(
               width: width,
               height: height,
               image: 'assets/images/Share_app.png',

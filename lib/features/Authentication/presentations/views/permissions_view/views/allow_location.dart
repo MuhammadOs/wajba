@@ -25,7 +25,7 @@ class _AllowLocation extends State<AllowLocation> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          PersmissionsBody(
+          PermissionsBody(
               width: width,
               height: height,
               mainText: 'Allow your location',

@@ -3,11 +3,11 @@ import 'package:wajba/constants/constants.dart';
 import 'package:wajba/core/styles.dart';
 
 // ignore: must_be_immutable
-class PersmissionsBody extends StatelessWidget {
+class PermissionsBody extends StatelessWidget {
   String mainText;
   String subText;
   String image;
-  PersmissionsBody(
+  PermissionsBody(
       {super.key,
       required this.width,
       required this.height,
@@ -40,6 +40,7 @@ class PersmissionsBody extends StatelessWidget {
         Text(
           subText,
           style: Styles.titleSmall.copyWith(color: wajbah_gray),
+          textAlign: TextAlign.center,
         ),
         const SizedBox(
           height: 30,

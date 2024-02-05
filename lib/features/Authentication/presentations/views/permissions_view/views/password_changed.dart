@@ -23,7 +23,7 @@ class _PasswordChangedState extends State<PasswordChanged> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          PersmissionsBody(
+          PermissionsBody(
               width: width,
               height: height,
               mainText: 'Password Changed',
@@ -33,6 +33,9 @@ class _PasswordChangedState extends State<PasswordChanged> {
           PermissionsButton(
             width: width,
             text: "Login",
+            onPressed: () {
+              Navigator.pushNamed(context, 'login');
+            },
           ),
         ],
       ),

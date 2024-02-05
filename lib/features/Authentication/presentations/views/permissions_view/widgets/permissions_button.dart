@@ -5,9 +5,10 @@ import 'package:wajba/core/styles.dart';
 // ignore: must_be_immutable
 class PermissionsButton extends StatelessWidget {
   String text;
-  PermissionsButton({super.key, required this.width, required this.text});
+  PermissionsButton({super.key, required this.width, required this.text, this.onPressed});
 
   final double width;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class PermissionsButton extends StatelessWidget {
             splashFactory: NoSplash.splashFactory,
             primary: wajbah_primary,
           ),
-          onPressed: () {},
+          onPressed: onPressed,
           child: Text(
             text,
             style: Styles.button.copyWith(

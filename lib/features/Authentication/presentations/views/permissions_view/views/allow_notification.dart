@@ -25,7 +25,7 @@ class _AllowNotification extends State<AllowNotification> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          PersmissionsBody(
+          PermissionsBody(
               width: width,
               height: height,
               mainText: 'Allow your notification',

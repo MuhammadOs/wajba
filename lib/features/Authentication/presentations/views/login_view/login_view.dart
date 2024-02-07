@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wajba/constants/constants.dart';
-import 'package:wajba/features/Authentication/presentations/views/signup_view/signup_view.dart';
+import 'package:wajba/features/Home/presentation/view/home_screen.dart';
 
 import '../../../../../core/sizeConfig.dart';
 import '../../../../../core/styles.dart';
@@ -22,7 +22,6 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     double width = SizeConfig.screenW!;
-    double height = SizeConfig.screenH!;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(30.0),
@@ -270,6 +269,8 @@ class _LoginViewState extends State<LoginView> {
                               primary: wajbah_primary,
                             ),
                             onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => const HomeScreen()));
                               setState(() {
                                 if (formkey.currentState!.validate()) {
                                   debugPrint(passwordController.text);

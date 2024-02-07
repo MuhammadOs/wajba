@@ -9,7 +9,6 @@ version: 1.0.0+1
 environment:
   sdk: ">=3.2.3 <4.0.0"
 
-
 dependencies:
   cupertino_icons: ^1.0.2
   flutter:
@@ -17,29 +16,30 @@ dependencies:
   flutter_native_splash: ^2.3.8
   flutter_svg: 2.0.9
   smooth_page_indicator: ^1.1.0
+  carousel_slider: ^4.2.1
 flutter_native_splash:
   android: true
   ios: true
   web: false
 
-  image: assets/images/android_12_spalsh.png
+  image: assets/images/Wajbah_Finale.png
   color: "#4E68FB"
   android_12:
-    image: assets/images/android_12_spalsh.png
+    image: assets/images/Wajbah_Finale.png
     color: "#4E68FB"
 
 dev_dependencies:
-
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
-
 
 flutter:
   uses-material-design: true
 
   assets:
     - assets/images/
+    - assets/images/HomeScreen/
+    - assets/images/Shortcuts/
 
   fonts:
     - family: Biryani

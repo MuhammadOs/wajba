@@ -42,6 +42,7 @@ class _PasswordChangedState extends State<ResetPassword> {
               "assets/images/Password_changed.png",
               width: width,
               height: height / 3,
+              fit: BoxFit.fitWidth,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,

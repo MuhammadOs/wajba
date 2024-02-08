@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wajba/constants/constants.dart';
 import 'package:wajba/features/Authentication/presentations/views/login_view/login_view.dart';
 import 'package:wajba/features/Authentication/presentations/views/permissions_view/views/allow_location.dart';
 import 'package:wajba/features/Authentication/presentations/views/permissions_view/views/allow_notification.dart';
@@ -9,6 +10,7 @@ import 'package:wajba/features/Authentication/presentations/views/signup_view/si
 import 'package:wajba/features/OnBoarding/presentations/view/onboarding.dart';
 
 import 'features/Authentication/presentations/views/ResetPassword/reset_password.dart';
+import 'features/KitchensProfile/presentation/views/kitchen_profile_view.dart';
 
 void main() {
   runApp(const WajbahUser());
@@ -22,7 +24,7 @@ class WajbahUser extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(fontFamily: "Biryani"),
       debugShowCheckedModeBanner: false,
-      home: const OnBoardingScreen(),
+      home: const KitchenProfileView(),
       routes: {
         "Onboarding": (context) => const OnBoardingScreen(),
         "login": (context) => const LoginView(),

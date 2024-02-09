@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wajba/constants/constants.dart';
+import 'package:wajba/core/sizeConfig.dart';
 import '../../../../../core/styles.dart';
 import 'custom_menu_item.dart';
 
@@ -63,7 +64,7 @@ class _KitchenMenuTabState extends State<KitchenMenuTab>
                     child: Text("Trending", style: Styles.hint.copyWith(
                       color: Colors.white,
                       fontSize: 14,
-                      fontWeight: FontWeight.w500
+                      fontWeight: FontWeight.w500,
                     ),),
                   ),
                 ),
@@ -129,7 +130,7 @@ class _KitchenMenuTabState extends State<KitchenMenuTab>
               },
             ),
           ),
-          for (int i = 0; i < 5; i++)
+          for (int i = 0; i < _tabTitles.length; i++)
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Column(
@@ -139,12 +140,25 @@ class _KitchenMenuTabState extends State<KitchenMenuTab>
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
                       _tabTitles[i],
-                      style: const TextStyle(fontSize: 26),
+                      style: Styles.titleMedium.copyWith(
+                        fontSize: 28
+                      ),
                     ),
                   ),
                   const CustomMenuItem(),
+                  Divider(
+                    indent: MediaQuery.of(context).size.width * 0.05,
+                    endIndent: MediaQuery.of(context).size.width * 0.05,
+                  ),
                   const CustomMenuItem(),
+                  Divider(
+                    indent: MediaQuery.of(context).size.width * 0.05,
+                    endIndent: MediaQuery.of(context).size.width * 0.05,
+                  ),
                   const CustomMenuItem(),
+                  const SizedBox(
+                    height: 15,
+                  ),
                 ],
               ),
             ),

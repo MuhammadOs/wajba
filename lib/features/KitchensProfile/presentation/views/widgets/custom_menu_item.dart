@@ -18,24 +18,31 @@ class CustomMenuItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  'willy’s kitchen',
-                  style: Styles.titleMedium.copyWith(fontSize: 28),
+                  'willy one sandwich',
+                  style: Styles.titleMedium.copyWith(fontSize: 20),
                 ),
-                const SizedBox(height: 4),
+                const SizedBox(height: 8),
                 Text(
-                  '1 single beef or chicken sandwich + 1 single beef burger or 1 single chicke...',
-                  style: Styles.hint.copyWith(color: const Color(0xff696969)),
+                  '1 single beef or chicken sandwich + 1 single beef burger or 1 single chicken',
+                  style: Styles.hint.copyWith(
+                    color: const Color(0xff696969),
+                    fontSize: 16
+                  ),
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
                 ),
-                const SizedBox(height: 4),
+                const SizedBox(height: 8),
                 Row(
                   children: [
                     Text(
                       "EGP 209.00",
                       style: Styles.hint
-                          .copyWith(decoration: TextDecoration.lineThrough),
+                          .copyWith(decoration: TextDecoration.lineThrough,
+                        fontSize: 16
+                      ),
                     ),
                     const SizedBox(
-                      width: 5,
+                      width: 10,
                     ),
                     Container(
                       padding: const EdgeInsets.all(5),
@@ -45,7 +52,7 @@ class CustomMenuItem extends StatelessWidget {
                       child: Text(
                         "139.00 EGP",
                         style: Styles.hint
-                            .copyWith(color: Colors.white, fontSize: 12),
+                            .copyWith(color: Colors.white, fontSize: 16),
                       ),
                     ),
                   ],
@@ -59,42 +66,13 @@ class CustomMenuItem extends StatelessWidget {
             child: ClipRRect(
                 borderRadius: BorderRadius.circular(25),
                 child: Image.asset(
-                  "assets/images/Allow_Location.png",
-                  width: 180,
-                  height: 180,
+                  "assets/images/meal_test.png",
+                  width: 160,
+                  height: 160,
                 )),
           ),
         ],
       ),
     );
-    /*Row(
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text("willy one sandwich"),
-            Text(
-                "1 single beef or chicken sandwich + 1 single beef burger or 1 single chicken"),
-            Row(
-              children: [
-                Text("EGP 209.00"),
-                Container(
-                  padding: EdgeInsets.all(4),
-                  child: Text("139.00 EGP "),
-                )
-              ],
-            )
-          ],
-        ),
-        /*ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: Image.asset(
-            "assets/images/Allow_Location.png",
-            height: 2,
-            width: 2,
-          ),
-        )*/
-      ],
-    );*/
   }
 }

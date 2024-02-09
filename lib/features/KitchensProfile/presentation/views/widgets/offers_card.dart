@@ -11,7 +11,7 @@ class OfferCard extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Container(
         decoration: BoxDecoration(
-            color: wajbah_buttons, borderRadius: BorderRadius.circular(10)),
+            color: wajbah_buttons, borderRadius: BorderRadius.circular(15)),
         child: ListTile(
           onTap: () {},
           leading: Image.asset(
@@ -20,6 +20,7 @@ class OfferCard extends StatelessWidget {
             width: 30,
           ),
           title: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(

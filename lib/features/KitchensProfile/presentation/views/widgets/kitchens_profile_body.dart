@@ -28,7 +28,7 @@ class _KitchensProfileBodyState extends State<KitchensProfileBody>
                 child: CircleAvatar(
                   radius: 70, // adjust as needed
                   backgroundImage:
-                      AssetImage("assets/images/google_logo.png"),
+                      AssetImage("assets/images/willy.png"),
                 ),
               ),
               const SizedBox(width: 8),
@@ -124,7 +124,7 @@ class _KitchensProfileBodyState extends State<KitchensProfileBody>
             ],
           ),
           const SizedBox(height: 15),
-          /*SizedBox(
+          SizedBox(
             height: 70,
             child: ListView.builder(
               shrinkWrap: true,
@@ -134,7 +134,7 @@ class _KitchensProfileBodyState extends State<KitchensProfileBody>
               itemBuilder: (context, index) =>
                   const SizedBox(width: 250, child: OfferCard()),
             ),
-          ),*/
+          ),
           const SizedBox(height: 10),
           const Divider(
             color: wajbah_gray,

@@ -12,13 +12,15 @@ class KitchenProfileView extends StatefulWidget {
 class _KitchenProfileViewState extends State<KitchenProfileView> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            KitchensProfileAppBar(),
-            KitchensProfileBody(),
-          ],
+    return const SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              KitchensProfileAppBar(),
+              KitchensProfileBody(),
+            ],
+          ),
         ),
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wajba/constants/constants.dart';
+import 'package:wajba/features/KitchensProfile/presentation/views/widgets/custom_review.dart';
 
 import '../../../../../core/styles.dart';
 
@@ -15,6 +16,12 @@ class KitchenReviewsTab extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const CustomReview(
+                  name: "Muhammad Osama",
+                  profilePicture: "assets/images/willy.png",
+                  review: "review",
+                  date: "date",
+                  like: true),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -29,12 +36,10 @@ class KitchenReviewsTab extends StatelessWidget {
                   ),
                   Expanded(
                     flex: 7,
-                    child:Text(
+                    child: Text(
                       "Muhammad Osama",
-                      style: Styles.hint.copyWith(
-                          color: wajbah_black,
-                          fontSize: 20
-                      ),
+                      style: Styles.hint
+                          .copyWith(color: wajbah_black, fontSize: 20),
                     ),
                   ),
                   const Expanded(
@@ -50,9 +55,7 @@ class KitchenReviewsTab extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 80.0, right: 16),
                 child: Text(
                   "Juicy burger and crispy fries, 8 out of 10. I like it very much.",
-                  style: Styles.hint.copyWith(
-                      fontSize: 14
-                  ),
+                  style: Styles.hint.copyWith(fontSize: 14),
                 ),
               ),
               Padding(
@@ -121,10 +124,8 @@ class KitchenReviewsTab extends StatelessWidget {
                   flex: 7,
                   child: Text(
                     "Kareem Alaa",
-                    style: Styles.hint.copyWith(
-                      color: wajbah_black,
-                      fontSize: 20
-                    ),
+                    style:
+                        Styles.hint.copyWith(color: wajbah_black, fontSize: 20),
                   ),
                 ),
                 const Expanded(
@@ -140,9 +141,7 @@ class KitchenReviewsTab extends StatelessWidget {
               padding: const EdgeInsets.only(left: 80.0, right: 16),
               child: Text(
                 "There is some debate over where the kitchen witchoriginated, some claiming  Germany and others England but consensus",
-                style: Styles.hint.copyWith(
-                  fontSize: 14
-                ),
+                style: Styles.hint.copyWith(fontSize: 14),
               ),
             ),
             Padding(

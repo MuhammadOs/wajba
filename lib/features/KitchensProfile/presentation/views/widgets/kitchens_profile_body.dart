@@ -27,8 +27,7 @@ class _KitchensProfileBodyState extends State<KitchensProfileBody>
                 flex: 1,
                 child: CircleAvatar(
                   radius: 70, // adjust as needed
-                  backgroundImage:
-                      AssetImage("assets/images/willy.png"),
+                  backgroundImage: AssetImage("assets/images/willy.png"),
                 ),
               ),
               const SizedBox(width: 8),
@@ -56,7 +55,8 @@ class _KitchensProfileBodyState extends State<KitchensProfileBody>
                     Row(
                       children: [
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 5, vertical: 2),
                           decoration: BoxDecoration(
                               color: wajbah_green_light,
                               borderRadius: BorderRadius.circular(10)),
@@ -77,7 +77,8 @@ class _KitchensProfileBodyState extends State<KitchensProfileBody>
                         ),
                         const SizedBox(width: 5),
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 5, vertical: 2),
                           decoration: BoxDecoration(
                               color: wajbah_buttons,
                               borderRadius: BorderRadius.circular(10)),
@@ -101,7 +102,8 @@ class _KitchensProfileBodyState extends State<KitchensProfileBody>
                           decoration: BoxDecoration(
                               color: wajbah_gray_light,
                               borderRadius: BorderRadius.circular(10)),
-                          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 0, vertical: 0),
                           child: Row(
                             children: [
                               const Icon(
@@ -110,7 +112,7 @@ class _KitchensProfileBodyState extends State<KitchensProfileBody>
                                 size: 16,
                               ),
                               Text(
-                                "4.7(80)",
+                                "4.7",
                                 style: Styles.hint.copyWith(fontSize: 12),
                               ),
                             ],

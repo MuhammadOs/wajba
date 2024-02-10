@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wajba/constants/constants.dart';
-import 'package:wajba/features/Authentication/presentations/views/ResetPassword/reset_password.dart';
 import 'package:wajba/features/Authentication/presentations/views/permissions_view/views/allow_notification.dart';
 import 'package:wajba/features/Authentication/presentations/views/widgets/custom_button.dart';
-import 'package:wajba/features/Authentication/presentations/views/widgets/hint_text.dart';
 import '../../../../../core/sizeConfig.dart';
 import '../../../../../core/styles.dart';
 import '../widgets/custom_text_field.dart';
@@ -28,15 +26,14 @@ class _LoginViewState extends State<RegisterView> {
     SizeConfig().init(context);
     double width = SizeConfig.screenW!;
     double height = SizeConfig.screenH!;
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(30.0),
-        child: Center(
-          child: SingleChildScrollView(
-            child: Form(
-              key: formkey,
-              child: SizedBox(
-                height: height,
+    return SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(30.0),
+            child: Center(
+              child: Form(
+                key: formkey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,

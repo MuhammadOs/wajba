@@ -5,7 +5,6 @@ import 'package:wajba/features/Authentication/presentations/views/widgets/custom
 
 import '../../../../../constants/constants.dart';
 import '../../../../../core/styles.dart';
-import '../permissions_view/widgets/permissions_button.dart';
 
 class ResetPasswordVerification extends StatefulWidget {
   const ResetPasswordVerification({super.key});
@@ -34,22 +33,21 @@ class _ResetPasswordVerification extends State<ResetPasswordVerification> {
             Row(
               children: [
                 Container(
-                  width: 35,
-                  height: 35,
-                  decoration: const BoxDecoration(
-                    color: wajbah_buttons,
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
-                  ),
-                  child: GestureDetector(
-                    onTap: (){
-                      Navigator.pop(context);
-                    },
-                    child: const Icon(
-                      Icons.keyboard_arrow_left,
-                      size: 28,
+                    width: 35,
+                    height: 35,
+                    decoration: const BoxDecoration(
+                      color: wajbah_buttons,
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
                     ),
-                  )
-                ),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Icon(
+                        Icons.keyboard_arrow_left,
+                        size: 28,
+                      ),
+                    )),
                 const Spacer(),
                 Text(
                   "Reset Password",

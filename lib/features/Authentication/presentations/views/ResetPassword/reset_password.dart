@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wajba/core/sizeConfig.dart';
-import 'package:wajba/features/Authentication/presentations/views/permissions_view/widgets/permissions_body.dart';
 import 'package:wajba/features/Authentication/presentations/views/widgets/custom_button.dart';
 import 'package:wajba/features/Authentication/presentations/views/widgets/hint_text.dart';
 
-import '../../../../../constants/constants.dart';
 import '../../../../../core/styles.dart';
 import '../widgets/password_text_field.dart';
 

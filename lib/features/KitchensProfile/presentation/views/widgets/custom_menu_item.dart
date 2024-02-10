@@ -24,10 +24,8 @@ class CustomMenuItem extends StatelessWidget {
                 const SizedBox(height: 8),
                 Text(
                   '1 single beef or chicken sandwich + 1 single beef burger or 1 single chicken',
-                  style: Styles.hint.copyWith(
-                    color: const Color(0xff696969),
-                    fontSize: 16
-                  ),
+                  style: Styles.hint
+                      .copyWith(color: const Color(0xff696969), fontSize: 16),
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -36,10 +34,8 @@ class CustomMenuItem extends StatelessWidget {
                   children: [
                     Text(
                       "EGP 209.00",
-                      style: Styles.hint
-                          .copyWith(decoration: TextDecoration.lineThrough,
-                        fontSize: 16
-                      ),
+                      style: Styles.hint.copyWith(
+                          decoration: TextDecoration.lineThrough, fontSize: 16),
                     ),
                     const SizedBox(
                       width: 10,
@@ -50,7 +46,7 @@ class CustomMenuItem extends StatelessWidget {
                           color: wajbah_primary,
                           borderRadius: BorderRadius.circular(10)),
                       child: Text(
-                        "139.00 EGP",
+                        "139.00",
                         style: Styles.hint
                             .copyWith(color: Colors.white, fontSize: 16),
                       ),
@@ -66,7 +62,7 @@ class CustomMenuItem extends StatelessWidget {
             child: ClipRRect(
                 borderRadius: BorderRadius.circular(25),
                 child: Image.asset(
-                  "assets/images/meal_test.png",
+                  "assets/images/willy.png",
                   width: 160,
                   height: 160,
                 )),

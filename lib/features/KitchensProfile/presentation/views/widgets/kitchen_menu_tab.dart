@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:wajba/constants/constants.dart';
-import 'package:wajba/core/sizeConfig.dart';
 import '../../../../../core/styles.dart';
 import 'custom_menu_item.dart';
 
-
-List<String> _tabTitles = ["Trending","Up to 50 %","Share box", "Kids Meals", "Offers"];
+List<String> _tabTitles = [
+  "Trending",
+  "Up to 50 %",
+  "Share box",
+  "Kids Meals",
+  "Offers"
+];
 
 class KitchenMenuTab extends StatefulWidget {
   final TickerProvider vsync;
@@ -58,14 +62,16 @@ class _KitchenMenuTabState extends State<KitchenMenuTab>
                   icon: Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: wajbah_primary,
-                      borderRadius: BorderRadius.circular(10)
+                        color: wajbah_primary,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Text(
+                      "Trending",
+                      style: Styles.hint.copyWith(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
-                    child: Text("Trending", style: Styles.hint.copyWith(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                    ),),
                   ),
                 ),
                 Tab(
@@ -73,13 +79,14 @@ class _KitchenMenuTabState extends State<KitchenMenuTab>
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                         color: wajbah_primary,
-                        borderRadius: BorderRadius.circular(10)
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Text(
+                      "Up to 50 %",
+                      style: Styles.hint.copyWith(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500),
                     ),
-                    child: Text("Up to 50 %", style: Styles.hint.copyWith(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500
-                    ),),
                   ),
                 ),
                 Tab(
@@ -87,13 +94,14 @@ class _KitchenMenuTabState extends State<KitchenMenuTab>
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                         color: wajbah_primary,
-                        borderRadius: BorderRadius.circular(10)
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Text(
+                      "Share Box",
+                      style: Styles.hint.copyWith(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500),
                     ),
-                    child: Text("Share Box", style: Styles.hint.copyWith(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500
-                    ),),
                   ),
                 ),
                 Tab(
@@ -101,13 +109,14 @@ class _KitchenMenuTabState extends State<KitchenMenuTab>
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                         color: wajbah_primary,
-                        borderRadius: BorderRadius.circular(10)
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Text(
+                      "Kids Meal",
+                      style: Styles.hint.copyWith(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500),
                     ),
-                    child: Text("Kids Meal", style: Styles.hint.copyWith(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500
-                    ),),
                   ),
                 ),
                 Tab(
@@ -115,13 +124,14 @@ class _KitchenMenuTabState extends State<KitchenMenuTab>
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                         color: wajbah_primary,
-                        borderRadius: BorderRadius.circular(10)
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Text(
+                      "Offers",
+                      style: Styles.hint.copyWith(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500),
                     ),
-                    child: Text("Offers", style: Styles.hint.copyWith(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500
-                    ),),
                   ),
                 ),
               ],
@@ -140,9 +150,7 @@ class _KitchenMenuTabState extends State<KitchenMenuTab>
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
                       _tabTitles[i],
-                      style: Styles.titleMedium.copyWith(
-                        fontSize: 28
-                      ),
+                      style: Styles.titleMedium.copyWith(fontSize: 28),
                     ),
                   ),
                   const CustomMenuItem(),
@@ -169,7 +177,8 @@ class _KitchenMenuTabState extends State<KitchenMenuTab>
 
   void _scrollTo(int index) {
     _scrollController.animateTo(
-      index * 520.0, // Adjust the scroll position based on tab index and item height
+      index *
+          520.0, // Adjust the scroll position based on tab index and item height
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeInOut,
     );

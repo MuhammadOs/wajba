@@ -10,13 +10,13 @@ class KitchensNearby {
 
 List<KitchensNearby> kitchensnearbydata = [
   KitchensNearby(
-      image: 'assets/images/android_12_spalsh.png', name: 'Willys\nKitchen'),
+      image: 'assets/images/android_12_splash.png', name: 'Willys\nKitchen'),
   KitchensNearby(
-      image: 'assets/images/android_12_spalsh.png', name: 'Customize\nOrder'),
+      image: 'assets/images/android_12_splash.png', name: 'Customize\nOrder'),
   KitchensNearby(
-      image: 'assets/images/android_12_spalsh.png', name: 'Hot\nDeals'),
+      image: 'assets/images/android_12_splash.png', name: 'Hot\nDeals'),
   KitchensNearby(
-      image: 'assets/images/android_12_spalsh.png', name: 'Coupons\nSale'),
+      image: 'assets/images/android_12_splash.png', name: 'Coupons\nSale'),
   KitchensNearby(
-      image: 'assets/images/android_12_spalsh.png', name: 'Popular\nOrders'),
+      image: 'assets/images/android_12_splash.png', name: 'Popular\nOrders'),
 ];

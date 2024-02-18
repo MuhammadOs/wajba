@@ -7,6 +7,7 @@ import 'package:wajba/features/Authentication/presentations/views/permissions_vi
 import 'package:wajba/features/Authentication/presentations/views/permissions_view/views/email_verification_view.dart';
 import 'package:wajba/features/Authentication/presentations/views/permissions_view/views/password_changed.dart';
 import 'package:wajba/features/Authentication/presentations/views/signup_view/signup_view.dart';
+import 'package:wajba/features/Home/presentation/view/home_screen.dart';
 import 'package:wajba/features/OnBoarding/presentations/view/onboarding.dart';
 
 import 'features/Authentication/presentations/views/ResetPassword/reset_password.dart';
@@ -24,11 +25,12 @@ class WajbahUser extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(fontFamily: "Biryani"),
       debugShowCheckedModeBanner: false,
-      home: const KitchenProfileView(),
+      home: const HomeScreen(),
       routes: {
         "Onboarding": (context) => const OnBoardingScreen(),
         "login": (context) => const LoginView(),
         "register": (context) => const RegisterView(),
+        "home": (context) => const HomeScreen(),
         "Allow notification": (context) => const AllowNotification(),
         "Allow location": (context) => const AllowLocation(),
         "Password changed": (context) => const PasswordChanged(),

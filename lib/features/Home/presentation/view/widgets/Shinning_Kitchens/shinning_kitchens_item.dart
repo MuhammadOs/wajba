@@ -26,17 +26,17 @@ class ShinningKitchenItem extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
+              SizedBox(
                 height: height * 0.2,
                 width: width * 0.8,
                 child: ClipRRect(
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                       topRight: Radius.circular(25),
                       topLeft: Radius.circular(25)),
                   child: Image.asset(
                     fit: BoxFit.cover,
                     alignment: Alignment.topCenter,
-                    'assets/images/android_12_spalsh.png',
+                    'assets/images/android_12_splash.png',
                   ),
                 ),
               ),

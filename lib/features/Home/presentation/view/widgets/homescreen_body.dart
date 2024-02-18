@@ -24,8 +24,8 @@ class HomeScreenViewBody extends StatelessWidget {
         const SizedBox(
           height: 5,
         ),
-        ShinningKitchensListView(),
-        SecondSponsorListView(),
+        const ShinningKitchensListView(),
+        const SecondSponsorListView(),
         HomeScreenMainTitles(text: 'ShortCuts'),
         const ShortcutsListView(),
         HomeScreenMainTitles(text: 'Kitchens Nearby'),

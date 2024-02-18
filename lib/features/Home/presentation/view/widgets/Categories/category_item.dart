@@ -15,14 +15,14 @@ class CategoryItem extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(bottom: 7),
           child: Container(
-            child: Image.asset(
-              categoryItem.image,
-            ),
             width: 75,
             height: 70,
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(Radius.circular(13)),
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(13)),
               color: wajbah_buttons,
+            ),
+            child: Image.asset(
+              categoryItem.image,
             ),
           ),
         ),

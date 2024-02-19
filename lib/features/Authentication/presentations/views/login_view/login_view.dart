@@ -264,7 +264,7 @@ class _LoginViewState extends State<LoginView> {
                                   debugPrint(passwordController.text);
                                   Navigator.of(context).push(MaterialPageRoute(
                                     builder: (c) {
-                                      return const AllowNotification();
+                                      return const HomeScreen();
                                     },
                                   ));
                                 }

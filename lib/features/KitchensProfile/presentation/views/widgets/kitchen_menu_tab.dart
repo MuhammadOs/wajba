@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wajba/constants/constants.dart';
+import 'package:wajba/core/sizeConfig.dart';
 import '../../../../../core/styles.dart';
 import 'custom_menu_item.dart';
 
@@ -43,142 +44,97 @@ class _KitchenMenuTabState extends State<KitchenMenuTab>
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    final double height = SizeConfig.screenH!;
+    final double width = SizeConfig.screenW!;
     return SingleChildScrollView(
       controller: _scrollController,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 24.0),
+            padding: EdgeInsets.symmetric(
+              vertical: height * 0.02,
+            ),
             child: TabBar(
               controller: _tabController,
               isScrollable: true,
               automaticIndicatorColorAdjustment: false,
               dividerHeight: 0,
               indicatorSize: TabBarIndicatorSize.label,
-              indicatorColor: Theme.of(context).scaffoldBackgroundColor,
+              indicatorColor: Colors.transparent,
               tabs: [
-                Tab(
-                  icon: Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                        color: wajbah_primary,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Text(
-                      "Trending",
-                      style: Styles.hint.copyWith(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                ),
-                Tab(
-                  icon: Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                        color: wajbah_primary,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Text(
-                      "Up to 50 %",
-                      style: Styles.hint.copyWith(
-                          color: Colors.white,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
-                  ),
-                ),
-                Tab(
-                  icon: Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                        color: wajbah_primary,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Text(
-                      "Share Box",
-                      style: Styles.hint.copyWith(
-                          color: Colors.white,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
-                  ),
-                ),
-                Tab(
-                  icon: Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                        color: wajbah_primary,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Text(
-                      "Kids Meal",
-                      style: Styles.hint.copyWith(
-                          color: Colors.white,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
-                  ),
-                ),
-                Tab(
-                  icon: Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                        color: wajbah_primary,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Text(
-                      "Offers",
-                      style: Styles.hint.copyWith(
-                          color: Colors.white,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
-                  ),
-                ),
+                _buildTab("Trending", 0),
+                _buildTab("Up to 50 %", 1),
+                _buildTab("Share Box", 2),
+                _buildTab("Kids Meal", 3),
+                _buildTab("Offers", 4),
               ],
               onTap: (index) {
-                _scrollTo(index);
+                setState(() {
+                  _scrollTo(index);
+                });
               },
             ),
           ),
           for (int i = 0; i < _tabTitles.length; i++)
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Text(
-                      _tabTitles[i],
-                      style: Styles.titleMedium.copyWith(fontSize: 28),
-                    ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: width * 0.02,
                   ),
-                  const CustomMenuItem(),
-                  Divider(
-                    indent: MediaQuery.of(context).size.width * 0.05,
-                    endIndent: MediaQuery.of(context).size.width * 0.05,
+                  child: Text(
+                    _tabTitles[i],
+                    style: Styles.titleMedium.copyWith(fontSize: width * 0.05),
                   ),
-                  const CustomMenuItem(),
-                  Divider(
-                    indent: MediaQuery.of(context).size.width * 0.05,
-                    endIndent: MediaQuery.of(context).size.width * 0.05,
-                  ),
-                  const CustomMenuItem(),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                ],
-              ),
+                ),
+                const CustomMenuItem(),
+                Divider(
+                  indent: width * 0.05,
+                  endIndent: width * 0.05,
+                ),
+                const CustomMenuItem(),
+                Divider(
+                  indent: width * 0.05,
+                  endIndent: width * 0.05,
+                ),
+                const CustomMenuItem(),
+                const SizedBox(
+                  height: 15,
+                ),
+              ],
             ),
         ],
       ),
     );
   }
 
+  Widget _buildTab(String text, int index) {
+    return Tab(
+      child: Container(
+        padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          color: _tabController.index == index
+              ? wajbah_primary
+              : wajbah_gray_light,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Text(
+          text,
+          style: Styles.hint.copyWith(
+            color: _tabController.index == index ? Colors.white : wajbah_gray,
+            fontSize: MediaQuery.of(context).size.width * 0.03,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ),
+    );
+  }
+
   void _scrollTo(int index) {
     _scrollController.animateTo(
-      index *
-          520.0, // Adjust the scroll position based on tab index and item height
+      index * MediaQuery.of(context).size.height * 0.6,
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeInOut,
     );

@@ -1,17 +1,19 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wajba/core/sizeConfig.dart';
 import 'custom_back_button.dart';
 
 class KitchensProfileAppBar extends StatelessWidget {
-  const KitchensProfileAppBar({super.key});
+  const KitchensProfileAppBar({Key? key});
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(32.0),
-      child: Row(
+    SizeConfig().init(context);
+    double screenWidth = SizeConfig.screenW!;
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05, vertical: screenWidth * 0.04),
+      child: const Row(
         children: [
-          CustomBackButton()
+          CustomBackButton(),
         ],
       ),
     );

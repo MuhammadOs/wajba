@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../../../constants/constants.dart';
 import '../../../../../core/styles.dart';
 
@@ -10,18 +9,21 @@ class CustomReview extends StatelessWidget {
   final String date;
   final bool like;
 
-  const CustomReview(
-      {super.key,
-      required this.name,
-      required this.profilePicture,
-      required this.review,
-      required this.date,
-      required this.like});
+  const CustomReview({
+    Key? key,
+    required this.name,
+    required this.profilePicture,
+    required this.review,
+    required this.date,
+    required this.like,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: EdgeInsets.all(screenWidth * 0.04),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -31,7 +33,7 @@ class CustomReview extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: CircleAvatar(
-                  maxRadius: 25,
+                  maxRadius: screenWidth * 0.04,
                   child: Image.asset(
                     profilePicture,
                   ),
@@ -41,69 +43,61 @@ class CustomReview extends StatelessWidget {
                 flex: 7,
                 child: Text(
                   name,
-                  style:
-                      Styles.hint.copyWith(color: wajbah_black, fontSize: 20),
+                  style: Styles.hint.copyWith(
+                    color: wajbah_black,
+                    fontSize: screenWidth * 0.04,
+                  ),
                 ),
               ),
               Expanded(
                 flex: 2,
                 child: Text(
                   date,
-                  style: Styles.hint,
+                  style: Styles.hint.copyWith(fontSize: screenWidth * 0.03),
                 ),
               )
             ],
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 80.0, right: 16),
+            padding: EdgeInsets.only(
+                left: screenWidth * 0.15, right: screenWidth * 0.015),
             child: Text(
               review,
-              style: Styles.hint.copyWith(fontSize: 14),
+              style: Styles.hint.copyWith(fontSize: screenWidth * 0.025),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 80.0, right: 32, top: 8),
+            padding: EdgeInsets.only(
+                left: screenWidth * 0.15,
+                right: screenWidth * 0.02,
+                top: screenWidth * 0.015),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Row(
-                  children: [
-                    Icon(
+                Row(
+                  children: List.generate(
+                    5,
+                    (index) => Icon(
                       Icons.star,
-                      color: Colors.yellow,
+                      color: index < 4 ? Colors.yellow : wajbah_gray,
+                      size: screenWidth * 0.04,
                     ),
-                    Icon(
-                      Icons.star,
-                      color: Colors.yellow,
-                    ),
-                    Icon(
-                      Icons.star,
-                      color: Colors.yellow,
-                    ),
-                    Icon(
-                      Icons.star,
-                      color: Colors.yellow,
-                    ),
-                    Icon(
-                      Icons.star,
-                      color: wajbah_gray,
-                    ),
-                  ],
+                  ),
                 ),
-                like == true
+                like
                     ? Image.asset(
                         "assets/images/like.png",
-                        width: 30,
-                        height: 30,
+                        width: screenWidth * 0.05,
+                        height: screenWidth * 0.05,
                       )
                     : Image.asset(
                         "assets/images/dislike.png",
-                        width: 30,
-                        height: 30,
-                      )
+                        width: screenWidth * 0.05,
+                        height: screenWidth * 0.05,
+                      ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

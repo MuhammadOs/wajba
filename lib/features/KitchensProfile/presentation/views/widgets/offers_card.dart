@@ -1,40 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:wajba/constants/constants.dart';
+import 'package:wajba/core/sizeConfig.dart';
 import 'package:wajba/core/styles.dart';
 
 class OfferCard extends StatelessWidget {
-  const OfferCard({super.key});
+  const OfferCard({Key? key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        decoration: BoxDecoration(
-            color: wajbah_buttons, borderRadius: BorderRadius.circular(15)),
-        child: ListTile(
-          onTap: () {},
-          leading: Image.asset(
-            "assets/images/offer_icon.png",
-            height: 30,
-            width: 30,
+    SizeConfig().init(context);
+    final double screenWidth = SizeConfig.screenW!;
+    final double cardWidth = screenWidth * 0.5;
+    final double paddingValue = cardWidth * 0.03;
+
+    return Container(
+      width: cardWidth,
+      decoration: BoxDecoration(
+        color: wajbah_buttons,
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Padding(
+            padding: EdgeInsets.all(paddingValue),
+            child: Image.asset(
+              "assets/images/offer_icon.png",
+              height: screenWidth * 0.07,
+              width: screenWidth * 0.07,
+            ),
           ),
-          title: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "EGP 85 off on selected",
-                overflow: TextOverflow.ellipsis,
-                style: Styles.hint.copyWith(color: wajbah_primary),
-              ),
-              Text(
-                "Max 2 Orders",
-                style: Styles.hint.copyWith(color: wajbah_primary),
-              ),
-            ],
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "EGP 85 off on selected",
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                      color: wajbah_primary,
+                      fontSize: screenWidth * 0.025,
+                      fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  "Max 2 Orders",
+                  style: TextStyle(
+                    color: wajbah_primary,
+                    fontSize: screenWidth * 0.025, // Responsive font size
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

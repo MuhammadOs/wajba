@@ -1,109 +1,104 @@
 import 'package:flutter/material.dart';
 import 'package:wajba/constants/constants.dart';
 import 'package:wajba/core/sizeConfig.dart';
-
+import 'package:wajba/features/KitchensProfile/presentation/views/widgets/kitchen_raiting_container.dart';
 import '../../../../../core/styles.dart';
 
 class KitchenAboutTab extends StatelessWidget {
-  const KitchenAboutTab({super.key});
+  const KitchenAboutTab({Key? key});
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    double width = SizeConfig.screenW!;
-    double height = SizeConfig.screenH!;
+    final screenWidth = SizeConfig.screenW!;
+    final screenHeight = SizeConfig.screenH!;
+
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      padding: EdgeInsets.symmetric(vertical: screenHeight * 0.02),
       child: Column(
         children: [
           ListTile(
-            leading: const Icon(
+            leading: Icon(
               Icons.watch_later_rounded,
               color: wajbah_primary,
-              size: 35,
+              size: screenWidth * 0.05,
             ),
             title: Text(
               "Working hours",
-              style: Styles.hint.copyWith(fontSize: 20, color: wajbah_black),
+              style: Styles.hint
+                  .copyWith(fontSize: screenWidth * 0.04, color: wajbah_black),
             ),
-            trailing: Container(
-                width: width * 0.2,
-                padding: const EdgeInsets.all(5),
-                decoration: const BoxDecoration(color: wajbah_green_light),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    const Icon(
-                      Icons.watch_later_sharp,
-                      color: wajbah_green,
-                      size: 20,
-                    ),
-                    Text(
-                      "open now",
-                      style: Styles.hint
-                          .copyWith(fontSize: 12, color: wajbah_green),
-                    )
-                  ],
-                )),
-          ),
-          const SizedBox(
-            height: 10,
+            trailing: SizedBox(
+              width: screenWidth * 0.22,
+              child: const KitchenProfileCustomContainer(
+                icon: Icons.watch_later,
+                label: 'Open Now',
+                iconColor: wajbah_green,
+                labelColor: wajbah_green,
+                containerColor: wajbah_green_light,
+              ),
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
                 "Everyday",
-                style: Styles.hint.copyWith(color: wajbah_gray),
+                style: Styles.hint
+                    .copyWith(color: wajbah_gray, fontSize: screenWidth * 0.03),
               ),
               Text(
                 "10:00 AM - 3:00 AM",
-                style: Styles.hint.copyWith(color: const Color(0xff727272)),
-              )
+                style: Styles.hint
+                    .copyWith(color: wajbah_gray, fontSize: screenWidth * 0.03),
+              ),
             ],
           ),
-          const SizedBox(
-            height: 15,
-          ),
+          SizedBox(height: screenHeight * 0.015),
           ListTile(
-            leading: const Icon(
+            leading: Icon(
               Icons.notes,
               color: wajbah_primary,
-              size: 35,
+              size: screenWidth * 0.05,
             ),
             title: Text(
               "Story behind kitchen",
-              style: Styles.hint.copyWith(fontSize: 20, color: wajbah_black),
+              style: Styles.hint
+                  .copyWith(fontSize: screenWidth * 0.04, color: wajbah_black),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 64.0, right: 16),
+          Padding(
+            padding: EdgeInsets.only(
+                left: screenWidth * 0.1, right: screenWidth * 0.02),
             child: Text(
-              "There is some debate over where the kitchen witchoriginated, some claiming  Germany and others England but consensus points to older Northern European customs, as it seems to have been more widespread earlier.The Legendary Secret of Goof-Proof Cooking",
-              style: TextStyle(color: wajbah_gray),
+              "There is some debate over where the kitchen witch originated, some claiming Germany and others England but consensus points to older Northern European customs, as it seems to have been more widespread earlier. The Legendary Secret of Goof-Proof Cooking.",
+              style: Styles.hint.copyWith(fontSize: screenWidth * 0.03),
             ),
           ),
-          const SizedBox(
-            height: 15,
-          ),
+          SizedBox(height: screenHeight * 0.015),
           ListTile(
-            leading: const Icon(
+            leading: Icon(
               Icons.video_camera_back,
               color: wajbah_primary,
-              size: 35,
+              size: screenWidth * 0.05,
             ),
             title: Text(
               "Kitchen video",
-              style: Styles.hint.copyWith(fontSize: 20, color: wajbah_black),
+              style: Styles.hint
+                  .copyWith(fontSize: screenWidth * 0.04, color: wajbah_black),
             ),
           ),
-          ClipRRect(
-              borderRadius: BorderRadius.circular(15),
+          SizedBox(height: screenHeight * 0.015),
+          Expanded(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(screenWidth * 0.05),
               child: Image.asset(
-                "assets/images/Allow_Location.png",
-                height: height * 0.25,
-                width: width * 0.8,
-              ))
+                "assets/images/meal_test.png",
+                width: screenWidth * 0.8,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
         ],
       ),
     );

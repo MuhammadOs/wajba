@@ -17,7 +17,7 @@ class TryThisListItem extends StatelessWidget {
       children: [
         Container(
           width: width * 0.4,
-          height: height * 0.235,
+          height: height * 0.28,
           decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(23)),
               color: Colors.white,

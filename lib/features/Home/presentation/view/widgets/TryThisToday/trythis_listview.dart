@@ -11,7 +11,7 @@ class TryThisListView extends StatelessWidget {
 
     double height = SizeConfig.screenH!;
     return SizedBox(
-      height: height * 0.238,
+      height: height * 0.284,
       child: ListView.builder(
         itemCount: 5,
         scrollDirection: Axis.horizontal,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wajba/constants/constants.dart';
 import 'package:wajba/core/sizeConfig.dart';
-import 'package:wajba/core/styles.dart';
 
 class OfferCard extends StatelessWidget {
   const OfferCard({Key? key});

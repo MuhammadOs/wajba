@@ -3,8 +3,8 @@ import 'package:wajba/constants/constants.dart';
 import 'package:wajba/core/sizeConfig.dart';
 import 'package:wajba/core/styles.dart';
 
-class TryThisListItem extends StatelessWidget {
-  const TryThisListItem({
+class TryThisTodayViewAllItem extends StatelessWidget {
+  const TryThisTodayViewAllItem({
     super.key,
   });
 
@@ -16,8 +16,8 @@ class TryThisListItem extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          width: width * 0.4,
-          height: height * 0.28,
+          width: width * 0.45,
+          height: height * 0.269,
           decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(23)),
               color: Colors.white,
@@ -30,7 +30,7 @@ class TryThisListItem extends StatelessWidget {
                 'assets/images/HomeScreen/TryThisBurger.png',
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 7, top: 5),
+                padding: const EdgeInsets.only(left: 7, top: 15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -47,11 +47,6 @@ class TryThisListItem extends StatelessWidget {
                     const SizedBox(
                       height: 3,
                     ),
-                    Text(
-                      '120 EGP',
-                      style: Styles.titleLarge
-                          .copyWith(fontSize: 12, color: wajbah_primary),
-                    ),
                   ],
                 ),
               ),
@@ -59,8 +54,8 @@ class TryThisListItem extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: height * 0.11,
-          right: width * 0.01,
+          top: height * 0.123,
+          right: width * 0.025,
           child: Container(
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(23)),
@@ -68,6 +63,32 @@ class TryThisListItem extends StatelessWidget {
               width: width * 0.1,
               height: height * 0.1,
               child: Image.asset('assets/images/HomeScreen/WillysIcon.png')),
+        ),
+        Positioned(
+          top: height * 0.159,
+          right: width * 0.252,
+          child: Container(
+              decoration: const BoxDecoration(
+                color: wajbah_primary,
+                borderRadius: BorderRadius.all(Radius.circular(23)),
+              ),
+              width: width * 0.16,
+              height: height * 0.03,
+              child: Center(
+                  child: Text(
+                '120 EGP',
+                style: Styles.titleMedium
+                    .copyWith(fontSize: 12, color: wajbah_white),
+              ))),
+        ),
+        Positioned(
+          top: height * 0.188,
+          right: width * 0.054,
+          child: const Icon(
+            Icons.verified_sharp,
+            color: wajbah_primary,
+            size: 15,
+          ),
         ),
       ],
     );

@@ -21,7 +21,7 @@ class KitchenProfileCustomContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     double width = SizeConfig.screenW!;
-    double iconSize = width * 0.03;
+    double iconSize = width * 0.04;
     double fontSize = width * 0.025;
     return Padding(
       padding: EdgeInsets.all(width * 0.008),

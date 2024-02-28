@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/constants/constants.dart';
 import 'package:wajba/features/KitchensProfile/presentation/views/widgets/custom_review.dart';
-
-import '../../../../../core/styles.dart';
 
 class KitchenReviewsTab extends StatelessWidget {
   const KitchenReviewsTab({super.key});
@@ -14,7 +11,8 @@ class KitchenReviewsTab extends StatelessWidget {
         const CustomReview(
             name: "Muhammad Osama",
             profilePicture: "assets/images/willy.png",
-            review: "Juicy burger and crispy fries, 8 out of 10. I like it very much.",
+            review:
+                "Juicy burger and crispy fries, 8 out of 10. I like it very much.",
             date: "7/2/2024",
             like: true),
         Divider(
@@ -24,7 +22,8 @@ class KitchenReviewsTab extends StatelessWidget {
         const CustomReview(
             name: "Kareem Alaa",
             profilePicture: "assets/images/willy.png",
-            review: "Juicy burger and crispy fries, 8 out of 10. I like it very much.",
+            review:
+                "Juicy burger and crispy fries, 8 out of 10. I like it very much.",
             date: "11/12/2024",
             like: false),
         Divider(

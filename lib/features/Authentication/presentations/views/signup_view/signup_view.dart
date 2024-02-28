@@ -140,6 +140,7 @@ class _LoginViewState extends State<RegisterView> {
                             width: width * 0.8,
                             height: 60,
                             child: CustomButton(
+                              color: wajbah_primary,
                               text: "Create Account",
                               onPressed: () {
                                 setState(() {

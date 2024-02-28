@@ -20,7 +20,11 @@ class ShortcutsListView extends StatelessWidget {
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: ShortCutItem(shortcut: shortcutsdata[index]),
+            child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pushNamed('categories viewall');
+                },
+                child: ShortCutItem(shortcut: shortcutsdata[index])),
           );
         },
       ),

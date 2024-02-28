@@ -283,7 +283,10 @@ class _ResetPasswordVerification extends State<ResetPasswordVerification> {
             SizedBox(
                 width: width * 0.8,
                 height: 50,
-                child: const CustomButton(text: "Verify")),
+                child: const CustomButton(
+                  text: "Verify",
+                  color: wajbah_primary,
+                )),
           ],
         ),
       ),

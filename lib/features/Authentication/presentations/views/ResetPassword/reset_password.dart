@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wajba/constants/constants.dart';
 import 'package:wajba/core/sizeConfig.dart';
 import 'package:wajba/features/Authentication/presentations/views/widgets/custom_button.dart';
 import 'package:wajba/features/Authentication/presentations/views/widgets/hint_text.dart';
@@ -77,6 +78,7 @@ class _PasswordChangedState extends State<ResetPassword> {
               width: width * 0.8,
               height: 60,
               child: CustomButton(
+                color: wajbah_primary,
                 text: "Change Password",
                 onPressed: () {},
               ),

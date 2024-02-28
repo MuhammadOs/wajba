@@ -18,16 +18,22 @@ class ShortCutItem extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(bottom: 7),
-          child: Container(
-            padding: EdgeInsets.all(10),
-            child: Image.asset(
-              shortcut.image,
-            ),
-            width: width * 0.17,
-            height: height * 0.08,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(13)),
-              color: wajbah_buttons,
+          child: GestureDetector(
+            onTap: () {
+              Navigator.of(context)
+                  .pushNamed('Shortcuts View', arguments: shortcut);
+            },
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              child: Image.asset(
+                shortcut.image,
+              ),
+              width: width * 0.17,
+              height: height * 0.08,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(13)),
+                color: wajbah_buttons,
+              ),
             ),
           ),
         ),

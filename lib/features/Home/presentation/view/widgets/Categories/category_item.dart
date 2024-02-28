@@ -3,6 +3,7 @@ import 'package:wajba/constants/constants.dart';
 import 'package:wajba/core/sizeConfig.dart';
 import 'package:wajba/core/styles.dart';
 import 'package:wajba/features/Home/data/categories_data.dart';
+import 'package:wajba/features/Home/presentation/view/widgets/Categories/viewall_categories_listview.dart';
 
 class CategoryItem extends StatelessWidget {
   final categories categoryItem;
@@ -19,15 +20,21 @@ class CategoryItem extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(bottom: 7),
-          child: Container(
-            width: width * 0.17,
-            height: height * 0.09,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(13)),
-              color: wajbah_buttons,
-            ),
-            child: Image.asset(
-              categoryItem.image,
+          child: GestureDetector(
+            onTap: () {
+              Navigator.of(context)
+                  .pushNamed('categories viewall', arguments: categoryItem);
+            },
+            child: Container(
+              width: width * 0.17,
+              height: height * 0.09,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(13)),
+                color: wajbah_buttons,
+              ),
+              child: Image.asset(
+                categoryItem.image,
+              ),
             ),
           ),
         ),

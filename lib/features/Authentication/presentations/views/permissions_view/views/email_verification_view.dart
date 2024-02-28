@@ -6,13 +6,11 @@ import 'package:wajba/features/Authentication/presentations/views/widgets/custom
 import '../../../../../../constants/constants.dart';
 import '../../../../../../core/styles.dart';
 
-
 class EmailVerification extends StatefulWidget {
   const EmailVerification({super.key});
 
   @override
-  State<EmailVerification> createState() =>
-      _EmailVerification();
+  State<EmailVerification> createState() => _EmailVerification();
 }
 
 class _EmailVerification extends State<EmailVerification> {
@@ -41,7 +39,7 @@ class _EmailVerification extends State<EmailVerification> {
                 image: 'assets/images/email_verification.png',
                 mainText: 'Enter verification code',
                 subText:
-                '\t\tWe\'ll send you a 4-digit code to verify\nyour email address'),
+                    '\t\tWe\'ll send you a 4-digit code to verify\nyour email address'),
             Column(
               children: [
                 Row(
@@ -262,7 +260,8 @@ class _EmailVerification extends State<EmailVerification> {
             SizedBox(
                 width: width * 0.8,
                 height: 50,
-                child: const CustomButton(text: "Verify Email")),
+                child: const CustomButton(
+                    color: wajbah_primary, text: "Verify Email")),
           ],
         ),
       ),

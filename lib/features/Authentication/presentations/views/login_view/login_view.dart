@@ -257,6 +257,7 @@ class _LoginViewState extends State<LoginView> {
                           width: width * 0.8,
                           height: 60,
                           child: CustomButton(
+                            color: wajbah_primary,
                             text: "Login",
                             onPressed: () {
                               setState(() {

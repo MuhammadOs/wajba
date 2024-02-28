@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/constants/constants.dart';
 import 'package:wajba/features/Authentication/presentations/views/login_view/login_view.dart';
 import 'package:wajba/features/Authentication/presentations/views/permissions_view/views/allow_location.dart';
 import 'package:wajba/features/Authentication/presentations/views/permissions_view/views/allow_notification.dart';
 import 'package:wajba/features/Authentication/presentations/views/permissions_view/views/app_share.dart';
-import 'package:wajba/features/Authentication/presentations/views/permissions_view/views/email_verification_view.dart';
 import 'package:wajba/features/Authentication/presentations/views/permissions_view/views/password_changed.dart';
 import 'package:wajba/features/Authentication/presentations/views/signup_view/signup_view.dart';
 import 'package:wajba/features/Home/presentation/view/home_screen.dart';
+import 'package:wajba/features/Home/presentation/view/widgets/Categories/viewall_categories_listview.dart';
+import 'package:wajba/features/Home/presentation/view/widgets/Shinning_Kitchens/shinning_viewall.dart';
+import 'package:wajba/features/Home/presentation/view/widgets/Shortcuts/shortcuts_view.dart';
 import 'package:wajba/features/OnBoarding/presentations/view/onboarding.dart';
-
 import 'features/Authentication/presentations/views/ResetPassword/reset_password.dart';
-import 'features/KitchensProfile/presentation/views/kitchen_profile_view.dart';
 
 void main() {
   runApp(const WajbahUser());
@@ -25,7 +24,7 @@ class WajbahUser extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(fontFamily: "Biryani"),
       debugShowCheckedModeBanner: false,
-      home: const OnBoardingScreen(),
+      home: const HomeScreen(),
       routes: {
         "Onboarding": (context) => const OnBoardingScreen(),
         "login": (context) => const LoginView(),
@@ -36,6 +35,9 @@ class WajbahUser extends StatelessWidget {
         "Password changed": (context) => const PasswordChanged(),
         "App share": (context) => const ShareApp(),
         "reset password": (context) => const ResetPassword(),
+        "shinning viewall": (context) => const ShinningAll(),
+        "categories viewall": (context) => const CategoriesItemListView(),
+        "Shortcuts View": (context) => const ShortcutsViewScreen()
       },
     );
   }

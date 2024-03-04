@@ -10,6 +10,7 @@ import 'package:wajba/features/Home/presentation/view/widgets/Categories/viewall
 import 'package:wajba/features/Home/presentation/view/widgets/Shinning_Kitchens/shinning_viewall.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/Shortcuts/shortcuts_view.dart';
 import 'package:wajba/features/OnBoarding/presentations/view/onboarding.dart';
+import 'package:wajba/features/Profile/presentation/profile_view.dart';
 import 'features/Authentication/presentations/views/ResetPassword/reset_password.dart';
 
 void main() {
@@ -37,7 +38,8 @@ class WajbahUser extends StatelessWidget {
         "reset password": (context) => const ResetPassword(),
         "shinning viewall": (context) => const ShinningAll(),
         "categories viewall": (context) => const CategoriesItemListView(),
-        "Shortcuts View": (context) => const ShortcutsViewScreen()
+        "Shortcuts View": (context) => const ShortcutsViewScreen(),
+        "Profile View": (context) => const ProfileView(),
       },
     );
   }

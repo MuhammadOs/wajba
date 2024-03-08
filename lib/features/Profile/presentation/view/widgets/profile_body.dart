@@ -5,7 +5,7 @@ import 'package:wajba/constants/constants.dart';
 import 'package:wajba/core/sizeConfig.dart';
 import 'package:wajba/core/styles.dart';
 
-import 'package:wajba/features/Profile/presentation/view/widgets/profile_appbar.dart';
+import 'package:wajba/features/Account/presentation/view/widgets/account_appbar.dart';
 import 'package:wajba/features/Profile/presentation/view/widgets/profile_items_divider.dart';
 import 'package:wajba/features/Profile/presentation/view/widgets/profile_list_item.dart';
 
@@ -21,7 +21,7 @@ class ProfileBody extends StatelessWidget {
     return SafeArea(
       child: Column(
         children: [
-          ProfileAppBar(
+          AccountAppBar(
             title: 'Profile',
           ),
           Container(
@@ -101,7 +101,10 @@ class ProfileBody extends StatelessWidget {
                 ),
                 ProfileItemsDivider(width: width),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, 'login', (route) => false);
+                  },
                   child: ProfileListItem(
                     width: width,
                     height: height,

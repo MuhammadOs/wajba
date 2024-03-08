@@ -19,40 +19,40 @@ class AccountNameTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: width * 0.03, top: height * 0.05),
-      child: ListTile(
-        leading: Container(
-          width: width * 0.1,
-          height: height * 0.06,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(25),
-            color: wajbah_primary,
-          ),
-          child: Center(
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: height * 0.005),
-              child: Text(
-                name.substring(0, 1),
-                style: Styles.titleLarge
-                    .copyWith(fontSize: 30, color: wajbah_white),
-                textAlign: TextAlign.center,
+      child: InkWell(
+        onTap: () {
+          Navigator.pushNamed(context, 'Profile View',
+              arguments: ProfileData(name: name));
+        },
+        child: ListTile(
+          leading: Container(
+            width: width * 0.1,
+            height: height * 0.06,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(25),
+              color: wajbah_primary,
+            ),
+            child: Center(
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: height * 0.005),
+                child: Text(
+                  name.substring(0, 1),
+                  style: Styles.titleLarge
+                      .copyWith(fontSize: 30, color: wajbah_white),
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
           ),
-        ),
-        title: Align(
-          alignment: Alignment.centerLeft,
-          child: Text(
-            name,
-            style:
-                Styles.titleLarge.copyWith(fontSize: 18, color: wajbah_black),
+          title: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              name,
+              style:
+                  Styles.titleLarge.copyWith(fontSize: 18, color: wajbah_black),
+            ),
           ),
-        ),
-        trailing: IconButton(
-          onPressed: () {
-            Navigator.pushNamed(context, 'Profile View',
-                arguments: ProfileData(name: name));
-          },
-          icon: const Icon(
+          trailing: const Icon(
             Icons.arrow_forward_ios,
             size: 18,
           ),

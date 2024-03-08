@@ -5,6 +5,7 @@ import 'package:wajba/core/sizeConfig.dart';
 import 'package:wajba/core/styles.dart';
 import 'package:wajba/features/Account/presentation/view/widgets/account_main_title.dart';
 import 'package:wajba/features/Account/presentation/view/widgets/account_subitem.dart';
+import 'package:wajba/features/Wallet/presentation/view/wajbah_wallet_body.dart';
 
 class AccountViewBody extends StatelessWidget {
   const AccountViewBody({super.key});
@@ -30,16 +31,19 @@ class AccountViewBody extends StatelessWidget {
               width: width,
               icon: Icons.notifications,
               name: 'Notification',
+              path: 'Notification View',
             ),
             AccountItem(
                 width: width,
-                balance: 'EGP\t\t' + '0.00',
                 icon: FontAwesomeIcons.creditCard,
                 name: 'Payment Methods'),
             AccountItem(
-                width: width,
-                icon: Icons.wallet_outlined,
-                name: 'Wajbah Wallet'),
+              width: width,
+              balance: '47.99',
+              icon: Icons.wallet_outlined,
+              name: 'Wajbah Wallet',
+              path: 'Wajbah Wallet',
+            ),
             Divider(
               color: wajbah_gray,
               endIndent: width * 0.09,
@@ -48,13 +52,11 @@ class AccountViewBody extends StatelessWidget {
             AccountItem(width: width, icon: Icons.settings, name: 'Settings'),
             AccountItem(width: width, icon: Icons.star, name: 'Rate App'),
             AccountItem(
-                width: width,
-                icon: FontAwesomeIcons.solidComments,
-                name: 'Need Help ?'),
-            AccountItem(
-                width: width,
-                icon: FontAwesomeIcons.gift,
-                name: 'Refer and Earn'),
+              width: width,
+              icon: FontAwesomeIcons.gift,
+              name: 'Refer and Earn',
+              path: 'Refer and Earn',
+            ),
             AccountItem(
                 width: width,
                 icon: FontAwesomeIcons.exclamationCircle,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wajba/features/Account/presentation/view/widgets/refer_and_earn_view.dart';
 import 'package:wajba/features/Authentication/presentations/views/login_view/login_view.dart';
 import 'package:wajba/features/Authentication/presentations/views/permissions_view/views/allow_location.dart';
 import 'package:wajba/features/Authentication/presentations/views/permissions_view/views/allow_notification.dart';
@@ -9,8 +10,10 @@ import 'package:wajba/features/Home/presentation/view/home_screen.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/Categories/viewall_categories_listview.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/Shinning_Kitchens/shinning_viewall.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/Shortcuts/shortcuts_view.dart';
+import 'package:wajba/features/Notification/presentation/view/notification_view.dart';
 import 'package:wajba/features/OnBoarding/presentations/view/onboarding.dart';
 import 'package:wajba/features/Profile/presentation/profile_view.dart';
+import 'package:wajba/features/Wallet/presentation/view/wajbah_wallet_view.dart';
 import 'features/Authentication/presentations/views/ResetPassword/reset_password.dart';
 
 void main() {
@@ -40,6 +43,11 @@ class WajbahUser extends StatelessWidget {
         "categories viewall": (context) => const CategoriesItemListView(),
         "Shortcuts View": (context) => const ShortcutsViewScreen(),
         "Profile View": (context) => const ProfileView(),
+        "Refer and Earn": (context) => const ReferAndEarnView(),
+        "Notification View": (context) => const NotificationView(
+              notificaions: [],
+            ),
+        "Wajbah Wallet": (context) => const WajbahWalletView(),
       },
     );
   }

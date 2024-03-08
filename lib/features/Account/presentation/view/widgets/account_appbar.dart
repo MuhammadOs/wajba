@@ -3,8 +3,8 @@ import 'package:wajba/core/sizeConfig.dart';
 import 'package:wajba/core/styles.dart';
 import 'package:wajba/features/KitchensProfile/presentation/views/widgets/custom_back_button.dart';
 
-class ProfileAppBar extends StatelessWidget {
-  ProfileAppBar({super.key, required this.title});
+class AccountAppBar extends StatelessWidget {
+  AccountAppBar({super.key, required this.title});
   final String title;
 
   @override

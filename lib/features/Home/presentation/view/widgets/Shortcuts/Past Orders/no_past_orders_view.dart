@@ -39,7 +39,9 @@ class NoPastOrders extends StatelessWidget {
             height: 20,
           ),
           CustomButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
             text: 'Order now',
             color: wajbah_primary,
           )

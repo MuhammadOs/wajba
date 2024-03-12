@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:wajba/constants/constants.dart';
 import 'package:wajba/features/Authentication/presentations/views/ResetPassword/reset_password.dart';
-import 'package:wajba/features/Authentication/presentations/views/permissions_view/views/allow_notification.dart';
 import 'package:wajba/features/Authentication/presentations/views/widgets/custom_button.dart';
 import 'package:wajba/features/Home/presentation/view/home_screen.dart';
-
 import '../../../../../core/sizeConfig.dart';
 import '../../../../../core/styles.dart';
-import '../widgets/custom_text_field.dart';
-import '../widgets/password_text_field.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -40,7 +36,7 @@ class _LoginViewState extends State<LoginView> {
                 children: [
                   Text('Login',
                       style: Styles.titleLarge.copyWith(
-                          color: wajbah_black)), // welcome there statement
+                          color: wajbah_black)),
                   isPassword == false
                       ? const Padding(
                           padding: EdgeInsets.only(left: 10),
@@ -240,7 +236,7 @@ class _LoginViewState extends State<LoginView> {
                             color: wajbah_buttons,
                             borderRadius: BorderRadius.circular(16)),
                         child: Image.asset(
-                          'assets/images/google_logo.png',
+                          'assets/images/authentication/google_logo.png',
                           width: 35,
                           height: 35,
                         ),

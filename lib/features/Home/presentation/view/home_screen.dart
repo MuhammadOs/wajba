@@ -5,7 +5,8 @@ import 'package:wajba/core/styles.dart';
 import 'package:wajba/features/Account/presentation/view/account_view_body.dart';
 import 'package:wajba/features/Cart/presentation/view/cart_view_body.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/HomeScreen.dart';
-import 'package:wajba/features/Search/presenatation/view/search_view_body.dart';
+import 'package:wajba/features/Search/presenatation/view/search_screen.dart';
+import 'package:wajba/features/Search/presenatation/view/widgets/search_view_body.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _current_index = 0;
   final tabs = [
     const HomeScreenView(),
-    const SearchViewBody(),
+    const SearchScreen(),
     const CartViewBody(),
     const AccountViewBody()
   ];

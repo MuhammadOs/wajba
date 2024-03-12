@@ -3,9 +3,10 @@ import 'package:wajba/constants/constants.dart';
 import 'package:wajba/core/sizeConfig.dart';
 import 'package:wajba/core/styles.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/ratings.dart';
+import 'package:wajba/features/widgets/customer_container.dart';
 
-class ShinningKitchenItem extends StatelessWidget {
-  const ShinningKitchenItem({
+class FeaturedKitchenItem extends StatelessWidget {
+  const FeaturedKitchenItem({
     super.key,
   });
 
@@ -17,8 +18,8 @@ class ShinningKitchenItem extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          width: MediaQuery.of(context).size.width * 0.72,
-          height: MediaQuery.of(context).size.height * 0.34,
+          width: MediaQuery.of(context).size.width * 0.6,
+          height: MediaQuery.of(context).size.height * 0.25,
           decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(25)),
               color: Colors.white,
@@ -27,7 +28,7 @@ class ShinningKitchenItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: height * 0.2,
+                height: height * 0.15,
                 width: width * 0.8,
                 child: ClipRRect(
                   borderRadius: const BorderRadius.only(
@@ -42,7 +43,7 @@ class ShinningKitchenItem extends StatelessWidget {
               ),
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                const EdgeInsets.symmetric(horizontal: 10),
                 child: Row(
                   children: [
                     SizedBox(
@@ -63,10 +64,10 @@ class ShinningKitchenItem extends StatelessWidget {
                             children: [
                               Text(
                                 'Willys Kitchen',
-                                style: Styles.titleLarge.copyWith(fontSize: 16),
+                                style: Styles.titleLarge.copyWith(fontSize: 18),
                               ),
                               const SizedBox(
-                                width: 7,
+                                width: 5,
                               ),
                               const Icon(
                                 Icons.verified,
@@ -75,19 +76,19 @@ class ShinningKitchenItem extends StatelessWidget {
                               )
                             ],
                           ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.006,
-                          ),
                           Text(
                             'beef, chicken and more',
                             style: Styles.hint.copyWith(fontSize: 12),
                           ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.006,
-                          ),
                           const Ratings(
                             rating: 150,
                           ),
+                          const CustomContainer(
+                            label: "open now",
+                            icon: Icons.watch_later_sharp,
+                            iconColor: wajbah_green,
+                            labelColor: wajbah_green,
+                          )
                         ],
                       ),
                     )
@@ -95,33 +96,6 @@ class ShinningKitchenItem extends StatelessWidget {
                 ),
               ),
             ],
-          ),
-        ),
-        Positioned(
-          top: MediaQuery.of(context).size.height * 0.02,
-          left: MediaQuery.of(context).size.width * 0.02,
-          child: Container(
-            width: 166,
-            height: 22,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(23)),
-              color: wajbah_buttons,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                const Icon(
-                  Icons.airplane_ticket_sharp,
-                  size: 20,
-                  color: wajbah_primary,
-                ),
-                Text(
-                  'EGP 85 off on selected items',
-                  style: Styles.titleSmall
-                      .copyWith(color: wajbah_primary, fontSize: 9),
-                ),
-              ],
-            ),
           ),
         ),
       ],

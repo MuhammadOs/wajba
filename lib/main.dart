@@ -13,6 +13,8 @@ import 'package:wajba/features/Home/presentation/view/widgets/Shortcuts/shortcut
 import 'package:wajba/features/Notification/presentation/view/notification_view.dart';
 import 'package:wajba/features/OnBoarding/presentations/view/onboarding.dart';
 import 'package:wajba/features/Profile/presentation/profile_view.dart';
+import 'package:wajba/features/Search/presenatation/view/search_screen.dart';
+import 'package:wajba/features/Search/presenatation/view/widgets/search_view_body.dart';
 import 'package:wajba/features/Wallet/presentation/view/wajbah_wallet_view.dart';
 import 'features/Authentication/presentations/views/ResetPassword/reset_password.dart';
 
@@ -28,12 +30,13 @@ class WajbahUser extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(fontFamily: "Biryani"),
       debugShowCheckedModeBanner: false,
-      home: const HomeScreen(),
+      home: const OnBoardingScreen(),
       routes: {
         "Onboarding": (context) => const OnBoardingScreen(),
         "login": (context) => const LoginView(),
         "register": (context) => const RegisterView(),
         "home": (context) => const HomeScreen(),
+        "search": (context) => const SearchScreen(),
         "Allow notification": (context) => const AllowNotification(),
         "Allow location": (context) => const AllowLocation(),
         "Password changed": (context) => const PasswordChanged(),

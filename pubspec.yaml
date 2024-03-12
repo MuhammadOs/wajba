@@ -41,6 +41,9 @@ flutter:
     - assets/images/
     - assets/images/HomeScreen/
     - assets/images/Shortcuts/
+    - assets/images/onboarding/
+    - assets/images/permissions/
+    - assets/images/authentication/
 
   fonts:
     - family: Biryani

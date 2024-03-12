@@ -38,7 +38,7 @@ class _PasswordChangedState extends State<ResetPassword> {
               style: Styles.titleMedium.copyWith(fontSize: 24),
             ),
             Image.asset(
-              "assets/images/Password_changed.png",
+              "assets/images/authentication/Password_changed.png",
               width: width,
               height: height / 3,
               fit: BoxFit.fitWidth,

@@ -3,7 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:wajba/constants/constants.dart';
 import 'package:wajba/core/styles.dart';
 import 'package:wajba/features/Account/presentation/view/account_view_body.dart';
-import 'package:wajba/features/Cart/presentation/view/cart_view_body.dart';
+import 'package:wajba/features/Cart/presentation/view/cart_view.dart';
+import 'package:wajba/features/Cart/presentation/view/widgets/cart_view_body.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/HomeScreen.dart';
 import 'package:wajba/features/Search/presenatation/view/search_screen.dart';
 import 'package:wajba/features/Search/presenatation/view/widgets/search_view_body.dart';
@@ -20,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final tabs = [
     const HomeScreenView(),
     const SearchScreen(),
-    const CartViewBody(),
+    const CartView(),
     const AccountViewBody()
   ];
   @override

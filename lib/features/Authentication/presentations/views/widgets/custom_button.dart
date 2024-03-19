@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import '../../../../../constants/constants.dart';
 import '../../../../../core/styles.dart';
 
 class CustomButton extends StatelessWidget {
@@ -13,13 +11,12 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
         style: ElevatedButton.styleFrom(
-          elevation: 0,
+          elevation: 0, backgroundColor: color,
           shadowColor: color,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           ),
           splashFactory: NoSplash.splashFactory,
-          primary: color,
         ),
         onPressed: onPressed,
         child: Text(

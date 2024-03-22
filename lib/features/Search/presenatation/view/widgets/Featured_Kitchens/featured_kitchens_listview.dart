@@ -10,6 +10,7 @@ class FeaturedKitchensListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    double width = SizeConfig.screenW!;
     double height = SizeConfig.screenH!;
     return SizedBox(
       height: height * 0.4,
@@ -25,8 +26,9 @@ class FeaturedKitchensListView extends StatelessWidget {
                   },
                 ));
               },
-              child: const Padding(
-                padding: EdgeInsets.only(left: 24.0, top: 10),
+              child: Padding(
+                padding:
+                    EdgeInsets.only(left: width * 0.03, top: height * 0.002),
                 child: FeaturedKitchenItem(),
               ));
         },

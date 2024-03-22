@@ -2,72 +2,102 @@ import 'package:flutter/material.dart';
 import 'package:wajba/constants/constants.dart';
 import 'package:wajba/core/sizeConfig.dart';
 import 'package:wajba/core/styles.dart';
+import 'package:wajba/features/Home/data/items_data.dart';
 
 class TryThisListItem extends StatelessWidget {
-  const TryThisListItem({
-    super.key,
-  });
+  final ItemData tryThisItem;
+  const TryThisListItem({super.key, required this.tryThisItem});
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     double width = SizeConfig.screenW!;
     double height = SizeConfig.screenH!;
+    ItemData item;
     return Stack(
       children: [
-        Container(
-          width: width * 0.4,
-          height: height * 0.28,
-          decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(23)),
-              color: Colors.white,
-              boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 2)]),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Image.asset(
-                alignment: Alignment.topCenter,
-                'assets/images/HomeScreen/TryThisBurger.png',
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 7, top: 5),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Willys Burger',
-                      style: Styles.titleSmall.copyWith(fontSize: 15),
+        InkWell(
+          borderRadius: BorderRadius.circular(23),
+          onTap: () {
+            Navigator.of(context).pushNamed('Item View',
+                arguments: ItemData(
+                    itemname: tryThisItem.itemname,
+                    kitchenIcon: tryThisItem.kitchenIcon,
+                    itemDiscription: tryThisItem.itemDiscription,
+                    itemPrice: tryThisItem.itemPrice,
+                    itemImage: tryThisItem.itemImage,
+                    kitchenName: tryThisItem.kitchenName,
+                    itemRating: tryThisItem.itemRating,
+                    prepareTime: tryThisItem.prepareTime,
+                    Prices: tryThisItem.Prices));
+          },
+          child: Container(
+            width: width * 0.4,
+            height: height * 0.27,
+            decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(23)),
+                color: Colors.white,
+                boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 2)]),
+            child: Column(
+              children: [
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                      topRight: Radius.circular(23),
+                      topLeft: Radius.circular(23)),
+                  child: SizedBox(
+                    height: height * 0.14,
+                    width: width * 0.4,
+                    child: Image.asset(
+                      tryThisItem.itemImage,
+                      fit: BoxFit.cover,
                     ),
-                    Text(
-                      '200 gr burger + cheese lettuce + sauce + onion rings',
-                      style: Styles.hint.copyWith(fontSize: 8),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    const SizedBox(
-                      height: 3,
-                    ),
-                    Text(
-                      '120 EGP',
-                      style: Styles.titleLarge
-                          .copyWith(fontSize: 12, color: wajbah_primary),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
-            ],
+                Padding(
+                  padding:
+                      EdgeInsets.only(left: width * 0.02, top: height * 0.01),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: width * 0.28,
+                        child: Text(
+                          overflow: TextOverflow.ellipsis,
+                          tryThisItem.itemname,
+                          style: Styles.titleSmall.copyWith(fontSize: 15),
+                        ),
+                      ),
+                      Text(
+                        tryThisItem.itemDiscription,
+                        style: Styles.hint.copyWith(fontSize: 8),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      SizedBox(
+                        height: height * 0.005,
+                      ),
+                      Text(
+                        '${tryThisItem.itemPrice} EGP',
+                        style: Styles.titleLarge
+                            .copyWith(fontSize: 12, color: wajbah_primary),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
         Positioned(
           top: height * 0.11,
           right: width * 0.01,
-          child: Container(
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(23)),
-              ),
-              width: width * 0.1,
-              height: height * 0.1,
-              child: Image.asset('assets/images/HomeScreen/WillysIcon.png')),
+          child: ClipRRect(
+              borderRadius: BorderRadius.circular(50),
+              child: Image.asset(
+                tryThisItem.kitchenIcon,
+                height: height * 0.065,
+                fit: BoxFit.cover,
+              )),
         ),
       ],
     );

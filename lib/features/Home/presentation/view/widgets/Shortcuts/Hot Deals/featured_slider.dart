@@ -26,7 +26,7 @@ class FeaturedSlider extends StatelessWidget {
           child: Column(
             children: [
               HotDealsKitchenTitle(
-                  Icon: 'assets/images/Wajbah_Finale.png',
+                  Icon: 'assets/images/onboarding/Wajbah_Finale.png',
                   KitchenName: 'Willy\'s Kitchen'),
               SizedBox(
                 height: height * 0.3,
@@ -37,7 +37,8 @@ class FeaturedSlider extends StatelessWidget {
                     itemBuilder: (index, context) {
                       return const SizedBox(
                         child: HotKitchenItems(
-                          ItemImage: 'assets/images/Wajbah_Finale.png',
+                          ItemImage:
+                              'assets/images/onboarding/Wajbah_Finale.png',
                           ItemIngredients:
                               '200 gr burger + cheese lettuce + sauce + onion rings',
                           ItemName: 'Willy\'s Burger',

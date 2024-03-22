@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wajba/core/sizeConfig.dart';
+import 'package:wajba/features/Home/data/items_data.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/TryThisToday/try_this_item.dart';
 
 class TryThisListView extends StatelessWidget {
@@ -13,12 +14,12 @@ class TryThisListView extends StatelessWidget {
     return SizedBox(
       height: height * 0.284,
       child: ListView.builder(
-        itemCount: 5,
+        itemCount: ItemsData.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return const Padding(
+          return Padding(
             padding: EdgeInsets.symmetric(horizontal: 10),
-            child: TryThisListItem(),
+            child: TryThisListItem(tryThisItem: ItemsData[index]),
           );
         },
       ),

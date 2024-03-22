@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wajba/constants/constants.dart';
+import 'package:wajba/core/sizeConfig.dart';
 import 'package:wajba/features/Search/presenatation/view/widgets/Featured_Kitchens/featured_kitchens_listview.dart';
 import 'package:wajba/features/Search/presenatation/view/widgets/search_chips.dart';
 import 'package:wajba/features/Search/presenatation/view/widgets/search_custom_text.dart';
@@ -12,8 +13,11 @@ class SearchViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    double width = SizeConfig.screenW!;
+    double height = SizeConfig.screenH!;
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 32),
+      padding: EdgeInsets.symmetric(vertical: height * 0.04),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -21,21 +25,21 @@ class SearchViewBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SearchTextField(),
-              const SizedBox(height: 20),
+              SizedBox(height: height * 0.02),
               const SearchCustomText(title: 'Recent searches'),
-              const SizedBox(height: 10),
+              SizedBox(height: height * 0.01),
               SearchChips(
                 chipLabels: recentSearchLabels,
                 icon: Icons.history,
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: height * 0.01),
               const SearchCustomText(title: 'Popular Searches'),
-              const SizedBox(height: 10),
+              SizedBox(height: height * 0.02),
               SearchChips(
                 chipLabels: popularSearchLabels,
                 icon: Icons.trending_up,
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: height * 0.02),
               const SearchCustomText(title: 'Featured Kitchens'),
               const FeaturedKitchensListView()
             ],

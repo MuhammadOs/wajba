@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:wajba/constants/constants.dart';
 import 'package:wajba/features/Cart/presentation/view/widgets/cart_item_card.dart';
-
 import '../../../../core/styles.dart';
 import '../../data/cart_item_class.dart';
+import 'checkout_view.dart';
 
 class CartView extends StatefulWidget {
   const CartView({Key? key}) : super(key: key);
@@ -79,7 +79,6 @@ class _CartViewState extends State<CartView> {
                                         }
                                       });
                                     },
-                                    //showPlusMinusButtons: showPlusMinusButtons,
                                   ),
                                 ),
                               ],
@@ -89,19 +88,6 @@ class _CartViewState extends State<CartView> {
                       );
                     },
                   ),
-                  /*const SizedBox(height: 10),
-                  for (var item in _cartItems)
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Item: ${item.name}', style: Styles.titleSmall),
-                        Text('Price: \$${item.price.toString()}',
-                            style: Styles.titleSmall),
-                        Text('Quantity: ${item.quantity}',
-                            style: Styles.titleSmall),
-                        const Divider(),
-                      ],
-                    ),*/
                 ],
               ),
             ),
@@ -146,7 +132,7 @@ class _CartViewState extends State<CartView> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
+                      const Text(
                         'Delivery Fee:',
                         style: Styles.titleSmall,
                       ),
@@ -159,7 +145,7 @@ class _CartViewState extends State<CartView> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
+                      const Text(
                         'Discount:',
                         style: Styles.titleSmall,
                       ),
@@ -197,13 +183,15 @@ class _CartViewState extends State<CartView> {
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: wajbah_primary,
         onPressed: () {
-          setState(() {
-            showPlusMinusButtons = !showPlusMinusButtons;
-          });
+          _navigateToCheckoutScreen(context); // Navigate to checkout screen
         },
         label: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            Text(
+              calculateTotalItems().toString(),
+              style: Styles.titleSmall.copyWith(color: wajbah_white),
+            ),
             const SizedBox(
               width: 60,
             ),
@@ -216,15 +204,10 @@ class _CartViewState extends State<CartView> {
               width: 60,
             ),
             Text(
-              total.toString(),
+              total.roundToDouble().toString(),
               style: Styles.titleSmall.copyWith(color: wajbah_white),
             ),
           ],
-        ),
-        icon: const Icon(
-          Icons.one_x_mobiledata,
-          color: wajbah_white,
-          size: 28,
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -237,5 +220,28 @@ class _CartViewState extends State<CartView> {
       subtotal += (item.price * item.quantity);
     }
     return subtotal;
+  }
+
+  int calculateTotalItems() {
+    int totalItems = 0;
+    for (var item in _cartItems) {
+      totalItems += item.quantity;
+    }
+    return totalItems;
+  }
+
+  // Function to navigate to the checkout screen
+  void _navigateToCheckoutScreen(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => CheckoutScreen(
+                cartItems: _cartItems,
+                totalItems: calculateTotalItems(),
+                taxRate: taxRate,
+                deliveryFee: deliveryFee,
+                discount: discount,
+              )),
+    );
   }
 }

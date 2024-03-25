@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../constants/constants.dart';
+import '../../../../../core/constants/constants.dart';
 import '../../../../../core/styles.dart';
 import 'hint_text.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({super.key, required this.usernameController, this.hintText});
+  const CustomTextField(
+      {super.key, required this.usernameController, this.hintText});
   final TextEditingController usernameController;
   final String? hintText;
   @override
@@ -21,8 +22,8 @@ class CustomTextField extends StatelessWidget {
             labelStyle: Styles.titleSmall.copyWith(
               color: wajbah_black,
             ),
-            contentPadding: const EdgeInsets.symmetric(
-                vertical: 15, horizontal: 10),
+            contentPadding:
+                const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
             filled: true,
             fillColor: wajbah_buttons,
             border: const OutlineInputBorder(

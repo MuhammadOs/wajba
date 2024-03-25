@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import '../../../../../core/constants/constants.dart';
 import '../../../../../core/styles.dart';
 
 class CustomButton extends StatelessWidget {
@@ -17,6 +19,7 @@ class CustomButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(15),
           ),
           splashFactory: NoSplash.splashFactory,
+          primary: color,
         ),
         onPressed: onPressed,
         child: Text(

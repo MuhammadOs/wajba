@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../constants/constants.dart';
+import '../../../../../core/constants/constants.dart';
 import '../../../data/onboarding_data.dart';
+
 class OnboardingRegisterSkipButton extends StatelessWidget {
   const OnboardingRegisterSkipButton({
     super.key,
@@ -18,9 +19,7 @@ class OnboardingRegisterSkipButton extends StatelessWidget {
       child: Text(
         isLastPage ? 'Register ?' : 'Skip',
         style: const TextStyle(
-            fontSize: 16,
-            color: wajbah_gray,
-            fontWeight: FontWeight.w700),
+            fontSize: 16, color: wajbah_gray, fontWeight: FontWeight.w700),
       ),
       onPressed: () {
         if (isLastPage) {

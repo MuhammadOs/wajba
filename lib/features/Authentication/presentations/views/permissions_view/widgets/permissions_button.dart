@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/constants/constants.dart';
+import 'package:wajba/core/constants/constants.dart';
 import 'package:wajba/core/styles.dart';
 
 class PermissionsButton extends StatelessWidget {
   String text;
-  PermissionsButton({super.key, required this.width, required this.text, this.onPressed});
+  PermissionsButton(
+      {super.key, required this.width, required this.text, this.onPressed});
 
   final double width;
   final void Function()? onPressed;

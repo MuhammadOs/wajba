@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:wajba/constants/constants.dart';
+import 'package:wajba/core/constants/constants.dart';
 import 'package:wajba/core/styles.dart';
 import 'package:wajba/features/Account/presentation/view/account_view_body.dart';
 import 'package:wajba/features/Cart/presentation/view/cart_view_body.dart';

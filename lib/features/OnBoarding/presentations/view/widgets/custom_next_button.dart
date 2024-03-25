@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../constants/constants.dart';
+import '../../../../../core/constants/constants.dart';
 
 class CustomNextButton extends StatelessWidget {
   const CustomNextButton({
@@ -14,8 +14,7 @@ class CustomNextButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: wajbah_buttons,
-          borderRadius: BorderRadius.circular(10)),
+          color: wajbah_buttons, borderRadius: BorderRadius.circular(10)),
       width: 40,
       height: 40,
       child: IconButton(

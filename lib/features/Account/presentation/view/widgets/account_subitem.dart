@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/constants/constants.dart';
+import 'package:wajba/core/constants/constants.dart';
 import 'package:wajba/core/styles.dart';
 
 class AccountItem extends StatelessWidget {

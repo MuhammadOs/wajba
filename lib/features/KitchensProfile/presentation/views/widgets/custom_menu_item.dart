@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wajba/core/sizeConfig.dart';
 
-import '../../../../../constants/constants.dart';
+import '../../../../../core/constants/constants.dart';
 import '../../../../../core/styles.dart';
 
 class CustomMenuItem extends StatelessWidget {

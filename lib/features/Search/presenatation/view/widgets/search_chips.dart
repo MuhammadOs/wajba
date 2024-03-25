@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../constants/constants.dart';
+import '../../../../../core/constants/constants.dart';
 
 class SearchChips extends StatelessWidget {
   const SearchChips({

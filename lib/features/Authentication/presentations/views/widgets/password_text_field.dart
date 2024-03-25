@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../constants/constants.dart';
+import '../../../../../core/constants/constants.dart';
 import '../../../../../core/styles.dart';
 import 'hint_text.dart';
 
 class PasswordTextField extends StatelessWidget {
-  const PasswordTextField({super.key, required this.passwordController, required this.isPassword, this.onPressed, this.hintText});
+  const PasswordTextField(
+      {super.key,
+      required this.passwordController,
+      required this.isPassword,
+      this.onPressed,
+      this.hintText});
 
   final TextEditingController passwordController;
   final bool isPassword;
@@ -20,8 +25,7 @@ class PasswordTextField extends StatelessWidget {
         TextFormField(
           controller: passwordController,
           decoration: InputDecoration(
-            labelStyle:
-            Styles.titleSmall.copyWith(color: wajbah_black),
+            labelStyle: Styles.titleSmall.copyWith(color: wajbah_black),
             border: const OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(15)),
               borderSide: BorderSide(
@@ -31,8 +35,8 @@ class PasswordTextField extends StatelessWidget {
             ),
             filled: true,
             fillColor: wajbah_buttons,
-            contentPadding: const EdgeInsets.symmetric(
-                vertical: 15, horizontal: 10),
+            contentPadding:
+                const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
             focusedBorder: const OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(25)),
               borderSide: BorderSide(
@@ -48,23 +52,22 @@ class PasswordTextField extends StatelessWidget {
               ),
             ),
             suffixIcon: ElevatedButton(
-              style: ButtonStyle(
-                splashFactory: NoSplash.splashFactory,
-                backgroundColor:
-                MaterialStateProperty.all(Colors.transparent),
-                elevation: MaterialStateProperty.all(0),
-              ),
-              onPressed: onPressed,
-              child: isPassword
-                  ? const Icon(
-                Icons.visibility,
-                color: wajbah_primary,
-              )
-                  : const Icon(
-                Icons.visibility_off,
-                color: wajbah_primary,
-              )
-            ),
+                style: ButtonStyle(
+                  splashFactory: NoSplash.splashFactory,
+                  backgroundColor:
+                      MaterialStateProperty.all(Colors.transparent),
+                  elevation: MaterialStateProperty.all(0),
+                ),
+                onPressed: onPressed,
+                child: isPassword
+                    ? const Icon(
+                        Icons.visibility,
+                        color: wajbah_primary,
+                      )
+                    : const Icon(
+                        Icons.visibility_off,
+                        color: wajbah_primary,
+                      )),
           ),
           keyboardType: TextInputType.number,
           obscureText: isPassword,

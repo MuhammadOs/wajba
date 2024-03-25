@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/constants/constants.dart';
+import 'package:wajba/core/constants/constants.dart';
 import 'package:wajba/features/Authentication/presentations/views/ResetPassword/reset_password.dart';
 import 'package:wajba/features/Authentication/presentations/views/widgets/custom_button.dart';
 import 'package:wajba/features/Home/presentation/view/home_screen.dart';
@@ -35,8 +35,7 @@ class _LoginViewState extends State<LoginView> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('Login',
-                      style: Styles.titleLarge.copyWith(
-                          color: wajbah_black)),
+                      style: Styles.titleLarge.copyWith(color: wajbah_black)),
                   isPassword == false
                       ? const Padding(
                           padding: EdgeInsets.only(left: 10),

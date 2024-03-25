@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/constants/constants.dart';
+import 'package:wajba/core/constants/constants.dart';
 
 class Styles {
   static const TextStyle titleLarge =

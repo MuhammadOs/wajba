@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../constants/constants.dart';
+import '../../../../../core/constants/constants.dart';
 import '../../../../../core/styles.dart';
 
 class SearchTextField extends StatelessWidget {
@@ -13,12 +13,9 @@ class SearchTextField extends StatelessWidget {
       child: TextFormField(
         decoration: InputDecoration(
           hintText: 'what are you craving for?',
-          hintStyle: Styles.hint.copyWith(
-            color: wajbah_gray,
-            fontSize: 16
-          ),
+          hintStyle: Styles.hint.copyWith(color: wajbah_gray, fontSize: 16),
           contentPadding:
-          const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
           filled: true,
           fillColor: wajbah_gray_light,
           border: const OutlineInputBorder(

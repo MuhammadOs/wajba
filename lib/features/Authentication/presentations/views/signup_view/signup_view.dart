@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/constants/constants.dart';
+import 'package:wajba/core/constants/constants.dart';
 import 'package:wajba/features/Authentication/presentations/views/permissions_view/views/allow_notification.dart';
 import 'package:wajba/features/Authentication/presentations/views/widgets/custom_button.dart';
 import '../../../../../core/sizeConfig.dart';

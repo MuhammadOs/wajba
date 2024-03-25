@@ -10,7 +10,8 @@ import 'package:wajba/features/Home/presentation/view/home_screen.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/Categories/viewall_categories_listview.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/Shinning_Kitchens/shinning_viewall.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/Shortcuts/shortcuts_view.dart';
-import 'package:wajba/features/widgets/item_view.dart';
+import 'package:wajba/features/Order_Tracking/presentation/view/track_screen_view.dart';
+import 'package:wajba/core/widgets/item_view.dart';
 import 'package:wajba/features/Notification/presentation/view/notification_view.dart';
 import 'package:wajba/features/OnBoarding/presentations/view/onboarding.dart';
 import 'package:wajba/features/Profile/presentation/profile_view.dart';
@@ -53,6 +54,7 @@ class WajbahUser extends StatelessWidget {
             ),
         "Wajbah Wallet": (context) => const WajbahWalletView(),
         "Item View": (context) => ItemViewScreen(),
+        "Track View": (context) => TrackScreenView(),
       },
     );
   }

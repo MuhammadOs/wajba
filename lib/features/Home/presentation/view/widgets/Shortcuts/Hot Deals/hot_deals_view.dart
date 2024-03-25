@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:wajba/constants/constants.dart';
+import 'package:wajba/core/constants/constants.dart';
 import 'package:wajba/core/sizeConfig.dart';
 import 'package:wajba/core/styles.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/Shortcuts/Hot%20Deals/featured_slider.dart';

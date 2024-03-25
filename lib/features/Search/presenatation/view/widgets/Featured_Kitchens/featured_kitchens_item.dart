@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/constants/constants.dart';
+import 'package:wajba/core/constants/constants.dart';
 import 'package:wajba/core/sizeConfig.dart';
 import 'package:wajba/core/styles.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/ratings.dart';
-import 'package:wajba/features/widgets/customer_container.dart';
+import 'package:wajba/core/widgets/customer_container.dart';
 
 class FeaturedKitchenItem extends StatelessWidget {
   const FeaturedKitchenItem({
@@ -42,8 +42,7 @@ class FeaturedKitchenItem extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding:
-                const EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Row(
                   children: [
                     SizedBox(

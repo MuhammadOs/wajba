@@ -13,7 +13,7 @@ class ShortcutsListView extends StatelessWidget {
 
     double height = SizeConfig.screenH!;
     return SizedBox(
-      height: height * 0.145,
+      height: height * 0.12,
       child: ListView.builder(
         itemCount: shortcutsdata.length,
         scrollDirection: Axis.horizontal,

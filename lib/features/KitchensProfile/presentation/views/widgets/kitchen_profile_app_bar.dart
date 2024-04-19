@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wajba/core/sizeConfig.dart';
-import 'custom_back_button.dart';
+import '../../../../../core/widgets/custom_back_button.dart';
 
 class KitchensProfileAppBar extends StatelessWidget {
   const KitchensProfileAppBar({Key? key});

@@ -12,6 +12,7 @@ class CategoriesItemListView extends StatelessWidget {
     final arg = ModalRoute.of(context)!.settings.arguments as categories;
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.white,
         body: Column(
           children: [
             ViewAllAppBar(
@@ -20,7 +21,7 @@ class CategoriesItemListView extends StatelessWidget {
             Expanded(
               child: GridView.builder(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2, mainAxisSpacing: 5),
+                      crossAxisCount: 2, mainAxisSpacing: 15),
                   itemBuilder: (context, index) {
                     return GestureDetector(
                         onTap: () {

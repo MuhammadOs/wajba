@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wajba/core/constants/constants.dart';
 import 'package:wajba/core/sizeConfig.dart';
+import 'package:wajba/features/Authentication/presentations/views/login_view/login_view.dart';
 import 'package:wajba/features/Authentication/presentations/views/widgets/custom_button.dart';
 import 'package:wajba/features/Authentication/presentations/views/widgets/hint_text.dart';
 
@@ -8,7 +9,7 @@ import '../../../../../core/styles.dart';
 import '../widgets/password_text_field.dart';
 
 class ResetPassword extends StatefulWidget {
-  const ResetPassword({super.key});
+  const ResetPassword({Key? key});
 
   @override
   State<ResetPassword> createState() => _PasswordChangedState();
@@ -19,15 +20,29 @@ class _PasswordChangedState extends State<ResetPassword> {
   var confirmPasswordController = TextEditingController();
   bool isPassword = true;
   bool isConfirmPassword = true;
+  String? errorMessage;
+
+  bool passwordsMatch() {
+    return passwordController.text == confirmPasswordController.text;
+  }
+
+  bool validateFields() {
+    if (passwordController.text.isEmpty ||
+        confirmPasswordController.text.isEmpty) {
+      errorMessage = "Please enter both passwords.";
+      return false;
+    }
+    return true;
+  }
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     double width = SizeConfig.screenW!;
     double height = SizeConfig.screenH!;
-    debugPrint("$width");
-    debugPrint("$height");
+
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(30.0),
         child: Column(
@@ -69,6 +84,14 @@ class _PasswordChangedState extends State<ResetPassword> {
                     });
                   },
                 ),
+                if (errorMessage != null)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: Text(
+                      errorMessage!,
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  ),
                 const SizedBox(
                   height: 20,
                 ),
@@ -80,7 +103,40 @@ class _PasswordChangedState extends State<ResetPassword> {
               child: CustomButton(
                 color: wajbah_primary,
                 text: "Change Password",
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    errorMessage = null;
+                  });
+                  if (validateFields()) {
+                    if (passwordsMatch()) {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (c) {
+                          return const LoginView();
+                        },
+                      ));
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: Text(
+                            "Password Changed Successfully",
+                            style: Styles.titleMedium.copyWith(fontSize: 14),
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text("OK"),
+                            ),
+                          ],
+                        ),
+                      );
+                    } else {
+                      errorMessage = "Passwords do not match.";
+                      setState(() {});
+                    }
+                  }
+                },
               ),
             )
           ],

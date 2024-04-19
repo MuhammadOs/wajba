@@ -12,6 +12,7 @@ class AccountViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String username = 'Kareem Alaa';
     SizeConfig().init(context);
     double width = SizeConfig.screenW!;
     double height = SizeConfig.screenH!;
@@ -22,7 +23,7 @@ class AccountViewBody extends StatelessWidget {
             AccountNameTitle(
               height: height,
               width: width,
-              name: 'Kareem Alaa',
+              name: username,
             ),
             SizedBox(
               height: height * 0.03,

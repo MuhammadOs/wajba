@@ -1,13 +1,12 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:wajba/core/constants/constants.dart';
 import 'package:wajba/core/sizeConfig.dart';
 import 'package:wajba/core/styles.dart';
-
-import 'package:wajba/features/Account/presentation/view/widgets/account_appbar.dart';
 import 'package:wajba/features/Profile/presentation/view/widgets/profile_items_divider.dart';
 import 'package:wajba/features/Profile/presentation/view/widgets/profile_list_item.dart';
+import '../../../../../core/widgets/custom_appbar.dart';
 
 class ProfileBody extends StatelessWidget {
   const ProfileBody({super.key});
@@ -21,22 +20,18 @@ class ProfileBody extends StatelessWidget {
     return SafeArea(
       child: Column(
         children: [
-          AccountAppBar(
+          CustomAppBar(
             title: 'Profile',
           ),
-          Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50), color: wajbah_primary),
-            width: width * 0.18,
-            height: height * 0.10,
-            child: Center(
-              child: Padding(
-                padding: EdgeInsets.only(top: height * 0.016),
-                child: Text(
-                  args.name.substring(0, 1),
-                  style: Styles.titleMedium
-                      .copyWith(color: wajbah_white, fontSize: 40),
-                ),
+          CircleAvatar(
+            radius: 40,
+            backgroundColor: wajbah_primary,
+            child: Padding(
+              padding: EdgeInsets.only(top: height * 0.016),
+              child: Text(
+                args.name.substring(0, 1),
+                style: Styles.titleMedium
+                    .copyWith(color: wajbah_white, fontSize: 40),
               ),
             ),
           ),
@@ -52,17 +47,60 @@ class ProfileBody extends StatelessWidget {
           ),
           Container(
             width: width * 0.8,
-            height: height * 0.565,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(color: Colors.black.withOpacity(0.3))),
             child: Column(
               children: [
-                ProfileListItem(
-                  width: width,
-                  height: height,
-                  title: 'Edit Profile Name',
-                  icon: Icons.edit_document,
+                // Wrap ProfileListItem with InkWell
+                InkWell(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        String newProfileName =
+                            args.name; // Initialize with current profile name
+                        return AlertDialog(
+                          title: Text(
+                            'Edit Profile Name',
+                            style: Styles.titleMedium.copyWith(fontSize: 18),
+                          ),
+                          content: TextField(
+                            onChanged: (value) {
+                              newProfileName =
+                                  value; // Update new profile name as user types
+                            },
+                            decoration: const InputDecoration(
+                              hintText: 'Enter your new name',
+                            ),
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context)
+                                    .pop(); // Close dialog without saving changes
+                              },
+                              child: const Text('Cancel'),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                // Save changes and replace the profile name
+                                args.name = newProfileName;
+                                Navigator.of(context).pop();
+                              },
+                              child: Text('Save'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                  child: ProfileListItem(
+                    width: width,
+                    height: height,
+                    title: 'Edit Profile Name',
+                    icon: Icons.edit_document,
+                  ),
                 ),
                 ProfileItemsDivider(width: width),
                 ProfileListItem(
@@ -123,6 +161,7 @@ class ProfileBody extends StatelessWidget {
 
 class ProfileData {
   String name;
+
   ProfileData({
     required this.name,
   });

@@ -4,10 +4,8 @@ import 'package:wajba/core/constants/constants.dart';
 import 'package:wajba/core/styles.dart';
 import 'package:wajba/features/Account/presentation/view/account_view_body.dart';
 import 'package:wajba/features/Cart/presentation/view/cart_view.dart';
-import 'package:wajba/features/Cart/presentation/view/widgets/cart_view_body.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/HomeScreen.dart';
 import 'package:wajba/features/Search/presenatation/view/search_screen.dart';
-import 'package:wajba/features/Search/presenatation/view/widgets/search_view_body.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -24,19 +22,22 @@ class _HomeScreenState extends State<HomeScreen> {
     const CartView(),
     const AccountViewBody()
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: tabs[_current_index],
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
         type: BottomNavigationBarType.fixed,
-        selectedLabelStyle: Styles.titleMedium.copyWith(fontSize: 11),
-        unselectedLabelStyle: Styles.titleMedium.copyWith(fontSize: 11),
+        selectedLabelStyle: Styles.titleMedium.copyWith(fontSize: 14),
+        unselectedLabelStyle: Styles.titleMedium.copyWith(fontSize: 12),
         enableFeedback: true,
         unselectedItemColor: wajbah_gray,
         currentIndex: _current_index,
         selectedItemColor: wajbah_primary,
-        iconSize: 22,
+        iconSize: 25,
         items: const [
           BottomNavigationBarItem(
               icon: FaIcon(

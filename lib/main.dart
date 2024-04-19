@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:wajba/features/Account/presentation/view/widgets/refer_and_earn_view.dart';
 import 'package:wajba/features/Authentication/presentations/views/login_view/login_view.dart';
@@ -6,7 +7,6 @@ import 'package:wajba/features/Authentication/presentations/views/permissions_vi
 import 'package:wajba/features/Authentication/presentations/views/permissions_view/views/app_share.dart';
 import 'package:wajba/features/Authentication/presentations/views/permissions_view/views/password_changed.dart';
 import 'package:wajba/features/Authentication/presentations/views/signup_view/signup_view.dart';
-import 'package:wajba/features/Cart/presentation/view/cart_view.dart';
 import 'package:wajba/features/Home/presentation/view/home_screen.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/Categories/viewall_categories_listview.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/Shinning_Kitchens/shinning_viewall.dart';
@@ -17,13 +17,12 @@ import 'package:wajba/features/Notification/presentation/view/notification_view.
 import 'package:wajba/features/OnBoarding/presentations/view/onboarding.dart';
 import 'package:wajba/features/Profile/presentation/profile_view.dart';
 import 'package:wajba/features/Search/presenatation/view/search_screen.dart';
-import 'package:wajba/features/Search/presenatation/view/widgets/search_view_body.dart';
 import 'package:wajba/features/Wallet/presentation/view/wajbah_wallet_view.dart';
 import 'features/Authentication/presentations/views/ResetPassword/reset_password.dart';
-import 'features/Cart/presentation/view/widgets/cart_view_body.dart';
 
 void main() {
-  runApp(const WajbahUser());
+  runApp(
+      DevicePreview(enabled: true, builder: (context) => const WajbahUser()));
 }
 
 class WajbahUser extends StatelessWidget {
@@ -34,7 +33,7 @@ class WajbahUser extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(fontFamily: "Biryani"),
       debugShowCheckedModeBanner: false,
-      home: const CartView(),
+      home: const OnBoardingScreen(),
       routes: {
         "Onboarding": (context) => const OnBoardingScreen(),
         "login": (context) => const LoginView(),
@@ -56,7 +55,7 @@ class WajbahUser extends StatelessWidget {
             ),
         "Wajbah Wallet": (context) => const WajbahWalletView(),
         "Item View": (context) => ItemViewScreen(),
-        "Track View": (context) => TrackScreenView(),
+        "Track View": (context) => const TrackScreenView(),
       },
     );
   }

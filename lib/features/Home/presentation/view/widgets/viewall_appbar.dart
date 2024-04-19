@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wajba/core/sizeConfig.dart';
 import 'package:wajba/core/styles.dart';
-import 'package:wajba/features/KitchensProfile/presentation/views/widgets/custom_back_button.dart';
+import 'package:wajba/core/widgets/custom_back_button.dart';
 
 class ViewAllAppBar extends StatelessWidget {
   final String title;

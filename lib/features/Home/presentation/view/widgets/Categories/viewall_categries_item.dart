@@ -54,7 +54,7 @@ class CategoriesViewallItem extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: height * 0.123,
+          top: height * 0.09,
           right: width * 0.025,
           child: Container(
               decoration: const BoxDecoration(
@@ -65,7 +65,7 @@ class CategoriesViewallItem extends StatelessWidget {
               child: Image.asset('assets/images/HomeScreen/WillysIcon.png')),
         ),
         Positioned(
-          top: height * 0.159,
+          top: height * 0.125,
           right: width * 0.252,
           child: Container(
               decoration: const BoxDecoration(
@@ -81,15 +81,15 @@ class CategoriesViewallItem extends StatelessWidget {
                     .copyWith(fontSize: 12, color: wajbah_white),
               ))),
         ),
-        Positioned(
-          top: height * 0.188,
+        /*Positioned(
+          top: height * 0.155,
           right: width * 0.054,
           child: const Icon(
             Icons.verified_sharp,
             color: wajbah_primary,
             size: 15,
           ),
-        ),
+        ),*/
       ],
     );
   }

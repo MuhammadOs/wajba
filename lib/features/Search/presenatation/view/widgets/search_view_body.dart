@@ -41,6 +41,7 @@ class SearchViewBody extends StatelessWidget {
               ),
               SizedBox(height: height * 0.02),
               const SearchCustomText(title: 'Featured Kitchens'),
+              SizedBox(height: height * 0.005),
               const FeaturedKitchensListView()
             ],
           ),

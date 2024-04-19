@@ -25,9 +25,24 @@ class AccountNameTitle extends StatelessWidget {
               arguments: ProfileData(name: name));
         },
         child: ListTile(
-          leading: Container(
-            width: width * 0.1,
-            height: height * 0.06,
+          leading: CircleAvatar(
+            radius: 30,
+            backgroundColor: wajbah_primary,
+            child: Center(
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: height * 0.005),
+                child: Text(
+                  name.substring(0, 1),
+                  style: Styles.titleLarge
+                      .copyWith(fontSize: 30, color: wajbah_white),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+          ),
+          /*Container(
+            width: width * 0.13,
+            height: width * 0.13,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
               color: wajbah_primary,
@@ -44,20 +59,20 @@ class AccountNameTitle extends StatelessWidget {
               ),
             ),
           ),
+          */
           title: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              name,
-              style:
-                  Styles.titleLarge.copyWith(fontSize: 18, color: wajbah_black),
-            ),
-          ),
-          trailing: const Icon(
-            Icons.arrow_forward_ios,
-            size: 18,
+          alignment: Alignment.centerLeft,
+          child: Text(
+            name,
+            style:
+            Styles.titleLarge.copyWith(fontSize: 18, color: wajbah_black),
           ),
         ),
+        trailing: const Icon(
+          Icons.arrow_forward_ios,
+          size: 18,
+        ),
       ),
-    );
+    ),);
   }
 }

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/core/constants/constants.dart';
 import 'package:wajba/core/sizeConfig.dart';
 import 'package:wajba/core/styles.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/ratings.dart';
 import 'package:wajba/features/KitchensProfile/presentation/views/widgets/kitchen_raiting_container.dart';
+
+import '../../../../../../core/constants/constants.dart';
 
 class ShinningAllItems extends StatelessWidget {
   const ShinningAllItems({
@@ -15,6 +16,7 @@ class ShinningAllItems extends StatelessWidget {
     SizeConfig().init(context);
     double width = SizeConfig.screenW!;
     double height = SizeConfig.screenH!;
+    double iconSize = SizeConfig.iconSize!;
     return Stack(
       children: [
         Container(
@@ -36,7 +38,7 @@ class ShinningAllItems extends StatelessWidget {
                   child: Image.asset(
                     fit: BoxFit.cover,
                     alignment: Alignment.topCenter,
-                    'assets/images/android_12_splash.png',
+                    'assets/images/HomeScreen/WillysKitchen.png',
                   ),
                 ),
               ),
@@ -95,8 +97,9 @@ class ShinningAllItems extends StatelessWidget {
                           SizedBox(
                             height: height * 0.006,
                           ),
-                          const Ratings(
+                          Ratings(
                             rating: 150,
+                            size: iconSize,
                           ),
                         ],
                       ),

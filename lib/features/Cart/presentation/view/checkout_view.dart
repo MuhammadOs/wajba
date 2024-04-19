@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/constants/constants.dart';
 import 'package:wajba/core/styles.dart';
-import 'package:wajba/features/Account/presentation/view/widgets/account_appbar.dart';
-
+import 'package:wajba/features/Order_Tracking/presentation/view/track_screen_view.dart';
+import '../../../../core/constants/constants.dart';
+import '../../../../core/widgets/custom_appbar.dart';
 import '../../data/cart_item_class.dart';
 
 class CheckoutScreen extends StatefulWidget {
@@ -61,7 +61,10 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          AccountAppBar(title: "Checkout"),
+          const SizedBox(
+            height: 40,
+          ),
+          CustomAppBar(title: "Checkout"),
           Expanded(
             child: SingleChildScrollView(
               child: Column(
@@ -110,9 +113,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   const SizedBox(height: 10),
                   _buildOrderSummarySection(),
                   const SizedBox(
-                    height: 60,
+                    height: 100,
                   )
-                  // Add your UI components here
                 ],
               ),
             ),
@@ -121,7 +123,12 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: wajbah_primary,
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const TrackScreenView()),
+          );
+        },
         label: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -396,7 +403,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               SizedBox(width: 10),
               _buildTipButton(15),
               SizedBox(width: 10),
-              _buildTipButton(20),
+              //_buildTipButton(20),
             ],
           ),
           SizedBox(height: 10),

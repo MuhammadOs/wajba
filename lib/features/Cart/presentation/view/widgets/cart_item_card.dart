@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/constants/constants.dart';
-import 'package:wajba/features/Cart/presentation/view/widgets/cart_item_card.dart';
-
+import '../../../../../core/constants/constants.dart';
 import '../../../data/cart_item_class.dart';
 
 class CartItemCard extends StatefulWidget {

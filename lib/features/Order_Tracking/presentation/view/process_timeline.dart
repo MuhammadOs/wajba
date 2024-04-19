@@ -81,7 +81,7 @@ class _ProcessTimelinePageState extends State<ProcessTimelinePage> {
     return Timeline.tileBuilder(
       theme: TimelineThemeData(
         direction: Axis.horizontal,
-        connectorTheme: ConnectorThemeData(
+        connectorTheme: const ConnectorThemeData(
           space: 30.0,
           thickness: 5.0,
         ),
@@ -117,7 +117,7 @@ class _ProcessTimelinePageState extends State<ProcessTimelinePage> {
                   Color.lerp(prevColor, color, 0.5)!
                 ];
               }
-              return DotIndicator(
+              return const DotIndicator(
                 size: 10,
                 color: wajbah_gray,
 

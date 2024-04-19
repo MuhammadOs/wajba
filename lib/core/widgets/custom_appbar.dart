@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/core/sizeConfig.dart';
-import 'package:wajba/core/styles.dart';
-import 'package:wajba/features/KitchensProfile/presentation/views/widgets/custom_back_button.dart';
 
-class AccountAppBar extends StatelessWidget {
-  AccountAppBar({super.key, required this.title});
+import 'custom_back_button.dart';
+import '../sizeConfig.dart';
+import '../styles.dart';
+
+class CustomAppBar extends StatelessWidget {
+  CustomAppBar({super.key, required this.title});
   final String title;
 
   @override

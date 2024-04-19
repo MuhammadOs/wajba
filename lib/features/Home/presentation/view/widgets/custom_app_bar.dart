@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:wajba/core/constants/constants.dart';
 import 'package:wajba/core/styles.dart';
 
-class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({
+class HomeAppBar extends StatelessWidget {
+  const HomeAppBar({
     Key? key,
   }) : super(key: key);
 

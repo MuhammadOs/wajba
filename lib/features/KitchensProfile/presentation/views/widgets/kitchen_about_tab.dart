@@ -29,7 +29,7 @@ class KitchenAboutTab extends StatelessWidget {
                   .copyWith(fontSize: screenWidth * 0.04, color: wajbah_black),
             ),
             trailing: SizedBox(
-              width: screenWidth * 0.22,
+              width: screenWidth * 0.25,
               child: const KitchenProfileCustomContainer(
                 icon: Icons.watch_later,
                 label: 'Open Now',

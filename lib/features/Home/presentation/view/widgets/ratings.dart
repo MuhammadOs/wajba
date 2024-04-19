@@ -4,9 +4,10 @@ import 'package:wajba/core/styles.dart';
 class Ratings extends StatelessWidget {
   const Ratings({
     super.key,
-    required this.rating,
+    required this.rating, required this.size,
   });
   final int rating;
+  final double size;
 
   @override
   Widget build(BuildContext context) {
@@ -14,22 +15,22 @@ class Ratings extends StatelessWidget {
       children: [
         Icon(
           Icons.star,
-          size: 18,
+          size: size,
           color: rating >= 10 ? const Color(0xffF6CF00) : Colors.grey,
         ),
         Icon(
           Icons.star,
-          size: 18,
+          size: size,
           color: rating >= 50 ? const Color(0xffF6CF00) : Colors.grey,
         ),
         Icon(
           Icons.star,
-          size: 18,
+          size: size,
           color: rating >= 90 ? const Color(0xffF6CF00) : Colors.grey,
         ),
         Icon(
           Icons.star,
-          size: 18,
+          size: size,
           color: rating >= 150 ? const Color(0xffF6CF00) : Colors.grey,
         ),
         Padding(

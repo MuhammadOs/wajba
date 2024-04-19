@@ -12,13 +12,13 @@ class TryThisListView extends StatelessWidget {
 
     double height = SizeConfig.screenH!;
     return SizedBox(
-      height: height * 0.284,
+      height: height * 0.24,
       child: ListView.builder(
         itemCount: ItemsData.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
             child: TryThisListItem(tryThisItem: ItemsData[index]),
           );
         },

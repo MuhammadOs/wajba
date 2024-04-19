@@ -61,7 +61,7 @@ class _ReferAndEarnObjectiveState extends State<ReferAndEarnObjective> {
   Widget build(BuildContext context) {
     return Container(
       width: widget.width * 0.4,
-      height: widget.height * 0.23,
+      height: widget.height * 0.20,
       decoration: BoxDecoration(
         color: wajbah_white.withOpacity(0.1),
         border: Border.all(color: wajbah_gray.withOpacity(0.6)),

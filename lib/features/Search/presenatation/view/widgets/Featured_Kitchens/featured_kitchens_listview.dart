@@ -13,7 +13,7 @@ class FeaturedKitchensListView extends StatelessWidget {
     double width = SizeConfig.screenW!;
     double height = SizeConfig.screenH!;
     return SizedBox(
-      height: height * 0.4,
+      height: height * 0.26,
       child: ListView.builder(
         itemCount: 5,
         scrollDirection: Axis.horizontal,

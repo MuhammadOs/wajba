@@ -31,10 +31,13 @@ class _AllowNotification extends State<AllowNotification> {
               mainText: 'Allow your notification',
               subText:
                   '\t\twe\'ll be able to send you\noffers and recomendations',
-              image: 'assets/images/Allow_notification.png'),
+              image: 'assets/images/permissions/Allow_Location.png'),
           PermissionsButton(
             width: width * 1.32,
             text: "Sure, i'd like that",
+            onPressed: () {
+              Navigator.pushNamed(context, 'login');
+            },
           ),
           const SizedBox(
             height: 30,

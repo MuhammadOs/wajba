@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/constants/constants.dart';
 import 'package:wajba/features/Cart/presentation/view/widgets/cart_item_card.dart';
+import '../../../../core/constants/constants.dart';
 import '../../../../core/styles.dart';
 import '../../data/cart_item_class.dart';
 import 'checkout_view.dart';
@@ -16,7 +16,6 @@ class _CartViewState extends State<CartView> {
   final List<CartItem> _cartItems = [
     CartItem(id: 1, name: 'Pizza', price: 10.99, quantity: 1),
     CartItem(id: 2, name: 'Burger', price: 8.99, quantity: 3),
-    CartItem(id: 1, name: 'Pizza', price: 10.00, quantity: 1),
   ];
 
   double taxRate = 0.1;

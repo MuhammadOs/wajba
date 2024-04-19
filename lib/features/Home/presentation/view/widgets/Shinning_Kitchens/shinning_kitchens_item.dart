@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/core/constants/constants.dart';
 import 'package:wajba/core/sizeConfig.dart';
 import 'package:wajba/core/styles.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/ratings.dart';
+
+import '../../../../../../core/constants/constants.dart';
 
 class ShinningKitchenItem extends StatelessWidget {
   const ShinningKitchenItem({
@@ -14,6 +15,7 @@ class ShinningKitchenItem extends StatelessWidget {
     SizeConfig().init(context);
     double width = SizeConfig.screenW!;
     double height = SizeConfig.screenH!;
+    double iconSize = SizeConfig.iconSize!;
     return Stack(
       children: [
         Container(
@@ -85,8 +87,9 @@ class ShinningKitchenItem extends StatelessWidget {
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.006,
                           ),
-                          const Ratings(
+                          Ratings(
                             rating: 150,
+                            size: iconSize,
                           ),
                         ],
                       ),

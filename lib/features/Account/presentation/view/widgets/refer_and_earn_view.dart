@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:wajba/core/constants/constants.dart';
 import 'package:wajba/core/sizeConfig.dart';
 import 'package:wajba/core/styles.dart';
-import 'package:wajba/features/Account/presentation/view/widgets/account_appbar.dart';
 import 'package:wajba/features/Account/presentation/view/widgets/objective_item.dart';
+
+import '../../../../../core/widgets/custom_appbar.dart';
 
 class ReferAndEarnView extends StatefulWidget {
   const ReferAndEarnView({Key? key});
@@ -55,10 +56,11 @@ class _ReferAndEarnViewState extends State<ReferAndEarnView>
     double width = SizeConfig.screenW!;
     double height = SizeConfig.screenH!;
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
           children: [
-            AccountAppBar(title: 'Refer And Earn'),
+            CustomAppBar(title: 'Refer And Earn'),
             Expanded(
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: height * 0.17),
@@ -74,8 +76,7 @@ class _ReferAndEarnViewState extends State<ReferAndEarnView>
                     ),
                     Text(
                       'Refer a friend and receive credit in your wajbah wallet!\nThey will enjoy a discount on their first 2 orders, capped at EGP 50',
-                      style: Styles.titleSmall
-                          .copyWith(fontSize: 15, color: wajbah_black),
+                      style: Styles.hint.copyWith(fontSize: 12),
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(

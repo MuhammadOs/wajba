@@ -19,7 +19,6 @@ class CustomButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(15),
           ),
           splashFactory: NoSplash.splashFactory,
-          primary: color,
         ),
         onPressed: onPressed,
         child: Text(

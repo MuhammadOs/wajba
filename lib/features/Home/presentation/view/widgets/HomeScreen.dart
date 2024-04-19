@@ -12,7 +12,7 @@ class HomeScreenView extends StatelessWidget {
     return const SingleChildScrollView(
       child: Column(
         children: [
-          CustomAppBar(),
+          HomeAppBar(),
           HomeScreenViewBody(),
         ],
       ),

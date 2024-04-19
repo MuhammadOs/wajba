@@ -4,24 +4,19 @@ import '../../../../../core/constants/constants.dart';
 import '../../../../../core/styles.dart';
 import 'hint_text.dart';
 
-class CustomTextField extends StatelessWidget {
-  const CustomTextField(
-      {super.key, required this.usernameController, this.hintText});
+class EmailTextField extends StatelessWidget {
+  const EmailTextField({super.key, required this.emailController});
 
-  final TextEditingController usernameController;
-  final String? hintText;
+  final TextEditingController emailController;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        HintText(hintText: hintText ?? ""),
-        const SizedBox(
-          height: 5,
-        ),
+        const HintText(hintText: "Email"),
         TextFormField(
-          controller: usernameController,
+          controller: emailController,
           style: Styles.titleSmall,
           decoration: InputDecoration(
             labelStyle: Styles.titleSmall.copyWith(
@@ -66,7 +61,10 @@ class CustomTextField extends StatelessWidget {
           },
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return '$hintText must not be empty !';
+              return 'Email must not be empty!';
+            }
+            if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
+              return 'Please enter a valid email address';
             }
             return null;
           },

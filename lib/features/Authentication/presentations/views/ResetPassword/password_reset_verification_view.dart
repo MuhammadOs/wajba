@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:wajba/core/sizeConfig.dart';
+import 'package:wajba/features/Authentication/presentations/views/ResetPassword/reset_password.dart';
 import 'package:wajba/features/Authentication/presentations/views/permissions_view/widgets/permissions_body.dart';
 import 'package:wajba/features/Authentication/presentations/views/widgets/custom_button.dart';
-
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/styles.dart';
+import '../../../../../core/widgets/custom_appbar.dart';
 
 class ResetPasswordVerification extends StatefulWidget {
   const ResetPasswordVerification({super.key});
@@ -15,7 +16,10 @@ class ResetPasswordVerification extends StatefulWidget {
 }
 
 class _ResetPasswordVerification extends State<ResetPasswordVerification> {
-  var verificationController = TextEditingController();
+  var verificationController1 = TextEditingController();
+  var verificationController2 = TextEditingController();
+  var verificationController3 = TextEditingController();
+  var verificationController4 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,41 +29,17 @@ class _ResetPasswordVerification extends State<ResetPasswordVerification> {
     debugPrint("$width");
     debugPrint("$height");
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Row(
-              children: [
-                Container(
-                    width: 35,
-                    height: 35,
-                    decoration: const BoxDecoration(
-                      color: wajbah_buttons,
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Icon(
-                        Icons.keyboard_arrow_left,
-                        size: 28,
-                      ),
-                    )),
-                const Spacer(),
-                Text(
-                  "Reset Password",
-                  style: Styles.titleMedium.copyWith(fontSize: 20),
-                ),
-                const Spacer(),
-              ],
-            ),
+            CustomAppBar(title: "Reset Password"),
             PermissionsBody(
                 width: width,
                 height: height,
-                image: 'assets/images/verification_reset.png',
+                image: 'assets/images/authentication/verification_reset.png',
                 mainText: 'Enter verification code',
                 subText:
                     '\t\tWe\'ll send you a 4-digit code to verify\nyour email address'),
@@ -72,7 +52,7 @@ class _ResetPasswordVerification extends State<ResetPasswordVerification> {
                       width: 50.0, // Set the width and height to make it square
                       height: 50.0,
                       child: TextFormField(
-                        controller: verificationController,
+                        controller: verificationController1,
                         keyboardType: TextInputType.number,
                         maxLength: 1,
                         textAlign: TextAlign.center,
@@ -118,7 +98,7 @@ class _ResetPasswordVerification extends State<ResetPasswordVerification> {
                       width: 50.0, // Set the width and height to make it square
                       height: 50.0,
                       child: TextFormField(
-                        controller: verificationController,
+                        controller: verificationController2,
                         keyboardType: TextInputType.number,
                         maxLength: 1,
                         textAlign: TextAlign.center,
@@ -164,7 +144,7 @@ class _ResetPasswordVerification extends State<ResetPasswordVerification> {
                       width: 50.0, // Set the width and height to make it square
                       height: 50.0,
                       child: TextFormField(
-                        controller: verificationController,
+                        controller: verificationController3,
                         keyboardType: TextInputType.number,
                         maxLength: 1,
                         textAlign: TextAlign.center,
@@ -210,7 +190,7 @@ class _ResetPasswordVerification extends State<ResetPasswordVerification> {
                       width: 50.0, // Set the width and height to make it square
                       height: 50.0,
                       child: TextFormField(
-                        controller: verificationController,
+                        controller: verificationController4,
                         keyboardType: TextInputType.number,
                         maxLength: 1,
                         textAlign: TextAlign.center,
@@ -283,9 +263,16 @@ class _ResetPasswordVerification extends State<ResetPasswordVerification> {
             SizedBox(
                 width: width * 0.8,
                 height: 50,
-                child: const CustomButton(
+                child: CustomButton(
                   text: "Verify",
                   color: wajbah_primary,
+                  onPressed: (){
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (c) {
+                        return const ResetPassword();
+                      },
+                    ));
+                  },
                 )),
           ],
         ),

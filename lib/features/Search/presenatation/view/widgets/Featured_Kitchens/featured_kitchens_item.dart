@@ -15,6 +15,7 @@ class FeaturedKitchenItem extends StatelessWidget {
     SizeConfig().init(context);
     double width = SizeConfig.screenW!;
     double height = SizeConfig.screenH!;
+    double iconSize = SizeConfig.iconSize!;
     return Stack(
       children: [
         Container(
@@ -28,8 +29,8 @@ class FeaturedKitchenItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: height * 0.15,
-                width: width * 0.8,
+                height: height * 0.14,
+                width: width * 0.75,
                 child: ClipRRect(
                   borderRadius: const BorderRadius.only(
                       topRight: Radius.circular(25),
@@ -46,50 +47,47 @@ class FeaturedKitchenItem extends StatelessWidget {
                 child: Row(
                   children: [
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * .1,
-                      width: MediaQuery.of(context).size.width * .15,
+                      height: MediaQuery.of(context).size.height * .10,
+                      width: MediaQuery.of(context).size.width * .12,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10),
                         child: Image.asset(
                             'assets/images/HomeScreen/WillysIcon.png'),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                'Willys Kitchen',
-                                style: Styles.titleLarge.copyWith(fontSize: 18),
-                              ),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              const Icon(
-                                Icons.verified,
-                                color: wajbah_primary,
-                                size: 20,
-                              )
-                            ],
-                          ),
-                          Text(
-                            'beef, chicken and more',
-                            style: Styles.hint.copyWith(fontSize: 12),
-                          ),
-                          const Ratings(
-                            rating: 150,
-                          ),
-                          const CustomContainer(
-                            label: "open now",
-                            icon: Icons.watch_later_sharp,
-                            iconColor: wajbah_green,
-                            labelColor: wajbah_green,
-                          )
-                        ],
-                      ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Willys Kitchen',
+                              style: Styles.titleLarge.copyWith(fontSize: 18),
+                            ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            const Icon(
+                              Icons.verified,
+                              color: wajbah_primary,
+                              size: 20,
+                            )
+                          ],
+                        ),
+                        Text(
+                          'beef, chicken and more',
+                          style: Styles.hint.copyWith(fontSize: 12),
+                        ),
+                        Ratings(
+                          rating: 150, size: iconSize,
+                        ),
+                        const CustomContainer(
+                          label: "open now",
+                          icon: Icons.watch_later_sharp,
+                          iconColor: wajbah_green,
+                          labelColor: wajbah_green,
+                        )
+                      ],
                     )
                   ],
                 ),

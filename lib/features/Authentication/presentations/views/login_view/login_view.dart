@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:wajba/core/constants/constants.dart';
+import 'package:wajba/features/Authentication/presentations/views/ResetPassword/password_reset_verification_view.dart';
 import 'package:wajba/features/Authentication/presentations/views/ResetPassword/reset_password.dart';
 import 'package:wajba/features/Authentication/presentations/views/widgets/custom_button.dart';
+import 'package:wajba/features/Authentication/presentations/views/widgets/custom_text_field.dart';
+import 'package:wajba/features/Authentication/presentations/views/widgets/email_text_field.dart';
+import 'package:wajba/features/Authentication/presentations/views/widgets/password_text_field.dart';
 import 'package:wajba/features/Home/presentation/view/home_screen.dart';
 import '../../../../../core/sizeConfig.dart';
 import '../../../../../core/styles.dart';
@@ -18,13 +22,14 @@ class _LoginViewState extends State<LoginView> {
   var passwordController = TextEditingController();
   var formkey = GlobalKey<FormState>();
 
-  bool isPassword = true;
+  bool isPassword = false;
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     double width = SizeConfig.screenW!;
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(30.0),
         child: Center(
@@ -36,95 +41,18 @@ class _LoginViewState extends State<LoginView> {
                 children: [
                   Text('Login',
                       style: Styles.titleLarge.copyWith(color: wajbah_black)),
-                  isPassword == false
-                      ? const Padding(
-                          padding: EdgeInsets.only(left: 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Icon(
-                                Icons.error,
-                                size: 15,
-                                color: Colors.red,
-                              ),
-                              Text(
-                                ' Invalid username or password !',
-                                style: Styles.titleSmall,
-                              ),
-                            ],
-                          ),
-                        )
-                      : Container(),
                   const SizedBox(
                     height: 40.0,
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 10, bottom: 10),
-                    child: Text(
-                      'Email',
-                      style: Styles.hint,
-                    ),
-                  ),
-                  TextFormField(
-                    controller: usernameController,
-                    style: Styles.titleSmall,
-                    decoration: InputDecoration(
-                      labelStyle: Styles.titleSmall.copyWith(
-                        color: wajbah_black,
-                      ),
-                      contentPadding: const EdgeInsets.symmetric(
-                          vertical: 15, horizontal: 10),
-                      filled: true,
-                      fillColor: wajbah_buttons,
-                      border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                        borderSide: BorderSide(
-                          color: wajbah_gray,
-                          width: 1.0,
-                        ),
-                      ),
-                      focusedBorder: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(25)),
-                        borderSide: BorderSide(
-                          color: wajbah_gray,
-                          width: 1.0,
-                        ),
-                      ),
-                      disabledBorder: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                        borderSide: BorderSide(
-                          color: wajbah_gray,
-                          width: 1.0,
-                        ),
-                      ),
-                      enabledBorder: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                        borderSide: BorderSide(
-                          color: wajbah_buttons,
-                          width: 1.0,
-                        ),
-                      ),
-                      /*prefixIcon: Icon(
-                          Icons.account_circle_outlined,
-                          color: wajbah_black,
-                        )*/
-                    ),
-                    keyboardType: TextInputType.name,
-                    onFieldSubmitted: (String value) {
-                      debugPrint(value);
-                    },
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'username must not be empty !';
-                      }
-                      return null;
-                    },
+                  CustomTextField(
+                    usernameController: usernameController,
+                    hintText: "Username",
                   ),
                   const SizedBox(
                     height: 25.0,
                   ),
                   const Padding(
-                    padding: EdgeInsets.only(left: 10, bottom: 10),
+                    padding: EdgeInsets.only(left: 10, bottom: 5),
                     child: Text(
                       'Password',
                       style: Styles.hint,
@@ -132,6 +60,7 @@ class _LoginViewState extends State<LoginView> {
                   ),
                   TextFormField(
                     controller: passwordController,
+                    obscureText: isPassword ? false : true,
                     decoration: InputDecoration(
                       labelStyle:
                           Styles.titleSmall.copyWith(color: wajbah_black),
@@ -160,10 +89,6 @@ class _LoginViewState extends State<LoginView> {
                           width: 1.0,
                         ),
                       ),
-                      /*prefixIcon: const Icon(
-                        Icons.lock_open_outlined,
-                        color: wajbah_primary,
-                      ),*/
                       suffixIcon: ElevatedButton(
                         style: ButtonStyle(
                           splashFactory: NoSplash.splashFactory,
@@ -187,6 +112,12 @@ class _LoginViewState extends State<LoginView> {
                         },
                       ),
                     ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Password must not be empty !';
+                      }
+                      return null;
+                    },
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -201,7 +132,7 @@ class _LoginViewState extends State<LoginView> {
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
                               builder: (c) {
-                                return const ResetPassword();
+                                return const ResetPasswordVerification();
                               },
                             ));
                           },

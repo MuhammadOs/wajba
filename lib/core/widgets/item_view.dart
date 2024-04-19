@@ -1,11 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:wajba/core/constants/constants.dart';
 import 'package:wajba/core/sizeConfig.dart';
 import 'package:wajba/core/styles.dart';
-import 'package:wajba/features/Account/presentation/view/widgets/account_appbar.dart';
 import 'package:wajba/features/Home/data/items_data.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/custom_rating_stars.dart';
+
+import 'custom_appbar.dart';
 
 class ItemViewScreen extends StatefulWidget {
   ItemViewScreen({super.key});
@@ -24,8 +26,7 @@ class _ItemViewScreenState extends State<ItemViewScreen> {
   void initState() {
     super.initState();
     currentsize = Sizes[0];
-    totalprice = 0; // Initialize currentsize with Sizes[0]
-    // Initialize currentprice with the price of Sizes[0]
+    totalprice = 0;
   }
 
   @override
@@ -39,7 +40,7 @@ class _ItemViewScreenState extends State<ItemViewScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              AccountAppBar(title: args.kitchenName),
+              CustomAppBar(title: args.kitchenName),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: width * 0.048),
                 child: Column(
@@ -179,14 +180,15 @@ class _ItemViewScreenState extends State<ItemViewScreen> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            Sizes[
-                                                index], // Assuming this is the price for each size
+                                            Sizes[index],
+                                            // Assuming this is the price for each size
                                             style: Styles.titleLarge.copyWith(
                                                 fontSize: 15,
                                                 color: wajbah_gray),
                                           ),
                                           Text(
-                                            '${args.Prices[index]}\tEGP', // Assuming this is the price for each size
+                                            '${args.Prices[index]}\tEGP',
+                                            // Assuming this is the price for each size
                                             style: Styles.titleLarge.copyWith(
                                                 fontSize: 15,
                                                 color: wajbah_gray),
@@ -245,10 +247,33 @@ class _ItemViewScreenState extends State<ItemViewScreen> {
                       SizedBox(
                         width: width * 0.001,
                       ),
-                      Text(
-                        'Add to basket',
-                        style: Styles.titleSmall.copyWith(fontSize: 16),
-                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Center(
+                                  child: Text(
+                                    'Item added to basket',
+                                    style: Styles.titleMedium.copyWith(
+                                        color: wajbah_primary, fontSize: 18),
+                                  ),
+                                ),
+                                content: const Icon(
+                                  Icons.done_outline,
+                                  color: wajbah_green,
+                                ),
+                              );
+                            },
+                          );
+                        },
+                        child: Text(
+                          'Add to basket',
+                          style: Styles.titleSmall.copyWith(fontSize: 16),
+                        ),
+                      )
                     ],
                   ),
                 )

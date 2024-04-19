@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:iconify_flutter/iconify_flutter.dart';
-import 'package:iconify_flutter/icons/iconoir.dart';
-import 'package:iconify_flutter/icons/material_symbols.dart';
 import 'package:wajba/core/constants/constants.dart';
 import 'package:wajba/core/styles.dart';
-import 'package:wajba/features/Account/presentation/view/widgets/account_appbar.dart';
 import 'package:wajba/features/Order_Tracking/data/timeline_data.dart';
-
+import '../../../../core/sizeConfig.dart';
+import '../../../../core/widgets/custom_appbar.dart';
 import 'process_timeline.dart';
 
 class TrackScreenBody extends StatelessWidget {
@@ -14,10 +11,14 @@ class TrackScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = SizeConfig.screenW!;
+    double height = SizeConfig.screenH!;
+    double fontSize = SizeConfig.fontSize!;
+    double iconSize = SizeConfig.iconSize!;
     return SafeArea(
       child: Column(
         children: [
-          AccountAppBar(
+          CustomAppBar(
             title: 'Track Your Order',
           ),
           Text(
@@ -25,8 +26,8 @@ class TrackScreenBody extends StatelessWidget {
             style: Styles.titleMedium.copyWith(fontSize: 18),
           ),
           SizedBox(
-              width: 400,
-              height: 100,
+              width: width,
+              height: height * 0.1,
               child: ProcessTimelinePage(
                 processes: processes,
               )),
@@ -37,7 +38,7 @@ class TrackScreenBody extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Wajbah From',
                     style: Styles.hint,
                   ),
@@ -59,6 +60,89 @@ class TrackScreenBody extends StatelessWidget {
             thickness: 10,
             color: wajbah_gray_light,
           ),
+          Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Payment details", style: Styles.titleMedium.copyWith(
+                  fontSize: 18,
+                ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Subtotal:',
+                      style: Styles.titleSmall,
+                    ),
+                    Text(
+                      '\$ 47.96',
+                      style: Styles.titleSmall,
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Tax (4.80%):',
+                      style: Styles.titleSmall,
+                    ),
+                    Text(
+                      '\$ 4.80}',
+                      style: Styles.titleSmall,
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Delivery Fee:',
+                      style: Styles.titleSmall,
+                    ),
+                    Text(
+                      '\$ 5.00}',
+                      style: Styles.titleSmall,
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Discount:',
+                      style: Styles.titleSmall,
+                    ),
+                    Text(
+                      '\$ 2.00',
+                      style: Styles.titleSmall,
+                    ),
+                  ],
+                ),
+                Divider(
+                  color: wajbah_gray_light,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Total:',
+                      style: Styles.titleSmall,
+                    ),
+                    Text(
+                      '\$ 55.76',
+                      style: Styles.titleSmall,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );

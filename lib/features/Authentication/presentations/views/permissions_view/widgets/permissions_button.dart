@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wajba/core/constants/constants.dart';
 import 'package:wajba/core/styles.dart';
 
+// ignore: must_be_immutable
 class PermissionsButton extends StatelessWidget {
   String text;
   PermissionsButton(
@@ -17,13 +18,13 @@ class PermissionsButton extends StatelessWidget {
       height: 52,
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            elevation: 0, backgroundColor: wajbah_primary,
-            shadowColor: wajbah_primary,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
-            splashFactory: NoSplash.splashFactory,
-          ),
+              elevation: 0,
+              shadowColor: wajbah_primary,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+              splashFactory: NoSplash.splashFactory,
+              backgroundColor: wajbah_primary),
           onPressed: onPressed,
           child: Text(
             text,

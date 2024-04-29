@@ -13,13 +13,13 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
         style: ElevatedButton.styleFrom(
-          elevation: 0, backgroundColor: color,
-          shadowColor: color,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
-          ),
-          splashFactory: NoSplash.splashFactory,
-        ),
+            elevation: 0,
+            shadowColor: color,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            splashFactory: NoSplash.splashFactory,
+            backgroundColor: color),
         onPressed: onPressed,
         child: Text(
           text,

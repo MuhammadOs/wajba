@@ -10,7 +10,8 @@ class KitchensProfileAppBar extends StatelessWidget {
     SizeConfig().init(context);
     double screenWidth = SizeConfig.screenW!;
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05, vertical: screenWidth * 0.04),
+      padding: EdgeInsets.symmetric(
+          horizontal: screenWidth * 0.05, vertical: screenWidth * 0.04),
       child: const Row(
         children: [
           CustomBackButton(),

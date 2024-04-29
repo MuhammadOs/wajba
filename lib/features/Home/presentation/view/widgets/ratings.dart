@@ -36,8 +36,7 @@ class Ratings extends StatelessWidget {
           padding: const EdgeInsets.only(top: 3, left: 6),
           child: Text(
             '(98)',
-            style: Styles.titleLarge
-                .copyWith(fontSize: 12, color: Colors.grey),
+            style: Styles.titleLarge.copyWith(fontSize: 12, color: Colors.grey),
           ),
         )
       ],

@@ -18,14 +18,13 @@ class PermissionsButton extends StatelessWidget {
       height: 52,
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            elevation: 0,
-            shadowColor: wajbah_primary,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
-            splashFactory: NoSplash.splashFactory,
-            primary: wajbah_primary,
-          ),
+              elevation: 0,
+              shadowColor: wajbah_primary,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+              splashFactory: NoSplash.splashFactory,
+              backgroundColor: wajbah_primary),
           onPressed: onPressed,
           child: Text(
             text,

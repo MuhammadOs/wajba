@@ -1,14 +1,16 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:wajba/core/errors/faliures.dart';
-import 'package:wajba/core/utils/api_service.dart';
-import 'package:wajba/features/Home/data/models/item_model/meal_model.dart';
-import 'package:wajba/features/Home/data/repo/home_repo.dart';
+
+import '../../../../core/errors/faliures.dart';
+import '../../../../core/utils/api_service.dart';
+import '../models/item_model/result.dart';
+import 'home_repo.dart';
 
 class HomeRepoImpl implements HomeRepo {
   final ApiService apiservice;
 
   HomeRepoImpl(this.apiservice);
+
   @override
   fetchKitchensNearby() {
     // TODO: implement fetchKitchensNearby
@@ -21,23 +23,22 @@ class HomeRepoImpl implements HomeRepo {
     throw UnimplementedError();
   }
 
+
+
   @override
-  Future<Either<Faliure, List<MealModel>>> fetchTryThisTodayItems() async {
+  Future<Either<Failure, List<Result>>> fetchTryThisTodayItems() async {
     try {
-      var data = await apiservice.get(endpoint: 'MenuItemAPI');
-
-      List<MealModel> Meals = [];
-
-      for (var item in data['result']) {
-        Meals.add(MealModel.fromJson(item));
-      }
-      print(Meals);
-      return right(Meals);
+      var response = await apiservice.get(endpoint: 'MenuItemAPI');
+      print("home repo response: ${response['result']}]");
+      List<dynamic> resultJson = response['result'];
+      List<Result> meals = resultJson.map((e) => Result.fromJson(e)).toList();
+      return right(meals);
     } catch (e) {
       if (e is DioException) {
         return left(ServerFaliure.fromDioError(e));
+      } else {
+        return left(ServerFaliure(e.toString()));
       }
-      return left(ServerFaliure(e.toString()));
     }
   }
 }

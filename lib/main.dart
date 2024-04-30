@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,7 +27,11 @@ import 'package:wajba/features/Wallet/presentation/view/wajbah_wallet_view.dart'
 import 'features/Authentication/presentations/views/ResetPassword/reset_password.dart';
 
 void main() {
-  runApp(const WajbahUser());
+  runApp(DevicePreview(
+    builder: (BuildContext context) {
+      return WajbahUser();
+    },
+  ));
 }
 
 class WajbahUser extends StatelessWidget {
@@ -38,14 +43,14 @@ class WajbahUser extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) =>
-              TryThisTodayCubit(HomeRepoImpl(ApiService(Dio())))
+              TryThisTodayCubit(homeRepo: HomeRepoImpl(ApiService(Dio())))
                 ..fetchTryThisItems(),
         ),
       ],
       child: MaterialApp(
         theme: ThemeData(fontFamily: "Biryani"),
         debugShowCheckedModeBanner: false,
-        home: const OnBoardingScreen(),
+        home: const HomeScreen(),
         routes: {
           "Onboarding": (context) => const OnBoardingScreen(),
           "login": (context) => const LoginView(),

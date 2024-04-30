@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wajba/core/utils/api_service.dart';
+import 'package:wajba/features/Home/data/repo/home_repo_imp.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/Categories/category_listview.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/Categories/viewall_categories_listview.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/Kitchens_nearby/kitchens_nearby_listview.dart';
@@ -10,6 +13,7 @@ import 'package:wajba/features/Home/presentation/view/widgets/Sponsor_Second/spo
 import 'package:wajba/features/Home/presentation/view/widgets/TryThisToday/trythis_listview.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/TryThisToday/viewall_try_listview.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/homescreen_titles.dart';
+import 'package:wajba/features/Home/presentation/view_model/TryThisToday%20Cubit/try_this_today_cubit.dart';
 
 class HomeScreenViewBody extends StatelessWidget {
   const HomeScreenViewBody({super.key});

@@ -1,6 +1,6 @@
+import 'dart:convert';
 import 'package:equatable/equatable.dart';
-
-import 'result.dart';
+import 'package:wajba/features/Home/data/models/item_model/result.dart';
 
 class MealModel extends Equatable {
   final int? statusCode;
@@ -15,29 +15,31 @@ class MealModel extends Equatable {
     this.result,
   });
 
-  factory MealModel.fromJson(Map<String, dynamic> json) => MealModel(
-        statusCode: json['statusCode'] as int?,
-        isSuccess: json['isSuccess'] as bool?,
-        errorMessages: json['errorMessages'] as dynamic,
-        result: (json['result'] as List<dynamic>?)
-            ?.map((e) => Result.fromJson(e as Map<String, dynamic>))
-            .toList(),
-      );
+  factory MealModel.fromJson(Map<String, dynamic> json) {
+    return MealModel(
+      statusCode: json['statusCode'] as int?,
+      isSuccess: json['isSuccess'] as bool?,
+      errorMessages: json['errorMessages'] as dynamic,
+      result: (json['result'] as List<dynamic>?)
+          ?.map((e) => Result.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-        'statusCode': statusCode,
-        'isSuccess': isSuccess,
-        'errorMessages': errorMessages,
-        'result': result?.map((e) => e.toJson()).toList(),
-      };
+  Map<String, dynamic> toJson() {
+    return {
+      'statusCode': statusCode,
+      'isSuccess': isSuccess,
+      'errorMessages': errorMessages,
+      'result': result?.map((e) => e.toJson()).toList(),
+    };
+  }
 
   @override
-  List<Object?> get props {
-    return [
-      statusCode,
-      isSuccess,
-      errorMessages,
-      result,
-    ];
-  }
+  List<Object?> get props => [
+    statusCode,
+    isSuccess,
+    errorMessages,
+    result,
+  ];
 }

@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/core/constants/constants.dart';
 import 'package:wajba/core/sizeConfig.dart';
 import 'package:wajba/core/styles.dart';
-import 'package:wajba/features/Home/data/items_data.dart';
-import 'package:wajba/features/Home/data/models/item_model/meal_model.dart';
+import 'package:wajba/features/Home/data/models/item_model/result.dart';
 
-class TryThisListItem extends StatelessWidget {
-  final MealModel meal;
+class TryThisListItem extends StatefulWidget {
+  final Result meal;
+
   const TryThisListItem({super.key, required this.meal});
 
+  @override
+  State<TryThisListItem> createState() => _TryThisListItemState();
+}
+
+class _TryThisListItemState extends State<TryThisListItem> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -36,7 +40,7 @@ class TryThisListItem extends StatelessWidget {
                     height: height * 0.14,
                     width: width * 0.4,
                     child: Image.asset(
-                      meal.result!.firstOrNull?.photo ??
+                      widget.meal.photo ??
                           "assets/images/onboarding/Wajbah_Finale.png",
                       fit: BoxFit.cover,
                     ),
@@ -52,12 +56,12 @@ class TryThisListItem extends StatelessWidget {
                         width: width * 0.28,
                         child: Text(
                           overflow: TextOverflow.ellipsis,
-                          meal.result!.firstOrNull!.name.toString(),
+                          widget.meal.name ?? "Meal name",
                           style: Styles.titleSmall.copyWith(fontSize: 15),
                         ),
                       ),
                       Text(
-                        meal.result!.firstOrNull!.description.toString(),
+                        widget.meal.description ?? "Meal description",
                         style: Styles.hint.copyWith(fontSize: 8),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
@@ -65,11 +69,11 @@ class TryThisListItem extends StatelessWidget {
                       SizedBox(
                         height: height * 0.005,
                       ),
-                      Text(
-                        '${meal.result!.firstOrNull!.sizesPrices?.priceLarge} EGP',
-                        style: Styles.titleLarge
-                            .copyWith(fontSize: 12, color: wajbah_primary),
-                      ),
+                      /*Text(
+                          '${meal.result!.firstOrNull!.sizesPrices?.priceLarge} EGP',
+                          style: Styles.titleLarge
+                              .copyWith(fontSize: 12, color: wajbah_primary),
+                        ),*/
                     ],
                   ),
                 ),
@@ -83,7 +87,7 @@ class TryThisListItem extends StatelessWidget {
           child: ClipRRect(
               borderRadius: BorderRadius.circular(50),
               child: Image.asset(
-                meal.result!.firstOrNull?.photo ??
+                widget.meal.photo ??
                     "assets/images/onboarding/Wajbah_Finale.png",
                 height: height * 0.065,
                 fit: BoxFit.cover,

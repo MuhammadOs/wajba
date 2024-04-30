@@ -1,24 +1,22 @@
-part of 'try_this_today_cubit.dart';
+import '../../../data/models/item_model/result.dart';
 
-sealed class TryThisTodayState extends Equatable {
-  const TryThisTodayState();
-
-  @override
-  List<Object> get props => [];
-}
+abstract class TryThisTodayState {}
 
 final class TryThisTodayInitial extends TryThisTodayState {}
 
 final class TryThisTodayLoading extends TryThisTodayState {}
 
 final class TryThisTodaySuccess extends TryThisTodayState {
-  final List<MealModel> meals;
+  List<Result> meals;
 
-  TryThisTodaySuccess(this.meals);
+  TryThisTodaySuccess({required this.meals});
 }
 
-final class TryThisTodayFaliure extends TryThisTodayState {
+final class TryThisTodayFailure extends TryThisTodayState {
   final String errMessage;
 
-  TryThisTodayFaliure(this.errMessage);
+  TryThisTodayFailure(this.errMessage);
+
+  @override
+  String toString() => 'TryThisTodayFailure { errMessage: $errMessage }';
 }

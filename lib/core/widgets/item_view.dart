@@ -4,13 +4,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:wajba/core/constants/constants.dart';
 import 'package:wajba/core/sizeConfig.dart';
 import 'package:wajba/core/styles.dart';
-import 'package:wajba/features/Home/data/items_data.dart';
+import 'package:wajba/features/Home/data/models/meal.dart';
+import 'package:wajba/features/Home/data/models/size_prices.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/custom_rating_stars.dart';
 
 import 'custom_appbar.dart';
 
 class ItemViewScreen extends StatefulWidget {
-  ItemViewScreen({super.key});
+  ItemViewScreen({Key? key}) : super(key: key);
 
   @override
   State<ItemViewScreen> createState() => _ItemViewScreenState();
@@ -18,15 +19,17 @@ class ItemViewScreen extends StatefulWidget {
 
 class _ItemViewScreenState extends State<ItemViewScreen> {
   List<String> Sizes = ['Small', 'Medium', 'Large'];
+  SizesPrices prices = SizesPrices();
 
   String currentsize = '';
   double totalprice = 0;
 
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    var args = ModalRoute.of(context)!.settings.arguments as Meal;
+    totalprice = args.sizesPrices!.priceSmall ?? 0;
     currentsize = Sizes[0];
-    totalprice = 0;
   }
 
   @override
@@ -34,13 +37,13 @@ class _ItemViewScreenState extends State<ItemViewScreen> {
     SizeConfig().init(context);
     double width = SizeConfig.screenW!;
     double height = SizeConfig.screenH!;
-    var args = ModalRoute.of(context)!.settings.arguments as ItemData;
+    var args = ModalRoute.of(context)!.settings.arguments as Meal;
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              CustomAppBar(title: args.kitchenName),
+              CustomAppBar(title: args.name ?? "Kitchen name"),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: width * 0.048),
                 child: Column(
@@ -54,7 +57,9 @@ class _ItemViewScreenState extends State<ItemViewScreen> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(23),
                         child: Image.asset(
-                          args.itemImage,
+                          args.photo == "photo" || args.photo == null
+                              ? "assets/images/Wajbah_Finale.png"
+                              : args.photo!,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -63,7 +68,7 @@ class _ItemViewScreenState extends State<ItemViewScreen> {
                       height: height * 0.02,
                     ),
                     Text(
-                      args.itemname,
+                      args.name ?? "Item name",
                       style: Styles.titleMedium.copyWith(fontSize: 24),
                     ),
                     SizedBox(height: height * 0.005),
@@ -78,7 +83,7 @@ class _ItemViewScreenState extends State<ItemViewScreen> {
                           width: width * 0.009,
                         ),
                         Text(
-                          args.kitchenName,
+                          args.name ?? "Kitchen name",
                           style: Styles.titleMedium
                               .copyWith(color: wajbah_primary, fontSize: 10),
                         ),
@@ -94,7 +99,7 @@ class _ItemViewScreenState extends State<ItemViewScreen> {
                           width: width * 0.009,
                         ),
                         Text(
-                          '${args.prepareTime} min',
+                          '${args.orderingTime} min',
                           style: Styles.titleMedium
                               .copyWith(color: wajbah_green, fontSize: 10),
                         ),
@@ -103,7 +108,7 @@ class _ItemViewScreenState extends State<ItemViewScreen> {
                         ),
                         CustomRatingStars(
                           width: width,
-                          rating: args.itemRating,
+                          rating: 4,
                         ),
                       ],
                     ),
@@ -113,7 +118,7 @@ class _ItemViewScreenState extends State<ItemViewScreen> {
                       style: Styles.titleMedium.copyWith(fontSize: 15),
                     ),
                     Text(
-                      args.itemDiscription,
+                      args.description ?? "Item description",
                       style: Styles.titleSmall
                           .copyWith(fontSize: 15, color: wajbah_gray),
                     ),
@@ -167,9 +172,19 @@ class _ItemViewScreenState extends State<ItemViewScreen> {
                                     value: Sizes[index],
                                     groupValue: currentsize,
                                     onChanged: (value) {
+                                      prices = args.sizesPrices!;
                                       setState(() {
                                         currentsize = value.toString();
-                                        totalprice = args.Prices[index];
+                                        if (index == 0) {
+                                          totalprice =
+                                              args.sizesPrices!.priceSmall ?? 0;
+                                        } else if (index == 1) {
+                                          totalprice =
+                                              args.sizesPrices!.priceMedium ?? 0;
+                                        } else {
+                                          totalprice =
+                                              args.sizesPrices!.priceLarge ?? 0;
+                                        }
                                       });
                                     },
                                   ),
@@ -177,18 +192,16 @@ class _ItemViewScreenState extends State<ItemViewScreen> {
                                     child: Center(
                                       child: Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                        MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
                                             Sizes[index],
-                                            // Assuming this is the price for each size
                                             style: Styles.titleLarge.copyWith(
                                                 fontSize: 15,
                                                 color: wajbah_gray),
                                           ),
                                           Text(
-                                            '${args.Prices[index]}\tEGP',
-                                            // Assuming this is the price for each size
+                                            '${Sizes[index] == "Small" ? args.sizesPrices!.priceSmall : Sizes[index] == "Medium" ? args.sizesPrices!.priceMedium : args.sizesPrices!.priceLarge} EGP',
                                             style: Styles.titleLarge.copyWith(
                                                 fontSize: 15,
                                                 color: wajbah_gray),

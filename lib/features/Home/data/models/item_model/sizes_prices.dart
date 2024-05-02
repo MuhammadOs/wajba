@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+/*import 'package:equatable/equatable.dart';
 
 class SizesPrices extends Equatable {
   final int? priceSmall;
@@ -22,3 +22,5 @@ class SizesPrices extends Equatable {
   @override
   List<Object?> get props => [priceSmall, priceMedium, priceLarge];
 }
+
+ */

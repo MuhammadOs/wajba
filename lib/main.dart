@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wajba/core/utils/api_service.dart';
+import 'package:wajba/core/utils/dio_factory.dart';
 import 'package:wajba/features/Account/presentation/view/widgets/refer_and_earn_view.dart';
 import 'package:wajba/features/Authentication/presentations/views/login_view/login_view.dart';
 import 'package:wajba/features/Authentication/presentations/views/permissions_view/views/allow_location.dart';
@@ -43,8 +44,8 @@ class WajbahUser extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) =>
-              TryThisTodayCubit(homeRepo: HomeRepoImpl(ApiService(Dio())))
-                ..fetchTryThisItems(),
+              TryThisTodayCubit(homeRepo: HomeRepoImpl(DioFactory.getDio()))
+                ..getMeals(),
         ),
       ],
       child: MaterialApp(

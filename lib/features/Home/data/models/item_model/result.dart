@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+/*import 'package:equatable/equatable.dart';
 
 class Result extends Equatable {
   final int? menuItemId;
@@ -75,3 +75,5 @@ class Result extends Equatable {
         chefId,
       ];
 }
+
+ */

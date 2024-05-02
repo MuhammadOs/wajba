@@ -3,9 +3,11 @@ import 'package:wajba/core/constants/constants.dart';
 import 'package:wajba/core/sizeConfig.dart';
 import 'package:wajba/core/styles.dart';
 import 'package:wajba/features/Home/data/items_data.dart';
+import 'package:wajba/features/Home/data/models/meal.dart';
 
 class TryThisTodayViewAllItem extends StatelessWidget {
-  final ItemData tryThisItem;
+  final Meal tryThisItem;
+
   const TryThisTodayViewAllItem({
     super.key,
     required this.tryThisItem,
@@ -16,23 +18,24 @@ class TryThisTodayViewAllItem extends StatelessWidget {
     SizeConfig().init(context);
     double width = SizeConfig.screenW!;
     double height = SizeConfig.screenH!;
-    ItemData item;
-
     return Stack(
       children: [
         InkWell(
           onTap: () {
             Navigator.of(context).pushNamed('Item View',
-                arguments: ItemData(
-                    itemname: tryThisItem.itemname,
-                    kitchenIcon: tryThisItem.kitchenIcon,
-                    itemDiscription: tryThisItem.itemDiscription,
-                    itemPrice: tryThisItem.itemPrice,
-                    itemImage: tryThisItem.itemImage,
-                    kitchenName: tryThisItem.kitchenName,
-                    itemRating: tryThisItem.itemRating,
-                    prepareTime: tryThisItem.prepareTime,
-                    Prices: tryThisItem.Prices));
+                arguments: Meal(
+                  menuItemId: tryThisItem.menuItemId,
+                  name: tryThisItem.name,
+                  estimatedTime: tryThisItem.estimatedTime,
+                  orderingTime: tryThisItem.orderingTime,
+                  category: tryThisItem.category,
+                  occassions: tryThisItem.occassions,
+                  sizesPrices: tryThisItem.sizesPrices,
+                  healthyMode: tryThisItem.healthyMode,
+                  description: tryThisItem.description,
+                  photo: tryThisItem.photo,
+                  chefId: tryThisItem.chefId,
+                ));
           },
           child: Container(
             width: width * 0.45,
@@ -51,8 +54,10 @@ class TryThisTodayViewAllItem extends StatelessWidget {
                   child: SizedBox(
                     height: height * 0.14,
                     width: width * 0.45,
-                    child: Image.asset(
-                      tryThisItem.itemImage,
+                    child: Image.network(
+                      tryThisItem.photo == "photo" || tryThisItem.photo == null
+                          ? "https://www.shutterstock.com/image-vector/cutlery-icon-spoon-forks-knife-600nw-1931212061.jpg"
+                          : tryThisItem.photo!,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -64,11 +69,11 @@ class TryThisTodayViewAllItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        tryThisItem.kitchenName,
+                        tryThisItem.name ?? "Kitchen name",
                         style: Styles.titleSmall.copyWith(fontSize: 15),
                       ),
                       Text(
-                        tryThisItem.itemDiscription,
+                        tryThisItem.description ?? "Description",
                         style: Styles.hint.copyWith(fontSize: 8),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
@@ -88,8 +93,10 @@ class TryThisTodayViewAllItem extends StatelessWidget {
             child: SizedBox(
                 width: width * 0.1,
                 height: height * 0.07,
-                child: Image.asset(
-                  tryThisItem.kitchenIcon,
+                child: Image.network(
+                  tryThisItem.photo == "photo" || tryThisItem.photo == null
+                      ? "https://www.shutterstock.com/image-vector/cutlery-icon-spoon-forks-knife-600nw-1931212061.jpg"
+                      : tryThisItem.photo!,
                   fit: BoxFit.cover,
                 )),
           ),
@@ -106,7 +113,7 @@ class TryThisTodayViewAllItem extends StatelessWidget {
               height: height * 0.03,
               child: Center(
                   child: Text(
-                '${tryThisItem.itemPrice} EGP',
+                    '${tryThisItem.sizesPrices?.priceSmall} EGP',
                 style: Styles.titleMedium
                     .copyWith(fontSize: 10, color: wajbah_white),
               ))),

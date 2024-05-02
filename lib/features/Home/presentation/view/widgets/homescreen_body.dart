@@ -1,6 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wajba/core/utils/api_service.dart';
+import 'package:wajba/core/utils/dio_factory.dart';
 import 'package:wajba/features/Home/data/repo/home_repo_imp.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/Categories/category_listview.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/Categories/viewall_categories_listview.dart';
@@ -15,9 +17,14 @@ import 'package:wajba/features/Home/presentation/view/widgets/TryThisToday/viewa
 import 'package:wajba/features/Home/presentation/view/widgets/homescreen_titles.dart';
 import 'package:wajba/features/Home/presentation/view_model/TryThisToday%20Cubit/try_this_today_cubit.dart';
 
-class HomeScreenViewBody extends StatelessWidget {
+class HomeScreenViewBody extends StatefulWidget {
   const HomeScreenViewBody({super.key});
 
+  @override
+  State<HomeScreenViewBody> createState() => _HomeScreenViewBodyState();
+}
+
+class _HomeScreenViewBodyState extends State<HomeScreenViewBody> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -29,12 +36,19 @@ class HomeScreenViewBody extends StatelessWidget {
           visible: false,
         ),
         const CategoriesListView(),
-        HomeScreenMainTitles(
-          text: 'Try this today',
-          ScreenToNavigateTo: TryThisTodayViewAllListView(),
-          visible: true,
+        BlocProvider<TryThisTodayCubit>(
+          create: (context) =>
+              TryThisTodayCubit(homeRepo: HomeRepoImpl(DioFactory.getDio())),
+          child: HomeScreenMainTitles(
+            text: 'Try this today',
+            ScreenToNavigateTo: const TryThisTodayViewAllListView(),
+            visible: true,
+          ),
         ),
-        const TryThisListView(),
+        BlocProvider<TryThisTodayCubit>(
+            create: (context) =>
+                TryThisTodayCubit(homeRepo: HomeRepoImpl(DioFactory.getDio())),
+            child: const TryThisListView()),
         HomeScreenMainTitles(
           text: 'Shinning Kitchens',
           ScreenToNavigateTo: ShinningAll(),

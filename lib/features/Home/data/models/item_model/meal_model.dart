@@ -1,4 +1,4 @@
-import 'dart:convert';
+/*import 'dart:convert';
 import 'package:equatable/equatable.dart';
 import 'package:wajba/features/Home/data/models/item_model/result.dart';
 
@@ -43,3 +43,5 @@ class MealModel extends Equatable {
     result,
   ];
 }
+
+ */

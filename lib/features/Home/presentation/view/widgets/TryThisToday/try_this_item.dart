@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:wajba/core/constants/constants.dart';
 import 'package:wajba/core/sizeConfig.dart';
 import 'package:wajba/core/styles.dart';
-import 'package:wajba/features/Home/data/models/item_model/result.dart';
+import 'package:wajba/features/Home/data/models/meal.dart';
 
 class TryThisListItem extends StatefulWidget {
-  final Result meal;
+  final Meal meal;
 
   const TryThisListItem({super.key, required this.meal});
 
@@ -22,7 +23,22 @@ class _TryThisListItemState extends State<TryThisListItem> {
       children: [
         InkWell(
           borderRadius: BorderRadius.circular(23),
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).pushNamed('Item View',
+                arguments: Meal(
+                  menuItemId: widget.meal.menuItemId,
+                  name: widget.meal.name,
+                  estimatedTime: widget.meal.estimatedTime,
+                  orderingTime: widget.meal.orderingTime,
+                  category: widget.meal.category,
+                  occassions: widget.meal.occassions,
+                  sizesPrices: widget.meal.sizesPrices,
+                  healthyMode: widget.meal.healthyMode,
+                  description: widget.meal.description,
+                  photo: widget.meal.photo,
+                  chefId: widget.meal.chefId,
+                ));
+          },
           child: Container(
             width: width * 0.4,
             height: height * 0.27,
@@ -39,9 +55,10 @@ class _TryThisListItemState extends State<TryThisListItem> {
                   child: SizedBox(
                     height: height * 0.14,
                     width: width * 0.4,
-                    child: Image.asset(
-                      widget.meal.photo ??
-                          "assets/images/onboarding/Wajbah_Finale.png",
+                    child: Image.network(
+                      widget.meal.photo == "photo" || widget.meal.photo == null
+                          ? "https://www.shutterstock.com/image-vector/cutlery-icon-spoon-forks-knife-600nw-1931212061.jpg"
+                          : widget.meal.photo!,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -69,11 +86,11 @@ class _TryThisListItemState extends State<TryThisListItem> {
                       SizedBox(
                         height: height * 0.005,
                       ),
-                      /*Text(
-                          '${meal.result!.firstOrNull!.sizesPrices?.priceLarge} EGP',
-                          style: Styles.titleLarge
-                              .copyWith(fontSize: 12, color: wajbah_primary),
-                        ),*/
+                      Text(
+                        '${widget.meal.sizesPrices?.priceSmall} EGP',
+                        style: Styles.titleLarge
+                            .copyWith(fontSize: 12, color: wajbah_primary),
+                      ),
                     ],
                   ),
                 ),
@@ -86,9 +103,10 @@ class _TryThisListItemState extends State<TryThisListItem> {
           right: width * 0.01,
           child: ClipRRect(
               borderRadius: BorderRadius.circular(50),
-              child: Image.asset(
-                widget.meal.photo ??
-                    "assets/images/onboarding/Wajbah_Finale.png",
+              child: Image.network(
+                widget.meal.photo == "photo" || widget.meal.photo == null
+                    ? "https://www.shutterstock.com/image-vector/cutlery-icon-spoon-forks-knife-600nw-1931212061.jpg"
+                    : widget.meal.photo!,
                 height: height * 0.065,
                 fit: BoxFit.cover,
               )),

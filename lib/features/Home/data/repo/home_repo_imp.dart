@@ -1,15 +1,15 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-
-import '../../../../core/errors/faliures.dart';
-import '../../../../core/utils/api_service.dart';
-import '../models/item_model/result.dart';
-import 'home_repo.dart';
+import 'package:flutter/material.dart';
+import 'package:wajba/core/errors/faliures.dart';
+import 'package:wajba/core/utils/api_service.dart';
+import 'package:wajba/features/Home/data/models/get_meals_response_model.dart';
+import 'package:wajba/features/Home/data/repo/home_repo.dart';
 
 class HomeRepoImpl implements HomeRepo {
-  final ApiService apiservice;
+  Dio dio;
 
-  HomeRepoImpl(this.apiservice);
+  HomeRepoImpl(this.dio);
 
   @override
   fetchKitchensNearby() {
@@ -23,22 +23,36 @@ class HomeRepoImpl implements HomeRepo {
     throw UnimplementedError();
   }
 
-
-
   @override
-  Future<Either<Failure, List<Result>>> fetchTryThisTodayItems() async {
+  Future<Either<Failure, GetMealsResponseModel>> getMeals() async {
     try {
-      var response = await apiservice.get(endpoint: 'MenuItemAPI');
-      print("home repo response: ${response['result']}]");
-      List<dynamic> resultJson = response['result'];
-      List<Result> meals = resultJson.map((e) => Result.fromJson(e)).toList();
-      return right(meals);
+      final response = await dio.get("MenuItemAPI");
+      final responseData = response.data;
+      print(responseData); // Check the response data
+      return Right(GetMealsResponseModel.fromJson(responseData));
+    } catch (e) {
+      print(e.toString()); // Print any error for debugging
+      return left(ServerFaliure(e.toString()));
+    }
+  }
+
+
+}
+/*
+  @override
+  Future<Either<Failure, GetMealsResponseModel>> getMeals() async {
+    try {
+      final response = await dio.get("MenuItemAPI");
+      print(response.data['result']); // Check if this prints the expected data
+      return Right(GetMealsResponseModel.fromJson(response.data));
     } catch (e) {
       if (e is DioException) {
+        debugPrint("rooms repo impl / getRoomsList()");
+        debugPrint("Error : ${e.toString()}");
         return left(ServerFaliure.fromDioError(e));
       } else {
         return left(ServerFaliure(e.toString()));
       }
     }
   }
-}
+  */

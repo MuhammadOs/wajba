@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:wajba/core/constants/constants.dart';
-import 'package:wajba/core/sizeConfig.dart';
-import 'package:wajba/core/styles.dart';
+import 'package:wajba/core/util/theme.dart';
+import 'package:wajba/core/util/sizeConfig.dart';
+import 'package:wajba/core/util/styles.dart';
 import 'package:wajba/features/Profile/presentation/view/widgets/profile_items_divider.dart';
 import 'package:wajba/features/Profile/presentation/view/widgets/profile_list_item.dart';
 import '../../../../../core/widgets/custom_appbar.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/core/styles.dart';
+import 'package:wajba/core/util/styles.dart';
 
 class HotDealsKitchenTitle extends StatelessWidget {
   HotDealsKitchenTitle(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/core/constants/constants.dart';
-import 'package:wajba/core/sizeConfig.dart';
+import 'package:wajba/core/util/theme.dart';
+import 'package:wajba/core/util/sizeConfig.dart';
 import 'package:wajba/features/KitchensProfile/presentation/views/widgets/kitchen_raiting_container.dart';
-import '../../../../../core/styles.dart';
+import '../../../../../core/util/styles.dart';
 
 class KitchenAboutTab extends StatelessWidget {
   const KitchenAboutTab({Key? key});

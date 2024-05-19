@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/core/sizeConfig.dart';
+import 'package:wajba/core/util/sizeConfig.dart';
 import 'package:wajba/features/Home/data/categories_data.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/Categories/category_item.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/sizeConfig.dart';
+import '../../../../../core/util/sizeConfig.dart';
 import '../../../data/onboarding_data.dart';
 import 'onboarding_discription.dart';
 import 'onboarding_titles.dart';

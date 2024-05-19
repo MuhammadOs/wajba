@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/constants/constants.dart';
+import '../../../../../core/util/theme.dart';
 import 'kitchen_raiting_container.dart';
 
 class KitchenProfileInfoCard extends StatelessWidget {

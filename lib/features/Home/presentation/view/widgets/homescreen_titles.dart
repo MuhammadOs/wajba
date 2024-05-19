@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/core/styles.dart';
+import 'package:wajba/core/util/styles.dart';
 
 // ignore: must_be_immutable
 class HomeScreenMainTitles extends StatelessWidget {

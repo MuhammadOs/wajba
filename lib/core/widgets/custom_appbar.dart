@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'custom_back_button.dart';
-import '../sizeConfig.dart';
-import '../styles.dart';
+import '../util/sizeConfig.dart';
+import '../util/styles.dart';
 
 class CustomAppBar extends StatelessWidget {
   CustomAppBar({super.key, required this.title});

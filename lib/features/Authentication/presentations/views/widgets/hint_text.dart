@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/styles.dart';
+import '../../../../../core/util/styles.dart';
 
 class HintText extends StatelessWidget {
   const HintText({super.key, required this.hintText});

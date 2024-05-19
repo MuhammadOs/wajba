@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/constants/constants.dart';
-import '../../../../../core/styles.dart';
+import '../../../../../core/util/theme.dart';
+import '../../../../../core/util/styles.dart';
 
 class SearchTextField extends StatelessWidget {
   const SearchTextField({super.key});

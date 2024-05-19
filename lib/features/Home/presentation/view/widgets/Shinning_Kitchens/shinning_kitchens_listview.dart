@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/core/sizeConfig.dart';
+import 'package:wajba/core/util/sizeConfig.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/Shinning_Kitchens/shinning_kitchens_item.dart';
 import 'package:wajba/features/KitchensProfile/presentation/views/kitchen_profile_view.dart';
 

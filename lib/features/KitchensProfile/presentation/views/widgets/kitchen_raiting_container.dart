@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/sizeConfig.dart';
+import '../../../../../core/util/sizeConfig.dart';
 
 class KitchenProfileCustomContainer extends StatelessWidget {
   final IconData? icon;

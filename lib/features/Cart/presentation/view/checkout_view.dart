@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/core/styles.dart';
+import 'package:wajba/core/util/styles.dart';
 import 'package:wajba/features/Order_Tracking/presentation/view/track_screen_view.dart';
-import '../../../../core/constants/constants.dart';
+import '../../../../core/util/theme.dart';
 import '../../../../core/widgets/custom_appbar.dart';
 import '../../data/cart_item_class.dart';
 
@@ -34,11 +34,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   bool isCashChecked = true;
   bool isCreditChecked = false;
   String promoCode = '';
-  List<String> promoCodesList = [
-    'PROMO1',
-    'PROMO2',
-    'PROMO3'
-  ]; // List of promo codes
+  List<String> promoCodesList = ['PROMO1', 'PROMO2', 'PROMO3'];
 
   String promoCodeFeedback = '';
   Color promoCodeFieldColor = Colors.transparent;
@@ -164,16 +160,32 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Delivery Info',
-            style: Styles.titleMedium.copyWith(fontSize: 18),
+          Row(
+            children: [
+              Text(
+                'Delivery Info',
+                style: Styles.titleMedium.copyWith(fontSize: 18),
+              ),
+              const Spacer(),
+              Text(
+                'change location',
+                style: Styles.hint.copyWith(fontSize: 12),
+              ),
+            ],
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: isInstantChecked ? Colors.blue.withOpacity(0.3) : null,
-            ),
+                borderRadius: BorderRadius.circular(10),
+                color:
+                    isInstantChecked ? wajbah_primary.withOpacity(0.1) : null,
+                border: isInstantChecked
+                    ? const Border(
+                        top: BorderSide(color: wajbah_primary),
+                        bottom: BorderSide(color: wajbah_primary),
+                        left: BorderSide(color: wajbah_primary),
+                        right: BorderSide(color: wajbah_primary))
+                    : const Border()),
             padding: const EdgeInsets.all(8.0),
             child: GestureDetector(
               onTap: () {
@@ -184,9 +196,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               },
               child: Row(
                 children: [
-                  const Icon(Icons.fastfood),
                   const SizedBox(width: 10),
-                  const Text('Instant Delivery'),
+                  Text(
+                    'Instant Delivery',
+                    style: Styles.titleSmall.copyWith(fontSize: 16),
+                  ),
                   const Spacer(),
                   Checkbox(
                     value: isInstantChecked,
@@ -210,17 +224,35 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               });
             },
             child: Container(
-              color: isScheduledChecked ? Colors.blue.withOpacity(0.3) : null,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: isScheduledChecked
+                      ? wajbah_primary.withOpacity(0.1)
+                      : null,
+                  border: isScheduledChecked
+                      ? const Border(
+                          top: BorderSide(color: wajbah_primary),
+                          bottom: BorderSide(color: wajbah_primary),
+                          left: BorderSide(color: wajbah_primary),
+                          right: BorderSide(color: wajbah_primary))
+                      : const Border()),
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  Icon(Icons.calendar_today),
-                  SizedBox(width: 10),
-                  Text('Scheduled Delivery'),
-                  Spacer(),
+                  const SizedBox(width: 10),
+                  Text(
+                    'Scheduled Delivery',
+                    style: Styles.titleSmall.copyWith(fontSize: 16),
+                  ),
+                  const Spacer(),
                   TextButton(
                     onPressed: _selectTime,
-                    child: Text('Select Time'),
+                    child: Text(
+                      'Select time',
+                      style: Styles.titleSmall
+                          .copyWith(fontSize: 14)
+                          .copyWith(color: wajbah_primary),
+                    ),
                   ),
                   Checkbox(
                     value: isScheduledChecked,
@@ -253,43 +285,52 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Promo Code',
-            style: Styles.titleMedium.copyWith(fontSize: 18),
-          ),
-          const SizedBox(height: 10),
           Row(
             children: [
-              Expanded(
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Enter promo code',
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(color: promoCodeFieldColor),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    suffixIcon: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: IconButton(
-                        onPressed: _applyPromoCode,
-                        icon: const Text(
-                          'Apply',
-                          style: TextStyle(color: wajbah_primary),
-                        ),
-                      ),
-                    ),
-                  ),
-                  onChanged: (value) {
-                    setState(() {
-                      promoCode = value;
-                      promoCodeFieldColor =
-                          Colors.transparent; // Reset outline color
-                      promoCodeFeedback = ''; // Reset feedback
-                    });
-                  },
-                ),
+              Text(
+                'Add promocode',
+                style: Styles.titleMedium.copyWith(fontSize: 18),
+              ),
+              const Spacer(),
+              Text(
+                'optional',
+                style: Styles.hint.copyWith(fontSize: 12),
               ),
             ],
+          ),
+          const SizedBox(height: 10),
+          TextFormField(
+            decoration: InputDecoration(
+              hintText: 'E.g. Welcome50',
+              hintStyle: Styles.hint,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15),
+                ),
+              suffixIcon: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: IconButton(
+                  onPressed: _applyPromoCode,
+                  icon: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: wajbah_primary),
+                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+                    child: Text(
+                      'Apply',
+                      style: Styles.hint.copyWith(color: wajbah_white, fontSize: 10),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            onChanged: (value) {
+              setState(() {
+                promoCode = value;
+                promoCodeFieldColor =
+                    Colors.transparent;
+                promoCodeFeedback = '';
+              });
+            },
           ),
         ],
       ),

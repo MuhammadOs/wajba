@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/constants/constants.dart';
-import '../../../../../core/styles.dart';
+import '../../../../../core/util/theme.dart';
+import '../../../../../core/util/styles.dart';
 import 'hint_text.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField(
-      {super.key, required this.usernameController, this.hintText});
+      {super.key,
+      required this.usernameController,
+      this.hintText,
+      this.onSaved});
 
   final TextEditingController usernameController;
   final String? hintText;
+  final void Function(String? value)? onSaved;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +43,7 @@ class CustomTextField extends StatelessWidget {
               ),
             ),
             focusedBorder: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(25)),
+              borderRadius: BorderRadius.all(Radius.circular(15)),
               borderSide: BorderSide(
                 color: wajbah_gray,
                 width: 1.0,
@@ -70,6 +74,7 @@ class CustomTextField extends StatelessWidget {
             }
             return null;
           },
+          onSaved: onSaved,
         ),
       ],
     );

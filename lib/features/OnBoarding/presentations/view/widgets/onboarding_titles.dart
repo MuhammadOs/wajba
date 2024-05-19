@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/core/sizeConfig.dart';
+import 'package:wajba/core/util/sizeConfig.dart';
 
-import '../../../../../core/constants/constants.dart';
-import '../../../../../core/styles.dart';
+import '../../../../../core/util/theme.dart';
+import '../../../../../core/util/styles.dart';
 import '../../../data/onboarding_data.dart';
 
 class OnboardingTitles extends StatefulWidget {

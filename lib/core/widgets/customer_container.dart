@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../sizeConfig.dart';
-import '../styles.dart';
+import '../util/sizeConfig.dart';
+import '../util/styles.dart';
 
 class CustomContainer extends StatelessWidget {
   final IconData? icon;

@@ -53,6 +53,7 @@ flutter:
     - assets/images/onboarding/
     - assets/images/permissions/
     - assets/images/authentication/
+    - assets/images/cart/
 
   fonts:
     - family: Biryani

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/core/constants/constants.dart';
+import 'package:wajba/core/util/theme.dart';
 import 'package:wajba/features/Authentication/presentations/views/permissions_view/views/allow_notification.dart';
 import 'package:wajba/features/Authentication/presentations/views/widgets/custom_button.dart';
 import 'package:wajba/features/Authentication/presentations/views/widgets/email_text_field.dart';
-import '../../../../../core/sizeConfig.dart';
-import '../../../../../core/styles.dart';
+import '../../../../../core/util/sizeConfig.dart';
+import '../../../../../core/util/styles.dart';
 import '../widgets/custom_text_field.dart';
 import '../widgets/password_text_field.dart';
 
@@ -111,7 +111,7 @@ class _LoginViewState extends State<RegisterView> {
                   ),
                   PasswordTextField(
                     passwordController: passwordController,
-                    isPassword: isPassword,
+                    hidePassword: isPassword,
                     onPressed: () {
                       setState(() {
                         isPassword = !isPassword;
@@ -124,7 +124,7 @@ class _LoginViewState extends State<RegisterView> {
                   ),
                   PasswordTextField(
                     passwordController: repasswordController,
-                    isPassword: isPassword,
+                    hidePassword: isPassword,
                     onPressed: () {
                       setState(() {
                         isPassword = !isPassword;

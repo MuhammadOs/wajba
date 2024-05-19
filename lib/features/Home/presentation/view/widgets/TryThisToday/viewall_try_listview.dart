@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wajba/core/sizeConfig.dart';
+import 'package:wajba/core/util/sizeConfig.dart';
 import 'package:wajba/core/widgets/custom_appbar.dart';
 import 'package:wajba/core/widgets/cutom_error_widget.dart';
-import 'package:wajba/features/Home/data/models/get_meals_response_model.dart';
-import 'package:wajba/features/Home/data/models/meal.dart';
+import 'package:wajba/features/Home/data/models/item_model/get_meals_response_model.dart';
+import 'package:wajba/features/Home/data/models/item_model/meal.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/TryThisToday/viewall_try_item.dart';
 import 'package:wajba/features/Home/presentation/view_model/TryThisToday%20Cubit/try_this_today_cubit.dart';
 import 'package:wajba/features/Home/presentation/view_model/TryThisToday%20Cubit/try_this_today_state.dart';
@@ -59,7 +59,7 @@ class _TryThisTodayViewAllListViewState
               builder: (context, state) {
                 if (state is TryThisTodayLoading) {
                   return const Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator.adaptive(),
                   );
                 } else if (state is TryThisTodaySuccess) {
                   return SizedBox(

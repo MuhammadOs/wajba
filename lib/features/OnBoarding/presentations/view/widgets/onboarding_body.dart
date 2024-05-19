@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wajba/features/OnBoarding/data/onboarding_data.dart';
 import 'package:wajba/features/OnBoarding/presentations/view/widgets/page_view_body.dart';
-import '../../../../../core/sizeConfig.dart';
+import '../../../../../core/util/sizeConfig.dart';
 import 'custom_next_button.dart';
 import 'onboarding_dots.dart';
 import 'onboarding_login_button.dart';

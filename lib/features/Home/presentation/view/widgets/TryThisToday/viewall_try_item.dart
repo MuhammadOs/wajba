@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/core/constants/constants.dart';
-import 'package:wajba/core/sizeConfig.dart';
-import 'package:wajba/core/styles.dart';
-import 'package:wajba/features/Home/data/items_data.dart';
-import 'package:wajba/features/Home/data/models/meal.dart';
+import 'package:wajba/core/util/theme.dart';
+import 'package:wajba/core/util/sizeConfig.dart';
+import 'package:wajba/core/util/styles.dart';
+import 'package:wajba/features/Home/data/models/item_model/meal.dart';
 
 class TryThisTodayViewAllItem extends StatelessWidget {
   final Meal tryThisItem;
@@ -24,24 +23,22 @@ class TryThisTodayViewAllItem extends StatelessWidget {
           onTap: () {
             Navigator.of(context).pushNamed('Item View',
                 arguments: Meal(
-                  menuItemId: tryThisItem.menuItemId,
-                  name: tryThisItem.name,
-                  estimatedTime: tryThisItem.estimatedTime,
-                  orderingTime: tryThisItem.orderingTime,
-                  category: tryThisItem.category,
-                  occassions: tryThisItem.occassions,
-                  sizesPrices: tryThisItem.sizesPrices,
-                  healthyMode: tryThisItem.healthyMode,
-                  description: tryThisItem.description,
-                  photo: tryThisItem.photo,
-                  chefId: tryThisItem.chefId,
-                ));
+                    menuItemId: tryThisItem.menuItemId,
+                    name: tryThisItem.name,
+                    estimatedTime: tryThisItem.estimatedTime,
+                    orderingTime: tryThisItem.orderingTime,
+                    category: tryThisItem.category,
+                    occassions: tryThisItem.occassions,
+                    sizesPrices: tryThisItem.sizesPrices,
+                    healthyMode: tryThisItem.healthyMode,
+                    description: tryThisItem.description,
+                    photo: tryThisItem.photo,
+                    restaurantPhoto: tryThisItem.restaurantPhoto,
+                    restaurantName: tryThisItem.restaurantName));
           },
           child: Container(
-            width: width * 0.45,
-            height: height * 0.24,
             decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(23)),
+                borderRadius: BorderRadius.all(Radius.circular(20)),
                 color: Colors.white,
                 boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 2)]),
             child: Column(
@@ -53,10 +50,10 @@ class TryThisTodayViewAllItem extends StatelessWidget {
                       topLeft: Radius.circular(23)),
                   child: SizedBox(
                     height: height * 0.14,
-                    width: width * 0.45,
+                    width: width * 0.4,
                     child: Image.network(
                       tryThisItem.photo == "photo" || tryThisItem.photo == null
-                          ? "https://www.shutterstock.com/image-vector/cutlery-icon-spoon-forks-knife-600nw-1931212061.jpg"
+                          ? "https://cdn-icons-png.flaticon.com/512/5663/5663566.png"
                           : tryThisItem.photo!,
                       fit: BoxFit.cover,
                     ),
@@ -86,34 +83,34 @@ class TryThisTodayViewAllItem extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: height * 0.09,
-          right: width * 0.025,
+          top: height * 0.11,
+          right: width * 0.01,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20),
-            child: SizedBox(
-                width: width * 0.1,
-                height: height * 0.07,
+            child: ClipRRect(
+                borderRadius: BorderRadius.circular(50),
                 child: Image.network(
-                  tryThisItem.photo == "photo" || tryThisItem.photo == null
-                      ? "https://www.shutterstock.com/image-vector/cutlery-icon-spoon-forks-knife-600nw-1931212061.jpg"
+                  tryThisItem.restaurantPhoto == "photo" || tryThisItem.restaurantPhoto == null
+                      ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR16U0fq_8AFDqNEc3pUb5a99IvBAGEfA_0Rk3FRPyh_A&s"
                       : tryThisItem.photo!,
+                  height: height * 0.050,
                   fit: BoxFit.cover,
                 )),
           ),
         ),
         Positioned(
           top: height * 0.118,
-          right: width * 0.252,
+          right: width * 0.28,
           child: Container(
               decoration: const BoxDecoration(
                 color: wajbah_primary,
-                borderRadius: BorderRadius.all(Radius.circular(23)),
+                borderRadius: BorderRadius.all(Radius.circular(5)),
               ),
-              width: width * 0.142,
-              height: height * 0.03,
+              padding: EdgeInsets.symmetric(horizontal: width * 0.01),
+              height: height * 0.025,
               child: Center(
                   child: Text(
-                    '${tryThisItem.sizesPrices?.priceSmall} EGP',
+                '${tryThisItem.sizesPrices?.priceSmall} EGP',
                 style: Styles.titleMedium
                     .copyWith(fontSize: 10, color: wajbah_white),
               ))),

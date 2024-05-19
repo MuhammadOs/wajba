@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart';
+/*import 'package:dio/dio.dart';
 
 abstract class Failure {
   final String errMessage;
@@ -30,3 +30,4 @@ class ServerFaliure extends Failure {
     }
   }
 }
+*/

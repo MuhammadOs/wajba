@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/core/constants/constants.dart';
-import 'package:wajba/core/styles.dart';
+import 'package:wajba/core/util/theme.dart';
+import 'package:wajba/core/util/styles.dart';
 import 'package:wajba/features/Order_Tracking/data/timeline_data.dart';
-import '../../../../core/sizeConfig.dart';
+import '../../../../core/util/sizeConfig.dart';
 import '../../../../core/widgets/custom_appbar.dart';
 import 'process_timeline.dart';
 

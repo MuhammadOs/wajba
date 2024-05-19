@@ -1,8 +1,8 @@
 class SizesPrices {
   SizesPrices({
-      this.priceSmall, 
-      this.priceMedium, 
-      this.priceLarge,});
+    this.priceSmall,
+    this.priceMedium,
+    this.priceLarge,});
 
   SizesPrices.fromJson(dynamic json) {
     priceSmall = json['priceSmall'];
@@ -20,4 +20,5 @@ class SizesPrices {
     map['priceLarge'] = priceLarge;
     return map;
   }
+
 }

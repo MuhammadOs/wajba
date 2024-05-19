@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/constants/constants.dart';
+import '../../../../../core/util/theme.dart';
 import '../../../data/onboarding_data.dart';
 
 class OnboardingRegisterSkipButton extends StatelessWidget {

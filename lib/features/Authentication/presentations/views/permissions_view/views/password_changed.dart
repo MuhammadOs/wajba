@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/core/sizeConfig.dart';
+import 'package:wajba/core/util/sizeConfig.dart';
 import 'package:wajba/features/Authentication/presentations/views/permissions_view/widgets/permissions_body.dart';
 
 import '../widgets/permissions_button.dart';

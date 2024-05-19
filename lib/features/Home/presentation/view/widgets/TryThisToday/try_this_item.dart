@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/core/constants/constants.dart';
-import 'package:wajba/core/sizeConfig.dart';
-import 'package:wajba/core/styles.dart';
-import 'package:wajba/features/Home/data/models/meal.dart';
+import 'package:wajba/core/util/theme.dart';
+import 'package:wajba/core/util/sizeConfig.dart';
+import 'package:wajba/core/util/styles.dart';
+import 'package:wajba/features/Home/data/models/item_model/meal.dart';
 
 class TryThisListItem extends StatefulWidget {
   final Meal meal;
@@ -26,22 +26,22 @@ class _TryThisListItemState extends State<TryThisListItem> {
           onTap: () {
             Navigator.of(context).pushNamed('Item View',
                 arguments: Meal(
-                  menuItemId: widget.meal.menuItemId,
-                  name: widget.meal.name,
-                  estimatedTime: widget.meal.estimatedTime,
-                  orderingTime: widget.meal.orderingTime,
-                  category: widget.meal.category,
-                  occassions: widget.meal.occassions,
-                  sizesPrices: widget.meal.sizesPrices,
-                  healthyMode: widget.meal.healthyMode,
-                  description: widget.meal.description,
-                  photo: widget.meal.photo,
-                  chefId: widget.meal.chefId,
-                ));
+                    menuItemId: widget.meal.menuItemId,
+                    name: widget.meal.name,
+                    estimatedTime: widget.meal.estimatedTime,
+                    orderingTime: widget.meal.orderingTime,
+                    category: widget.meal.category,
+                    occassions: widget.meal.occassions,
+                    sizesPrices: widget.meal.sizesPrices,
+                    healthyMode: widget.meal.healthyMode,
+                    description: widget.meal.description,
+                    photo: widget.meal.photo,
+                    restaurantPhoto: widget.meal.restaurantPhoto,
+                    restaurantName: widget.meal.restaurantName));
           },
           child: Container(
-            width: width * 0.4,
-            height: height * 0.27,
+            width: width * 0.45,
+            height: height * 0.25,
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(23)),
                 color: Colors.white,
@@ -57,7 +57,7 @@ class _TryThisListItemState extends State<TryThisListItem> {
                     width: width * 0.4,
                     child: Image.network(
                       widget.meal.photo == "photo" || widget.meal.photo == null
-                          ? "https://www.shutterstock.com/image-vector/cutlery-icon-spoon-forks-knife-600nw-1931212061.jpg"
+                          ? "https://cdn-icons-png.flaticon.com/512/5663/5663566.png"
                           : widget.meal.photo!,
                       fit: BoxFit.cover,
                     ),
@@ -65,12 +65,11 @@ class _TryThisListItemState extends State<TryThisListItem> {
                 ),
                 Padding(
                   padding:
-                      EdgeInsets.only(left: width * 0.02, top: height * 0.01),
+                      EdgeInsets.only(left: width * 0.02, top: height * 0.015),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
-                        width: width * 0.28,
                         child: Text(
                           overflow: TextOverflow.ellipsis,
                           widget.meal.name ?? "Meal name",
@@ -79,17 +78,20 @@ class _TryThisListItemState extends State<TryThisListItem> {
                       ),
                       Text(
                         widget.meal.description ?? "Meal description",
-                        style: Styles.hint.copyWith(fontSize: 8),
+                        style: Styles.hint.copyWith(fontSize: 10),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
                       SizedBox(
-                        height: height * 0.005,
+                        height: height * 0.008,
                       ),
-                      Text(
-                        '${widget.meal.sizesPrices?.priceSmall} EGP',
-                        style: Styles.titleLarge
-                            .copyWith(fontSize: 12, color: wajbah_primary),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                        child: Text(
+                          '${widget.meal.sizesPrices?.priceSmall} EGP',
+                          style: Styles.titleLarge
+                              .copyWith(fontSize: 12, color: wajbah_primary),
+                        ),
                       ),
                     ],
                   ),
@@ -104,10 +106,10 @@ class _TryThisListItemState extends State<TryThisListItem> {
           child: ClipRRect(
               borderRadius: BorderRadius.circular(50),
               child: Image.network(
-                widget.meal.photo == "photo" || widget.meal.photo == null
-                    ? "https://www.shutterstock.com/image-vector/cutlery-icon-spoon-forks-knife-600nw-1931212061.jpg"
+                widget.meal.restaurantPhoto == "photo" || widget.meal.restaurantPhoto == null
+                    ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR16U0fq_8AFDqNEc3pUb5a99IvBAGEfA_0Rk3FRPyh_A&s"
                     : widget.meal.photo!,
-                height: height * 0.065,
+                height: height * 0.050,
                 fit: BoxFit.cover,
               )),
         ),

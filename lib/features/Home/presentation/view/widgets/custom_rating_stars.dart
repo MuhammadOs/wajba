@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:wajba/core/constants/constants.dart';
-import 'package:wajba/core/styles.dart';
+import 'package:wajba/core/util/theme.dart';
+import 'package:wajba/core/util/styles.dart';
 
 class CustomRatingStars extends StatelessWidget {
   const CustomRatingStars({

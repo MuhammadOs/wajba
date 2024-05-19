@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/constants/constants.dart';
+import 'package:wajba/core/util/styles.dart';
+import '../../../../../core/util/theme.dart';
 import '../../../data/cart_item_class.dart';
 
 class CartItemCard extends StatefulWidget {
@@ -31,10 +32,14 @@ class _CartItemCardState extends State<CartItemCard> {
 
   @override
   Widget build(BuildContext context) {
+    String truncatedKitchenName = widget.cartItem.kitchenName.length > 15
+        ? '${widget.cartItem.kitchenName.substring(0, 10)}...'
+        : widget.cartItem.kitchenName;
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
             child: Column(
@@ -43,21 +48,28 @@ class _CartItemCardState extends State<CartItemCard> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CircleAvatar(
-                      radius: 50, // Adjust radius for image size
-                      backgroundImage: AssetImage("assets/images/willy.png"),
+                    Column(
+                      children: [
+                        SizedBox(width: 10),
+                        CircleAvatar(
+                          radius: 50,
+                          backgroundImage: NetworkImage(widget.cartItem.image),
+                        ),
+                        SizedBox(height: 10,),
+                        Text(
+                          truncatedKitchenName,
+                          style: Styles.titleMedium.copyWith(fontSize: 14),
+                        ),
+                      ],
                     ),
-                    SizedBox(width: 15),
+                    const SizedBox(width: 10),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            'Willy’s Kitchen',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            widget.cartItem.name,
+                            style: Styles.titleMedium.copyWith(fontSize: 20),
                           ),
                           Text(
                             '\$${widget.cartItem.price.toString()}',
@@ -66,17 +78,22 @@ class _CartItemCardState extends State<CartItemCard> {
                               color: Colors.grey[800],
                             ),
                           ),
-                          SizedBox(height: 4),
+                          const SizedBox(height: 4),
                           Text(
-                            'Burger, Chicken, Fried chicken, Wrap',
-                            style: TextStyle(fontSize: 16, color: Colors.grey),
+                            widget.cartItem.description,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              fontSize: 14,
+                              color: Colors.grey,
+                            ),
                           ),
-                          SizedBox(height: 8),
+                          const SizedBox(height: 8),
                           Row(
                             children: [
-                              GestureDetector(
+                              InkWell(
                                 onTap: _toggleButtonsVisibility,
-                                child: Icon(
+                                child: const Icon(
                                   Icons.add_circle,
                                   color: wajbah_primary,
                                 ),
@@ -85,33 +102,36 @@ class _CartItemCardState extends State<CartItemCard> {
                                 Row(
                                   children: [
                                     IconButton(
-                                      icon: Icon(Icons.remove),
+                                      icon: const Icon(Icons.remove),
                                       onPressed: widget.onMinus,
                                     ),
                                     Text(
                                       widget.cartItem.quantity.toString(),
-                                      style: TextStyle(fontSize: 18),
+                                      style: const TextStyle(fontSize: 18),
                                     ),
                                     IconButton(
-                                      icon: Icon(Icons.add),
+                                      icon: const Icon(Icons.add),
                                       onPressed: widget.onPlus,
                                     ),
                                   ],
                                 ),
                             ],
-                          ),
-                        ],
+                          ),],
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 8),
               ],
             ),
           ),
-          IconButton(
-            icon: Icon(Icons.delete),
+          TextButton(
             onPressed: widget.onDelete,
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.grey[800], minimumSize: Size.zero,
+              padding: EdgeInsets.zero,
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            ),
+            child: const Icon(Icons.delete),
           ),
         ],
       ),

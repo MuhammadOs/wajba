@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/core/sizeConfig.dart';
-import 'package:wajba/core/styles.dart';
+import 'package:wajba/core/util/sizeConfig.dart';
+import 'package:wajba/core/util/styles.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/ratings.dart';
 
-import '../../../../../../core/constants/constants.dart';
+import '../../../../../../core/util/theme.dart';
 
 class ShinningKitchenItem extends StatelessWidget {
   const ShinningKitchenItem({

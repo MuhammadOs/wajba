@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:wajba/core/constants/constants.dart';
-import 'package:wajba/core/sizeConfig.dart';
+import 'package:wajba/core/util/theme.dart';
+import 'package:wajba/core/util/sizeConfig.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/Shortcuts/Hot%20Deals/hot_deals_kitchen_listview_item.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/Shortcuts/Hot%20Deals/hot_deals_kitchen_title.dart';
 

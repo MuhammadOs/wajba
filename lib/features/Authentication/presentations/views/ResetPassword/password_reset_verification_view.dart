@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/core/sizeConfig.dart';
+import 'package:wajba/core/util/sizeConfig.dart';
 import 'package:wajba/features/Authentication/presentations/views/ResetPassword/reset_password.dart';
 import 'package:wajba/features/Authentication/presentations/views/permissions_view/widgets/permissions_body.dart';
 import 'package:wajba/features/Authentication/presentations/views/widgets/custom_button.dart';
-import '../../../../../core/constants/constants.dart';
-import '../../../../../core/styles.dart';
+import '../../../../../core/util/theme.dart';
+import '../../../../../core/util/styles.dart';
 import '../../../../../core/widgets/custom_appbar.dart';
 
 class ResetPasswordVerification extends StatefulWidget {

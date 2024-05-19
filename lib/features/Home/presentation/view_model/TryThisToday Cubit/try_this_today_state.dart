@@ -1,6 +1,4 @@
-import 'package:wajba/features/Home/data/models/get_meals_response_model.dart';
-
-import '../../../data/models/item_model/result.dart';
+import 'package:wajba/features/Home/data/models/item_model/get_meals_response_model.dart';
 
 abstract class TryThisTodayState {}
 

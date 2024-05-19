@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/core/constants/constants.dart';
-import 'package:wajba/core/sizeConfig.dart';
+import 'package:wajba/core/util/theme.dart';
+import 'package:wajba/core/util/sizeConfig.dart';
 import 'package:wajba/features/Search/presenatation/view/widgets/Featured_Kitchens/featured_kitchens_listview.dart';
 import 'package:wajba/features/Search/presenatation/view/widgets/search_chips.dart';
 import 'package:wajba/features/Search/presenatation/view/widgets/search_custom_text.dart';

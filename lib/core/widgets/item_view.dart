@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:wajba/core/constants/constants.dart';
-import 'package:wajba/core/sizeConfig.dart';
-import 'package:wajba/core/styles.dart';
-import 'package:wajba/features/Home/data/models/meal.dart';
-import 'package:wajba/features/Home/data/models/size_prices.dart';
+import 'package:wajba/core/util/constants.dart';
+import 'package:wajba/core/util/theme.dart';
+import 'package:wajba/core/util/sizeConfig.dart';
+import 'package:wajba/core/util/styles.dart';
+import 'package:wajba/features/Cart/data/cart_item_class.dart';
+import 'package:wajba/features/Home/data/models/item_model/meal.dart';
+import 'package:wajba/features/Home/data/models/item_model/size_prices.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/custom_rating_stars.dart';
 
 import 'custom_appbar.dart';
@@ -20,7 +22,6 @@ class ItemViewScreen extends StatefulWidget {
 class _ItemViewScreenState extends State<ItemViewScreen> {
   List<String> Sizes = ['Small', 'Medium', 'Large'];
   SizesPrices prices = SizesPrices();
-
   String currentsize = '';
   double totalprice = 0;
 
@@ -39,11 +40,12 @@ class _ItemViewScreenState extends State<ItemViewScreen> {
     double height = SizeConfig.screenH!;
     var args = ModalRoute.of(context)!.settings.arguments as Meal;
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              CustomAppBar(title: args.name ?? "Kitchen name"),
+              CustomAppBar(title: args.restaurantName ?? "Kitchen name"),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: width * 0.048),
                 child: Column(
@@ -83,7 +85,7 @@ class _ItemViewScreenState extends State<ItemViewScreen> {
                           width: width * 0.009,
                         ),
                         Text(
-                          args.name ?? "Kitchen name",
+                          args.restaurantName ?? "Kitchen name",
                           style: Styles.titleMedium
                               .copyWith(color: wajbah_primary, fontSize: 10),
                         ),
@@ -180,7 +182,8 @@ class _ItemViewScreenState extends State<ItemViewScreen> {
                                               args.sizesPrices!.priceSmall ?? 0;
                                         } else if (index == 1) {
                                           totalprice =
-                                              args.sizesPrices!.priceMedium ?? 0;
+                                              args.sizesPrices!.priceMedium ??
+                                                  0;
                                         } else {
                                           totalprice =
                                               args.sizesPrices!.priceLarge ?? 0;
@@ -192,7 +195,7 @@ class _ItemViewScreenState extends State<ItemViewScreen> {
                                     child: Center(
                                       child: Row(
                                         mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
                                             Sizes[index],
@@ -281,6 +284,15 @@ class _ItemViewScreenState extends State<ItemViewScreen> {
                               );
                             },
                           );
+                          AppConstants.cartMeals.add(CartItem(
+                            id: args.menuItemId!,
+                            name: args.name!,
+                            price: totalprice,
+                            quantity: 1,
+                            kitchenName: args.restaurantName!,
+                            description: args.description!,
+                            image: args.photo!,
+                          ));
                         },
                         child: Text(
                           'Add to basket',

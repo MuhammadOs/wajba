@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:wajba/core/util/constants.dart';
 import 'package:wajba/features/Cart/presentation/view/widgets/cart_item_card.dart';
-import '../../../../core/constants/constants.dart';
-import '../../../../core/styles.dart';
+import '../../../../core/util/theme.dart';
+import '../../../../core/util/styles.dart';
 import '../../data/cart_item_class.dart';
 import 'checkout_view.dart';
 
@@ -13,89 +14,71 @@ class CartView extends StatefulWidget {
 }
 
 class _CartViewState extends State<CartView> {
-  final List<CartItem> _cartItems = [
-    CartItem(id: 1, name: 'Pizza', price: 10.99, quantity: 1),
-    CartItem(id: 2, name: 'Burger', price: 8.99, quantity: 3),
-  ];
-
   double taxRate = 0.1;
   double deliveryFee = 5.0;
-  double discount = 2.0;
-
-  bool showPlusMinusButtons = false;
+  double discount = 0;
+  List<CartItem> cartMeals = AppConstants.cartMeals;
 
   @override
   Widget build(BuildContext context) {
     double subtotal = calculateSubtotal();
     double tax = subtotal * taxRate;
-    double total = subtotal + tax + deliveryFee - discount;
+    double totalBeforeDiscount = subtotal + tax + deliveryFee;
+    discount = totalBeforeDiscount * 0.01;
+    double total = totalBeforeDiscount - discount;
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(32.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Order Details',
-                      style: Styles.titleMedium.copyWith(fontSize: 20)),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: _cartItems.length,
-                    itemBuilder: (context, index) {
-                      return Column(
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                showPlusMinusButtons = !showPlusMinusButtons;
-                              });
-                            },
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: CartItemCard(
-                                    cartItem: _cartItems[index],
-                                    onDelete: () {
-                                      setState(() {
-                                        _cartItems.removeAt(index);
-                                      });
-                                    },
-                                    onPlus: () {
-                                      setState(() {
-                                        _cartItems[index].quantity++;
-                                      });
-                                    },
-                                    onMinus: () {
-                                      setState(() {
-                                        if (_cartItems[index].quantity > 1) {
-                                          _cartItems[index].quantity--;
-                                        }
-                                      });
-                                    },
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      );
-                    },
-                  ),
-                ],
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            title: Text('Order details',
+                style: Styles.titleMedium.copyWith(fontSize: 20)),
+            backgroundColor: Colors.white,
+            elevation: 0,
+            floating: true,
+          ),
+          SliverPadding(
+            padding: const EdgeInsets.all(16.0),
+            sliver: SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  return Column(
+                    children: [
+                      Card(
+                        color: wajbah_green_light,
+                        child: CartItemCard(
+                          cartItem: cartMeals[index],
+                          onDelete: () {
+                            setState(() {
+                              cartMeals.removeAt(index);
+                            });
+                          },
+                          onPlus: () {
+                            setState(() {
+                              cartMeals[index].quantity++;
+                            });
+                          },
+                          onMinus: () {
+                            setState(() {
+                              if (cartMeals[index].quantity > 1) {
+                                cartMeals[index].quantity--;
+                              }
+                            });
+                          },
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                    ],
+                  );
+                },
+                childCount: cartMeals.length,
               ),
             ),
-            const Divider(
-              thickness: 15,
-              color: wajbah_gray_light,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(32.0),
+          ),
+          SliverPadding(
+            padding: const EdgeInsets.all(16.0),
+            sliver: SliverToBoxAdapter(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -115,6 +98,7 @@ class _CartViewState extends State<CartView> {
                       ),
                     ],
                   ),
+                  const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -128,6 +112,7 @@ class _CartViewState extends State<CartView> {
                       ),
                     ],
                   ),
+                  const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -141,6 +126,7 @@ class _CartViewState extends State<CartView> {
                       ),
                     ],
                   ),
+                  const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -154,9 +140,11 @@ class _CartViewState extends State<CartView> {
                       ),
                     ],
                   ),
+                  const SizedBox(height: 10),
                   const Divider(
                     color: wajbah_gray_light,
                   ),
+                  const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -170,19 +158,17 @@ class _CartViewState extends State<CartView> {
                       ),
                     ],
                   ),
+                  const SizedBox(height: 60),
                 ],
               ),
             ),
-            const SizedBox(
-              height: 50,
-            )
-          ],
-        ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: wajbah_primary,
         onPressed: () {
-          _navigateToCheckoutScreen(context); // Navigate to checkout screen
+          _navigateToCheckoutScreen(context);
         },
         label: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -215,7 +201,7 @@ class _CartViewState extends State<CartView> {
 
   double calculateSubtotal() {
     double subtotal = 0;
-    for (var item in _cartItems) {
+    for (var item in cartMeals) {
       subtotal += (item.price * item.quantity);
     }
     return subtotal;
@@ -223,19 +209,18 @@ class _CartViewState extends State<CartView> {
 
   int calculateTotalItems() {
     int totalItems = 0;
-    for (var item in _cartItems) {
+    for (var item in cartMeals) {
       totalItems += item.quantity;
     }
     return totalItems;
   }
 
-  // Function to navigate to the checkout screen
   void _navigateToCheckoutScreen(BuildContext context) {
     Navigator.push(
       context,
       MaterialPageRoute(
           builder: (context) => CheckoutScreen(
-                cartItems: _cartItems,
+                cartItems: cartMeals,
                 totalItems: calculateTotalItems(),
                 taxRate: taxRate,
                 deliveryFee: deliveryFee,

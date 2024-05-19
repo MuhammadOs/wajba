@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/core/sizeConfig.dart';
+import 'package:wajba/core/util/sizeConfig.dart';
 import 'package:wajba/features/Home/data/sponsers_data.dart';
 
 class SponsorListItem extends StatelessWidget {

@@ -1,8 +1,6 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wajba/core/utils/api_service.dart';
-import 'package:wajba/core/utils/dio_factory.dart';
+import 'package:wajba/core/networking/dio_factory.dart';
 import 'package:wajba/features/Home/data/repo/home_repo_imp.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/Categories/category_listview.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/Categories/viewall_categories_listview.dart';

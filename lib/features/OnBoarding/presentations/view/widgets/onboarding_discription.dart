@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/constants/constants.dart';
-import '../../../../../core/styles.dart';
+import '../../../../../core/util/theme.dart';
+import '../../../../../core/util/styles.dart';
 import '../../../data/onboarding_data.dart';
 
 class OnboardingDiscription extends StatefulWidget {

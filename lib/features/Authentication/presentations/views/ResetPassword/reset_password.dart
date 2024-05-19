@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:wajba/core/constants/constants.dart';
-import 'package:wajba/core/sizeConfig.dart';
+import 'package:wajba/core/util/theme.dart';
+import 'package:wajba/core/util/sizeConfig.dart';
 import 'package:wajba/features/Authentication/presentations/views/login_view/login_view.dart';
 import 'package:wajba/features/Authentication/presentations/views/widgets/custom_button.dart';
 import 'package:wajba/features/Authentication/presentations/views/widgets/hint_text.dart';
 
-import '../../../../../core/styles.dart';
+import '../../../../../core/util/styles.dart';
 import '../widgets/password_text_field.dart';
 
 class ResetPassword extends StatefulWidget {
@@ -64,7 +64,7 @@ class _PasswordChangedState extends State<ResetPassword> {
                 const HintText(hintText: "Password"),
                 PasswordTextField(
                   passwordController: passwordController,
-                  isPassword: isPassword,
+                  hidePassword: isPassword,
                   onPressed: () {
                     setState(() {
                       isPassword = !isPassword;
@@ -77,7 +77,7 @@ class _PasswordChangedState extends State<ResetPassword> {
                 const HintText(hintText: "Re-enter password"),
                 PasswordTextField(
                   passwordController: confirmPasswordController,
-                  isPassword: isConfirmPassword,
+                  hidePassword: isConfirmPassword,
                   onPressed: () {
                     setState(() {
                       isConfirmPassword = !isConfirmPassword;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wajba/features/Search/presenatation/view/widgets/search_view_body.dart';
-import '../../../../core/constants/constants.dart';
+import '../../../../core/util/theme.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});

@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wajba/core/sizeConfig.dart';
+import 'package:wajba/core/util/sizeConfig.dart';
 import 'package:wajba/core/widgets/cutom_error_widget.dart';
-import 'package:wajba/features/Home/data/items_data.dart';
-import 'package:wajba/features/Home/data/models/get_meals_response_model.dart';
-import 'package:wajba/features/Home/data/models/item_model/meal_model.dart';
-import 'package:wajba/features/Home/data/models/meal.dart';
+import 'package:wajba/features/Home/data/models/item_model/get_meals_response_model.dart';
+import 'package:wajba/features/Home/data/models/item_model/meal.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/TryThisToday/try_this_item.dart';
 import 'package:wajba/features/Home/presentation/view_model/TryThisToday%20Cubit/try_this_today_cubit.dart';
-
-import '../../../../data/models/item_model/result.dart';
 import '../../../view_model/TryThisToday Cubit/try_this_today_state.dart';
 
 class TryThisListView extends StatefulWidget {

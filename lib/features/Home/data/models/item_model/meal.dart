@@ -1,4 +1,4 @@
-import 'package:wajba/features/Home/data/models/item_model/size_prices.dart';
+import 'package:wajba/features/Home/data/models/item_model/SizesPrices.dart';
 
 class Meal {
   Meal({
@@ -11,12 +11,13 @@ class Meal {
     this.sizesPrices,
     this.healthyMode,
     this.description,
+    this.rate,
     this.photo,
     this.restaurantPhoto,
     this.restaurantName,
   });
 
-  Meal.fromJson(dynamic json) {
+  Meal.fromJson(Map<String, dynamic> json) {
     menuItemId = json['menuItemId'];
     name = json['name'];
     estimatedTime = json['estimatedTime'];
@@ -28,6 +29,7 @@ class Meal {
         : null;
     healthyMode = json['healthyMode'];
     description = json['description'];
+    rate = json['rate'];
     photo = json['photo'];
     restaurantPhoto = json['restaurantPhoto'];
     restaurantName = json['restaurantName'];
@@ -42,6 +44,7 @@ class Meal {
   SizesPrices? sizesPrices;
   bool? healthyMode;
   String? description;
+  double? rate;
   String? photo;
   String? restaurantPhoto;
   String? restaurantName;
@@ -59,6 +62,7 @@ class Meal {
     }
     map['healthyMode'] = healthyMode;
     map['description'] = description;
+    map['rate'] = rate;
     map['photo'] = photo;
     map['restaurantPhoto'] = restaurantPhoto;
     map['restaurantName'] = restaurantName;

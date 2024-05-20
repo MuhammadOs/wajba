@@ -1,4 +1,3 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wajba/core/networking/dio_factory.dart';
@@ -27,62 +26,82 @@ import 'package:wajba/features/Profile/presentation/profile_view.dart';
 import 'package:wajba/features/Order_Tracking/presentation/view/track_screen_view.dart';
 import 'package:wajba/core/widgets/item_view.dart';
 
+import 'features/Authentication/presentations/view_model/auth_states.dart';
+
 void main() {
-  runApp(DevicePreview(
-    builder: (BuildContext context) {
-      return const WajbahUser();
-    },
-  ));
+  runApp(const WajbahUser());
 }
 
 class WajbahUser extends StatelessWidget {
-  const WajbahUser({super.key});
+  const WajbahUser({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) =>
-          TryThisTodayCubit(homeRepo: HomeRepoImpl(DioFactory.getDio()))
-            ..getMeals(),
-        ),
-        BlocProvider(
           create: (context) => AuthCubit(
             authRepoImpl: AuthRepoImpl(
-              authRemoteResource: AuthRemoteResource(dio: DioFactory.getDio()),
+              authRemoteResource: AuthRemoteResource(
+                dio: DioFactory.getDio(),
+              ),
             ),
           ),
         ),
       ],
-      child: MaterialApp(
-        theme: ThemeData(fontFamily: "Biryani"),
-        debugShowCheckedModeBanner: false,
-        home: const LoginView(),
-        routes: {
-          "Onboarding": (context) => const OnBoardingScreen(),
-          "login": (context) => const LoginView(),
-          "register": (context) => const RegisterView(),
-          "home": (context) => const HomeScreen(),
-          "search": (context) => const SearchScreen(),
-          "Allow notification": (context) => const AllowNotification(),
-          "Allow location": (context) => const AllowLocation(),
-          "Password changed": (context) => const PasswordChanged(),
-          "App share": (context) => const ShareApp(),
-          "reset password": (context) => const ResetPassword(),
-          "shinning viewall": (context) => const ShinningAll(),
-          "categories viewall": (context) => const CategoriesItemListView(),
-          "Shortcuts View": (context) => const ShortcutsViewScreen(),
-          "Profile View": (context) => const ProfileView(),
-          "Refer and Earn": (context) => const ReferAndEarnView(),
-          "Notification View": (context) => const NotificationView(
-            notificaions: [],
+      child: const WajbahApp(),
+    );
+  }
+}
+
+class WajbahApp extends StatelessWidget {
+  const WajbahApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final authCubit = getAuthCubit(context);
+    return BlocBuilder<AuthCubit, AuthState>(
+      builder: (context, state) {
+        final token = authCubit.token;
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => TryThisTodayCubit(
+                homeRepo: HomeRepoImpl(dio: DioFactory.getDio()),
+                token: token ?? '', // Ensure the token is not null
+              )..getMeals(),
+            ),
+          ],
+          child: MaterialApp(
+            title: 'Wajbah User',
+            theme: ThemeData(fontFamily: 'Biryani'),
+            debugShowCheckedModeBanner: false,
+            home: const LoginView(),
+            routes: {
+              'Onboarding': (context) => const OnBoardingScreen(),
+              'login': (context) => const LoginView(),
+              'register': (context) => const RegisterView(),
+              'home': (context) => const HomeScreen(),
+              'search': (context) => const SearchScreen(),
+              'Allow notification': (context) => const AllowNotification(),
+              'Allow location': (context) => const AllowLocation(),
+              'Password changed': (context) => const PasswordChanged(),
+              'App share': (context) => const ShareApp(),
+              'reset password': (context) => const ResetPassword(),
+              'shinning viewall': (context) => const ShinningAll(),
+              'categories viewall': (context) => const CategoriesItemListView(),
+              'Shortcuts View': (context) => const ShortcutsViewScreen(),
+              'Profile View': (context) => const ProfileView(),
+              'Refer and Earn': (context) => const ReferAndEarnView(),
+              'Notification View': (context) =>
+                  const NotificationView(notificaions: []),
+              'Wajbah Wallet': (context) => const WajbahWalletView(),
+              'Item View': (context) => ItemViewScreen(),
+              'Track View': (context) => const TrackScreenView(),
+            },
           ),
-          "Wajbah Wallet": (context) => const WajbahWalletView(),
-          "Item View": (context) => ItemViewScreen(),
-          "Track View": (context) => const TrackScreenView(),
-        },
-      ),
+        );
+      },
     );
   }
 }

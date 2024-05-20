@@ -1,23 +1,24 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:wajba/core/errors/faliures.dart';
-import 'package:wajba/features/Home/data/models/item_model/get_meals_response_model.dart';
+import 'package:wajba/features/Home/data/models/item_model/get_menu_items_meals.dart';
 import 'package:wajba/features/Home/data/repo/home_repo.dart';
 
 class HomeRepoImpl implements HomeRepo {
-  Dio dio;
+  final Dio dio;
 
-  HomeRepoImpl(this.dio);
+  HomeRepoImpl({required this.dio});
 
   @override
-  Future<Either<Exception, GetMealsResponseModel>> getMeals() async {
+  Future<Either<Exception, GetMenuItemsMeals>> getMeals(String token) async {
     try {
-      final response = await dio.get("MenuItemAPI");
+      final response = await dio.get(
+        "MenuItemAPI",
+        options: Options(headers: {'Authorization': 'Bearer $token'}),
+      );
       final responseData = response.data;
-      return Right(GetMealsResponseModel.fromJson(responseData));
+      return Right(GetMenuItemsMeals.fromJson(responseData));
     } catch (exception) {
-      return left(Exception(exception.toString()));
+      return Left(Exception(exception.toString()));
     }
   }
-
 }

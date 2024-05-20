@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:wajba/core/util/constants.dart';
-import 'package:wajba/features/Authentication/data/models/login_model.dart';
+import 'package:wajba/features/Authentication/data/models/login/Login_model.dart';
 import 'package:wajba/features/Authentication/data/models/register_model.dart';
 
 class AuthRemoteResource {

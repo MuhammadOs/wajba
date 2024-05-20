@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wajba/core/networking/dio_factory.dart';
+import 'package:wajba/core/widgets/cutom_error_widget.dart';
+import 'package:wajba/features/Authentication/presentations/view_model/auth_cubit.dart';
 import 'package:wajba/features/Home/data/repo/home_repo_imp.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/Categories/category_listview.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/Categories/viewall_categories_listview.dart';
@@ -14,6 +16,7 @@ import 'package:wajba/features/Home/presentation/view/widgets/TryThisToday/tryth
 import 'package:wajba/features/Home/presentation/view/widgets/TryThisToday/viewall_try_listview.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/homescreen_titles.dart';
 import 'package:wajba/features/Home/presentation/view_model/TryThisToday%20Cubit/try_this_today_cubit.dart';
+import 'package:wajba/features/Home/presentation/view_model/TryThisToday%20Cubit/try_this_today_state.dart';
 
 class HomeScreenViewBody extends StatefulWidget {
   const HomeScreenViewBody({super.key});
@@ -30,26 +33,19 @@ class _HomeScreenViewBodyState extends State<HomeScreenViewBody> {
         const SponsorListView(),
         HomeScreenMainTitles(
           text: 'Categories',
-          ScreenToNavigateTo: CategoriesItemListView(),
+          ScreenToNavigateTo: const CategoriesItemListView(),
           visible: false,
         ),
         const CategoriesListView(),
-        BlocProvider<TryThisTodayCubit>(
-          create: (context) =>
-              TryThisTodayCubit(homeRepo: HomeRepoImpl(DioFactory.getDio())),
-          child: HomeScreenMainTitles(
-            text: 'Try this today',
-            ScreenToNavigateTo: const TryThisTodayViewAllListView(),
-            visible: true,
-          ),
+        HomeScreenMainTitles(
+          text: 'Try this today',
+          ScreenToNavigateTo: const TryThisTodayViewAllListView(),
+          visible: true,
         ),
-        BlocProvider<TryThisTodayCubit>(
-            create: (context) =>
-                TryThisTodayCubit(homeRepo: HomeRepoImpl(DioFactory.getDio())),
-            child: const TryThisListView()),
+        const TryThisListView(),
         HomeScreenMainTitles(
           text: 'Shinning Kitchens',
-          ScreenToNavigateTo: ShinningAll(),
+          ScreenToNavigateTo: const ShinningAll(),
           visible: true,
         ),
         const SizedBox(

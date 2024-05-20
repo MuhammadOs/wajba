@@ -1,4 +1,4 @@
-import 'package:wajba/features/Home/data/models/item_model/get_meals_response_model.dart';
+import 'package:wajba/features/Home/data/models/item_model/get_menu_items_meals.dart';
 
 abstract class TryThisTodayState {}
 
@@ -7,9 +7,9 @@ final class TryThisTodayInitial extends TryThisTodayState {}
 final class TryThisTodayLoading extends TryThisTodayState {}
 
 final class TryThisTodaySuccess extends TryThisTodayState {
-  final GetMealsResponseModel getMealsResponseModel;
+  final GetMenuItemsMeals getMenuItemsMeals;
 
-  TryThisTodaySuccess({required this.getMealsResponseModel});
+  TryThisTodaySuccess({required this.getMenuItemsMeals});
 }
 
 

@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wajba/core/util/constants.dart';
 import 'package:wajba/core/util/styles.dart';
-import 'package:wajba/core/util/theme.dart';
-import 'package:wajba/features/Authentication/data/models/login_model.dart';
+import 'package:wajba/features/Authentication/data/models/login/Login_model.dart';
 import 'package:wajba/features/Authentication/presentations/view_model/auth_cubit.dart';
 import 'package:wajba/features/Authentication/presentations/view_model/auth_states.dart';
-import 'package:wajba/features/Authentication/presentations/views/ResetPassword/password_reset_verification_view.dart';
 import 'package:wajba/features/Authentication/presentations/views/login_view/widgets/forget_password_widget.dart';
 import 'package:wajba/features/Authentication/presentations/views/login_view/widgets/google_container.dart';
 import 'package:wajba/features/Authentication/presentations/views/login_view/widgets/login_register_navigator_row.dart';
@@ -14,7 +11,6 @@ import 'package:wajba/features/Authentication/presentations/views/login_view/wid
 import 'package:wajba/features/Authentication/presentations/views/widgets/custom_button.dart';
 import 'package:wajba/features/Authentication/presentations/views/widgets/custom_text_field.dart';
 import 'package:wajba/features/Authentication/presentations/views/widgets/password_text_field.dart';
-import 'package:wajba/features/Home/presentation/view/home_screen.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);

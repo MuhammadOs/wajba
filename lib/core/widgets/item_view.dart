@@ -6,8 +6,8 @@ import 'package:wajba/core/util/theme.dart';
 import 'package:wajba/core/util/sizeConfig.dart';
 import 'package:wajba/core/util/styles.dart';
 import 'package:wajba/features/Cart/data/cart_item_class.dart';
+import 'package:wajba/features/Home/data/models/item_model/SizesPrices.dart';
 import 'package:wajba/features/Home/data/models/item_model/meal.dart';
-import 'package:wajba/features/Home/data/models/item_model/size_prices.dart';
 import 'package:wajba/features/Home/presentation/view/widgets/custom_rating_stars.dart';
 
 import 'custom_appbar.dart';

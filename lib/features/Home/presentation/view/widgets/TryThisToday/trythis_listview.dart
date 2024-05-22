@@ -22,8 +22,9 @@ class _TryThisListViewState extends State<TryThisListView> {
   @override
   void initState() {
     super.initState();
-    final tryThisTodayCubit = context.read<TryThisTodayCubit>();
-    tryThisTodayCubit.getMeals();
+    context.read<TryThisTodayCubit>().getMeals();
+    //final tryThisTodayCubit = context.read<HomeCubit>();
+    //tryThisTodayCubit.getMeals();
   }
 
   @override

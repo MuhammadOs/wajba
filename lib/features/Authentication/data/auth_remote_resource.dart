@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:wajba/core/util/constants.dart';
 import 'package:wajba/features/Authentication/data/models/login/login_model.dart';
-import 'package:wajba/features/Authentication/data/models/register_model.dart';
+import 'package:wajba/features/Authentication/data/models/register/register_model.dart';
 
 class AuthRemoteResource {
   final Dio dio;

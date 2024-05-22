@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wajba/core/util/theme.dart';
-import 'package:wajba/features/Authentication/data/models/register_model.dart';
+import 'package:wajba/features/Authentication/data/models/register/register_model.dart';
 import 'package:wajba/features/Authentication/presentations/view_model/auth_cubit.dart';
 import 'package:wajba/features/Authentication/presentations/view_model/auth_states.dart';
 import 'package:wajba/features/Authentication/presentations/views/widgets/custom_button.dart';
@@ -84,7 +84,7 @@ class _RegisterViewState extends State<RegisterView> {
       password: userData["password"],
       firstName: userData["firstName"],
       lastName: userData["lastName"],
-      birthdate: birthDate,
+      birthDate: birthDate,
       role: " ",
       favourites: " ",
       usedCoupones: " ",

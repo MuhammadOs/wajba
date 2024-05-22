@@ -2,13 +2,10 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wajba/core/errors/handle_errors.dart';
-import 'package:wajba/core/networking/dio_factory.dart';
 import 'package:wajba/features/Authentication/data/models/login/login_model.dart';
-import 'package:wajba/features/Authentication/data/models/register_model.dart';
+import 'package:wajba/features/Authentication/data/models/register/register_model.dart';
 import 'package:wajba/features/Authentication/data/repo/auth_repo_impl.dart';
 import 'package:wajba/features/Authentication/presentations/view_model/auth_states.dart';
-import 'package:wajba/features/Home/data/repo/home_repo_imp.dart';
-import 'package:wajba/features/Home/presentation/view_model/TryThisToday%20Cubit/try_this_today_cubit.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   final AuthRepoImpl authRepoImpl;

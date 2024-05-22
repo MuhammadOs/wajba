@@ -8,6 +8,7 @@ import 'package:wajba/features/Authentication/presentations/view_model/auth_cubi
 import 'package:wajba/features/Authentication/presentations/views/login_view/login_view.dart';
 import 'package:wajba/features/Home/data/repo/home_repo_imp.dart';
 import 'package:wajba/features/Home/presentation/view_model/TryThisToday%20Cubit/try_this_today_cubit.dart';
+import 'package:wajba/features/Home/presentation/view_model/shining_kitchens_cubit/shinining_kitchen_cubit.dart';
 import 'package:wajba/features/OnBoarding/presentations/view/onboarding.dart';
 import 'package:wajba/features/Authentication/presentations/views/signup_view/signup_view.dart';
 import 'package:wajba/features/Home/presentation/view/home_screen.dart';
@@ -70,17 +71,21 @@ class WajbahApp extends StatelessWidget {
         return MultiBlocProvider(
           providers: [
             BlocProvider(
-              create: (context) => TryThisTodayCubit(
-                homeRepo: HomeRepoImpl(dio: DioFactory.getDio()),
-                token: token ?? '', // Ensure the token is not null
-              )..getMeals(),
-            ),
+                create: (context) => TryThisTodayCubit(
+                      homeRepo: HomeRepoImpl(dio: DioFactory.getDio()),
+                      token: token ?? '',
+                    )..getMeals()),
+            BlocProvider(
+                create: (context) => ShiningKitchenCubit(
+                      homeRepo: HomeRepoImpl(dio: DioFactory.getDio()),
+                      token: token ?? '',
+                    )..getShiningKitchens()),
           ],
           child: MaterialApp(
             title: 'Wajbah User',
             theme: ThemeData(fontFamily: 'Biryani'),
             debugShowCheckedModeBanner: false,
-            home: const RegisterView(),
+            home: const LoginView(),
             routes: {
               'Onboarding': (context) => const OnBoardingScreen(),
               'login': (context) => const LoginView(),

@@ -12,7 +12,7 @@ class AppConstants {
   static const List<CartItem> cartMeals = [];
 
   // end points
-  static const baseUrl = " http://kareemalaa-001-site1.mysitepanel.net/api";
+  static const baseUrl = "https://wajbahapi.azurewebsites.net/api";
   static const registerUrl = "/UserAuth/register";
   static const loginUrl = "/UserAuth/login";
   static const logOutUrl = "/logout";

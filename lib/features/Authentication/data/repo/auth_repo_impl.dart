@@ -4,7 +4,7 @@ import 'package:wajba/core/errors/error_types.dart';
 import 'package:wajba/features/Authentication/data/auth_remote_resource.dart';
 import 'package:wajba/features/Authentication/data/models/login/login_model.dart';
 import 'package:wajba/features/Authentication/data/models/login/login_response_model.dart';
-import 'package:wajba/features/Authentication/data/models/register_model.dart';
+import 'package:wajba/features/Authentication/data/models/register/register_model.dart';
 
 class AuthRepoImpl {
   final AuthRemoteResource authRemoteResource;

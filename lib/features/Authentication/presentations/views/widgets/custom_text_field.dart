@@ -5,15 +5,19 @@ import '../../../../../core/util/styles.dart';
 import 'hint_text.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField(
+  CustomTextField(
       {super.key,
       required this.usernameController,
       this.hintText,
-      this.onSaved});
+      this.onSaved,
+      this.suffixIcon,
+      this.optional = false});
 
   final TextEditingController usernameController;
   final String? hintText;
   final void Function(String? value)? onSaved;
+  Widget? suffixIcon;
+  bool optional;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +35,7 @@ class CustomTextField extends StatelessWidget {
             labelStyle: Styles.titleSmall.copyWith(
               color: wajbah_black,
             ),
+            suffixIcon: suffixIcon,
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
             filled: true,
@@ -69,8 +74,12 @@ class CustomTextField extends StatelessWidget {
             debugPrint(value);
           },
           validator: (value) {
-            if (value == null || value.isEmpty) {
-              return '$hintText must not be empty !';
+            if (optional) {
+              return null;
+            } else {
+              if (value == null || value.isEmpty) {
+                return '$hintText must not be empty !';
+              }
             }
             return null;
           },

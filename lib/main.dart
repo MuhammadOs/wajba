@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wajba/core/networking/dio_factory.dart';
@@ -25,11 +26,14 @@ import 'package:wajba/features/Wallet/presentation/view/wajbah_wallet_view.dart'
 import 'package:wajba/features/Profile/presentation/profile_view.dart';
 import 'package:wajba/features/Order_Tracking/presentation/view/track_screen_view.dart';
 import 'package:wajba/core/widgets/item_view.dart';
-
 import 'features/Authentication/presentations/view_model/auth_states.dart';
 
 void main() {
-  runApp(const WajbahUser());
+  runApp(DevicePreview(
+    builder: (BuildContext context) {
+      return const WajbahUser();
+    },
+  ));
 }
 
 class WajbahUser extends StatelessWidget {
@@ -76,7 +80,7 @@ class WajbahApp extends StatelessWidget {
             title: 'Wajbah User',
             theme: ThemeData(fontFamily: 'Biryani'),
             debugShowCheckedModeBanner: false,
-            home: const LoginView(),
+            home: const RegisterView(),
             routes: {
               'Onboarding': (context) => const OnBoardingScreen(),
               'login': (context) => const LoginView(),

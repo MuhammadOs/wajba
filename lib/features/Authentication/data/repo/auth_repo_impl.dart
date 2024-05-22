@@ -2,8 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:wajba/core/errors/error_types.dart';
 import 'package:wajba/features/Authentication/data/auth_remote_resource.dart';
-import 'package:wajba/features/Authentication/data/models/login/Login_model.dart';
-import 'package:wajba/features/Authentication/data/models/login/Login_response_model.dart';
+import 'package:wajba/features/Authentication/data/models/login/login_model.dart';
+import 'package:wajba/features/Authentication/data/models/login/login_response_model.dart';
 import 'package:wajba/features/Authentication/data/models/register_model.dart';
 
 class AuthRepoImpl {
@@ -11,13 +11,10 @@ class AuthRepoImpl {
 
   AuthRepoImpl({required this.authRemoteResource});
 
-  Future<Either<Exception, String>> register(
-      RegisterModel registerModel) async {
+  Future<Either<Exception, void>> register(RegisterModel registerModel) async {
     try {
-      final Response response =
-          await authRemoteResource.register(registerModel);
-      String token = response.data['token'];
-      return Right(token);
+      authRemoteResource.register(registerModel);
+      return const Right(null);
     } catch (exception) {
       if (exception is DioException) {
         return Left(exception);

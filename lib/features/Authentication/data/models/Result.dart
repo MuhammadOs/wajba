@@ -1,4 +1,3 @@
-
 import 'package:wajba/features/Authentication/data/models/Customer.dart';
 
 class Result {
@@ -8,7 +7,8 @@ class Result {
   });
 
   Result.fromJson(Map<String, dynamic> json) {
-    customer = json['customer'] != null ? Customer.fromJson(json['customer']) : null;
+    customer =
+        json['customer'] != null ? Customer.fromJson(json['customer']) : null;
     token = json['token'];
   }
 

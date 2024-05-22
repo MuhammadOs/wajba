@@ -77,7 +77,7 @@ class _TryThisListViewState extends State<TryThisListView> {
               itemBuilder: (context, index) {
                 final meal = meals[index];
                 return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: TryThisListItem(
                     meal: meal,
                   ),

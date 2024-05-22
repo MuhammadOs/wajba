@@ -37,20 +37,20 @@ class TryThisTodayViewAllItem extends StatelessWidget {
                     restaurantName: tryThisItem.restaurantName));
           },
           child: Container(
+            width: width * 0.45,
             decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(20)),
+                borderRadius: BorderRadius.all(Radius.circular(25)),
                 color: Colors.white,
                 boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 2)]),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ClipRRect(
                   borderRadius: const BorderRadius.only(
-                      topRight: Radius.circular(23),
-                      topLeft: Radius.circular(23)),
+                      topRight: Radius.circular(25),
+                      topLeft: Radius.circular(25)),
                   child: SizedBox(
-                    height: height * 0.14,
-                    width: width * 0.4,
+                    height: height * 0.15,
+                    width: width * 0.45,
                     child: Image.network(
                       tryThisItem.photo == "photo" || tryThisItem.photo == null
                           ? "https://cdn-icons-png.flaticon.com/512/5663/5663566.png"
@@ -59,23 +59,30 @@ class TryThisTodayViewAllItem extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding:
-                      EdgeInsets.only(left: width * 0.02, top: height * 0.01),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        tryThisItem.name ?? "Kitchen name",
-                        style: Styles.titleSmall.copyWith(fontSize: 15),
-                      ),
-                      Text(
-                        tryThisItem.description ?? "Description",
-                        style: Styles.hint.copyWith(fontSize: 8),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        left: width * 0.02,
+                        top: height * 0.01,
+                        right: width * 0.02),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                          tryThisItem.name ?? "Meal name",
+                          style: Styles.titleSmall.copyWith(fontSize: 16),
+                        ),
+                        Text(
+                          tryThisItem.description ?? "Meal description",
+                          style: Styles.titleSmall
+                              .copyWith(fontSize: 10, color: wajbah_gray),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -86,43 +93,32 @@ class TryThisTodayViewAllItem extends StatelessWidget {
           top: height * 0.11,
           right: width * 0.01,
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: ClipRRect(
-                borderRadius: BorderRadius.circular(50),
-                child: Image.network(
-                  tryThisItem.restaurantPhoto == "photo" || tryThisItem.restaurantPhoto == null
-                      ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR16U0fq_8AFDqNEc3pUb5a99IvBAGEfA_0Rk3FRPyh_A&s"
-                      : tryThisItem.photo!,
-                  height: height * 0.050,
-                  fit: BoxFit.cover,
-                )),
-          ),
+              borderRadius: BorderRadius.circular(50),
+              child: Image.network(
+                tryThisItem.restaurantPhoto == "photo" ||
+                        tryThisItem.restaurantPhoto == null
+                    ? "https://th.bing.com/th/id/OIP.Zq2mJhYoCVbABpiI7C9txwHaHa?rs=1&pid=ImgDetMain"
+                    : tryThisItem.restaurantPhoto!,
+                height: height * 0.055,
+                fit: BoxFit.cover,
+              )),
         ),
         Positioned(
-          top: height * 0.118,
-          right: width * 0.28,
+          top: height * 0.135,
+          right: width * 0.25,
           child: Container(
               decoration: const BoxDecoration(
                 color: wajbah_primary,
                 borderRadius: BorderRadius.all(Radius.circular(5)),
               ),
-              padding: EdgeInsets.symmetric(horizontal: width * 0.01),
-              height: height * 0.025,
+              padding: EdgeInsets.symmetric(
+                  horizontal: width * 0.01, vertical: height * 0.003),
               child: Center(
                   child: Text(
                 '${tryThisItem.sizesPrices?.priceSmall} EGP',
                 style: Styles.titleMedium
                     .copyWith(fontSize: 10, color: wajbah_white),
               ))),
-        ),
-        Positioned(
-          top: height * 0.146,
-          right: width * 0.055,
-          child: const Icon(
-            Icons.verified_sharp,
-            color: wajbah_primary,
-            size: 15,
-          ),
         ),
       ],
     );

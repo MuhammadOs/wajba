@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wajba/core/errors/handle_errors.dart';
 import 'package:wajba/core/networking/dio_factory.dart';
-import 'package:wajba/features/Authentication/data/models/login/Login_model.dart';
+import 'package:wajba/features/Authentication/data/models/login/login_model.dart';
 import 'package:wajba/features/Authentication/data/models/register_model.dart';
 import 'package:wajba/features/Authentication/data/repo/auth_repo_impl.dart';
 import 'package:wajba/features/Authentication/presentations/view_model/auth_states.dart';
@@ -18,15 +18,15 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> register(RegisterModel registerModel) async {
     emit(RegisteringAuthState());
-    final Either<Exception, String> response =
-    await authRepoImpl.register(registerModel);
+    final Either<Exception, void> response =
+        await authRepoImpl.register(registerModel);
     emit(
       response.fold(
-            (exception) {
+        (exception) {
           ErrorHandler.handle(exception);
           return AuthErrorState(errorModel: ErrorHandler.errorModel);
         },
-            (token) => RegisterSuccessfullyState(token: token),
+        (token) => RegisterSuccessfullyState(),
       ),
     );
   }
@@ -34,13 +34,13 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> login(LoginModel loginModel) async {
     emit(LoginAuthState());
     final Either<Exception, String> response =
-    await authRepoImpl.login(loginModel);
+        await authRepoImpl.login(loginModel);
     response.fold(
-          (exception) {
+      (exception) {
         ErrorHandler.handle(exception);
         emit(AuthErrorState(errorModel: ErrorHandler.errorModel));
       },
-          (token) {
+      (token) {
         _token = token; // Store the token upon successful login
         emit(LoginSuccessfullyState(token: token));
       },
@@ -52,11 +52,11 @@ class AuthCubit extends Cubit<AuthState> {
     final Either<Exception, void> response = await authRepoImpl.logOut();
     emit(
       response.fold(
-            (exception) {
+        (exception) {
           ErrorHandler.handle(exception);
           return AuthErrorState(errorModel: ErrorHandler.errorModel);
         },
-            (_) {
+        (_) {
           _token = null;
           return LoggedOutState();
         },

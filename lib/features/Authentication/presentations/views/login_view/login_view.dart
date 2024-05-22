@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wajba/core/util/styles.dart';
-import 'package:wajba/features/Authentication/data/models/login/Login_model.dart';
+import 'package:wajba/core/util/theme.dart';
+import 'package:wajba/features/Authentication/data/models/login/login_model.dart';
 import 'package:wajba/features/Authentication/presentations/view_model/auth_cubit.dart';
 import 'package:wajba/features/Authentication/presentations/view_model/auth_states.dart';
 import 'package:wajba/features/Authentication/presentations/views/login_view/widgets/forget_password_widget.dart';
@@ -118,7 +119,7 @@ class _LoginViewState extends State<LoginView> {
                                 width: width * 0.8,
                                 height: 60,
                                 child: CustomButton(
-                                  color: Colors.blue,
+                                  color: wajbah_primary,
                                   text: "Login",
                                   onPressed: signIn,
                                 ),

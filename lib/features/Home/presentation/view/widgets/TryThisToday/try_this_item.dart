@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wajba/core/util/theme.dart';
 import 'package:wajba/core/util/sizeConfig.dart';
@@ -22,7 +23,6 @@ class _TryThisListItemState extends State<TryThisListItem> {
     return Stack(
       children: [
         InkWell(
-          borderRadius: BorderRadius.circular(23),
           onTap: () {
             Navigator.of(context).pushNamed('Item View',
                 arguments: Meal(
@@ -41,20 +41,19 @@ class _TryThisListItemState extends State<TryThisListItem> {
           },
           child: Container(
             width: width * 0.45,
-            height: height * 0.25,
             decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(23)),
+                borderRadius: BorderRadius.all(Radius.circular(25)),
                 color: Colors.white,
                 boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 2)]),
             child: Column(
               children: [
                 ClipRRect(
                   borderRadius: const BorderRadius.only(
-                      topRight: Radius.circular(23),
-                      topLeft: Radius.circular(23)),
+                      topRight: Radius.circular(25),
+                      topLeft: Radius.circular(25)),
                   child: SizedBox(
-                    height: height * 0.14,
-                    width: width * 0.4,
+                    height: height * 0.13,
+                    width: width * 0.45,
                     child: Image.network(
                       widget.meal.photo == "photo" || widget.meal.photo == null
                           ? "https://cdn-icons-png.flaticon.com/512/5663/5663566.png"
@@ -63,37 +62,48 @@ class _TryThisListItemState extends State<TryThisListItem> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding:
-                      EdgeInsets.only(left: width * 0.02, top: height * 0.015),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        child: Text(
-                          overflow: TextOverflow.ellipsis,
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        left: width * 0.02,
+                        top: height * 0.01,
+                        right: width * 0.02),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
                           widget.meal.name ?? "Meal name",
-                          style: Styles.titleSmall.copyWith(fontSize: 15),
+                          style: Styles.titleSmall
+                              .copyWith(fontSize: 16)
+                              .copyWith(
+                                  fontFamily: "Biryani",
+                                  fontWeight: FontWeight.bold),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
                         ),
-                      ),
-                      Text(
-                        widget.meal.description ?? "Meal description",
-                        style: Styles.hint.copyWith(fontSize: 10),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      SizedBox(
-                        height: height * 0.008,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                        child: Text(
-                          '${widget.meal.sizesPrices?.priceSmall} EGP',
-                          style: Styles.titleLarge
-                              .copyWith(fontSize: 12, color: wajbah_primary),
+                        SizedBox(height: height * 0.005),
+                        Text(
+                          widget.meal.description ?? "Meal description",
+                          style: Styles.titleSmall.copyWith(
+                              fontSize: 10,
+                              color: wajbah_gray,
+                              fontFamily: "Biryani"),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
                         ),
-                      ),
-                    ],
+                        const Spacer(),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 15, left: 5),
+                          child: Text(
+                            '${widget.meal.sizesPrices?.priceSmall} EGP',
+                            style: Styles.titleMedium.copyWith(
+                                fontSize: 12,
+                                color: wajbah_primary,
+                                fontFamily: ""),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -101,16 +111,20 @@ class _TryThisListItemState extends State<TryThisListItem> {
           ),
         ),
         Positioned(
-          top: height * 0.11,
-          right: width * 0.01,
+          top: height * 0.10,
+          right: width * 0.02,
           child: ClipRRect(
-              borderRadius: BorderRadius.circular(50),
-              child: Image.network(
-                widget.meal.restaurantPhoto == "photo" || widget.meal.restaurantPhoto == null
-                    ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR16U0fq_8AFDqNEc3pUb5a99IvBAGEfA_0Rk3FRPyh_A&s"
-                    : widget.meal.photo!,
-                height: height * 0.050,
-                fit: BoxFit.cover,
+              borderRadius: BorderRadius.circular(25),
+              child: CircleAvatar(
+                radius: 25,
+                child: Image.network(
+                  widget.meal.restaurantPhoto == "photo" ||
+                          widget.meal.restaurantPhoto == null
+                      ? "https://th.bing.com/th/id/OIP.Zq2mJhYoCVbABpiI7C9txwHaHa?rs=1&pid=ImgDetMain"
+                      : widget.meal.restaurantPhoto!,
+                  height: height * 0.06,
+                  fit: BoxFit.cover,
+                ),
               )),
         ),
       ],
